@@ -1,13 +1,54 @@
 ﻿<Page
-    x:Class="Wander.MainPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:Wander"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:Maps="using:Bing.Maps"
+    x:Class="Wander.MainPage"
     mc:Ignorable="d">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Grid Background="White" Margin="0,66,0,0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="400"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+
+        <Maps:Map HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Column="1" Height="702" Width="966"/>
+        <Grid HorizontalAlignment="Left" Height="67" Margin="0,-67,0,0" VerticalAlignment="Top" Width="1366" Grid.ColumnSpan="2" Background="#FFC31616">
+            <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Height="67" Width="67" Foreground="Black">
+            	<Run/>
+            	<LineBreak/>
+            	<Run/>
+            	<LineBreak/>
+            	<Run Text="AGS-Logo"/>
+            </TextBlock>
+            <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Height="67" Width="67" Foreground="Black" Margin="1299,0,0,0">
+            	<Run/>
+            	<LineBreak/>
+            	<Run/>
+            	<LineBreak/>
+            	<Run Text="Settings-Logo"/>
+            </TextBlock>
+
+        </Grid>
+        <TextBox HorizontalAlignment="Left" Margin="91,72,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" BorderBrush="Black" Width="267"/>
+        <TextBox HorizontalAlignment="Left" Margin="91,118,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="267" BorderBrush="Black"/>
+        <TextBox HorizontalAlignment="Left" Margin="91,165,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="267" BorderBrush="Black"/>
+        <TextBox HorizontalAlignment="Left" Margin="91,212,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="267" BorderBrush="Black"/>
+        <TextBox HorizontalAlignment="Left" Margin="91,259,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" BorderBrush="Black" Width="267"/>
+        <TextBox HorizontalAlignment="Left" Margin="91,306,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" BorderBrush="Black" Width="267"/>
+        <TextBox HorizontalAlignment="Left" Margin="91,353,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" BorderBrush="Black" Width="267"/>
+        <TextBox HorizontalAlignment="Left" Margin="91,400,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" BorderBrush="Black" Width="267"/>
+        <TextBlock HorizontalAlignment="Left" Margin="33,400,0,0" TextWrapping="Wrap" Text="7" VerticalAlignment="Top" Height="32" Width="32" Foreground="Black"/>
+        <TextBlock HorizontalAlignment="Left" Margin="33,353,0,0" TextWrapping="Wrap" Text="6" VerticalAlignment="Top" Height="32" Width="32" Foreground="Black"/>
+        <TextBlock HorizontalAlignment="Left" Margin="33,306,0,0" TextWrapping="Wrap" Text="5" VerticalAlignment="Top" Height="32" Width="32" Foreground="Black"/>
+        <TextBlock HorizontalAlignment="Left" Margin="33,259,0,0" TextWrapping="Wrap" Text="4" VerticalAlignment="Top" Height="32" Width="32" Foreground="Black"/>
+        <TextBlock HorizontalAlignment="Left" Margin="33,212,0,0" TextWrapping="Wrap" Text="3" VerticalAlignment="Top" Height="32" Width="32" Foreground="Black"/>
+        <TextBlock HorizontalAlignment="Left" Margin="33,165,0,0" TextWrapping="Wrap" Text="2" VerticalAlignment="Top" Height="32" Width="32" Foreground="Black"/>
+        <TextBlock HorizontalAlignment="Left" Margin="33,118,0,0" TextWrapping="Wrap" Text="1" VerticalAlignment="Top" Height="32" Width="32" Foreground="Black"/>
+        <TextBlock HorizontalAlignment="Left" Margin="33,72,0,0" TextWrapping="Wrap" Text="VVV-Logo" VerticalAlignment="Top" Height="32" Width="32" Foreground="Black"/>
+
 
     </Grid>
 </Page>
