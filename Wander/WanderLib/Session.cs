@@ -8,5 +8,9 @@ namespace WanderLib
 {
     class Session
     {
+        public Route route { get; set; }
+        public Language language { get; set; }
+        public Settings settings { get; set; }
+
     }
 }
