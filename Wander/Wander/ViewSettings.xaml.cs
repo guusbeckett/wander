@@ -23,11 +23,19 @@ namespace Wander
         public ViewSettings()
         {
             this.InitializeComponent();
+            LanguageComboBox.ItemsSource = ListLanguages;
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void HelpButton_Click(object sender, RoutedEventArgs e)
         {
 
         }
+
+        private void CloseButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        public List<string> ListLanguages { get; set; }
     }
 }
