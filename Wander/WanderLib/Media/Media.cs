@@ -14,6 +14,12 @@ namespace WanderLib.Media
         {
             fileLocation = "";
         }
-    
+
+        public enum Type
+        {
+            AUDIO,
+            VIDEO,
+            PHOTO
+        }
     }
 }
