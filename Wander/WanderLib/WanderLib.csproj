@@ -42,10 +42,7 @@
     <Compile Include="GPS.cs" />
     <Compile Include="Language.cs" />
     <Compile Include="Location.cs" />
-    <Compile Include="Media\Audio.cs" />
-    <Compile Include="Media\Media.cs" />
-    <Compile Include="Media\Photo.cs" />
-    <Compile Include="Media\Video.cs" />
+    <Compile Include="Media.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Route.cs" />
     <Compile Include="Session.cs" />

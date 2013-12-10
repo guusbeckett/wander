@@ -13,6 +13,7 @@ namespace WanderLib
         
         public Location getLocation()
         {
+            
             //TODO add location calculation, but it may be better to handle this in control.
             return location;
         }
