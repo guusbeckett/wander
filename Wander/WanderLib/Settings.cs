@@ -8,6 +8,12 @@ namespace WanderLib
 {
     class Settings
     {
-        //TODO add settings
+
+        private Language language { get; set; }
+
+        public Settings()
+        {
+            
+        }
     }
 }
