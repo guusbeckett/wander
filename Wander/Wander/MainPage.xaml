@@ -1,13 +1,45 @@
 ﻿<Page
-    x:Class="Wander.MainPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:Wander"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:Maps="using:Bing.Maps"
+    x:Class="Wander.MainPage"
     mc:Ignorable="d">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Grid Background="White" Margin="0,66,0,0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="400"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+
+        <Maps:Map Credentials="As8VjwVOZeLoUDUfQqwGJxW1BSI03yu8wCWbeXbcN7FpsOkw1SnbD0VP0nXqH-rW" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Column="1" Height="702" Width="966"/>
+        <Grid HorizontalAlignment="Left" Height="67" Margin="0,-67,0,0" VerticalAlignment="Top" Width="1366" Grid.ColumnSpan="2" Background="#FFC31616">
+            <Image HorizontalAlignment="Left" Height="67" VerticalAlignment="Top" Width="67" Source="Assets/StoreLogo.png"/>
+            <Image HorizontalAlignment="Left" Height="67" VerticalAlignment="Top" Width="67" Source="Assets/SettingButton.png" Margin="1299,0,0,0"/>
+
+        </Grid>
+        <TextBox HorizontalAlignment="Left" Margin="97,184,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" BorderBrush="Black" Width="267" IsReadOnly="True"/>
+        <TextBox HorizontalAlignment="Left" Margin="97,230,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="267" BorderBrush="Black" IsReadOnly="True"/>
+        <TextBox HorizontalAlignment="Left" Margin="97,277,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="267" BorderBrush="Black" IsReadOnly="True"/>
+        <TextBox HorizontalAlignment="Left" Margin="97,324,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="267" BorderBrush="Black" IsReadOnly="True"/>
+        <TextBox HorizontalAlignment="Left" Margin="97,371,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" BorderBrush="Black" Width="267" IsReadOnly="True"/>
+        <TextBox HorizontalAlignment="Left" Margin="97,418,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" BorderBrush="Black" Width="267" IsReadOnly="True"/>
+        <TextBox HorizontalAlignment="Left" Margin="97,465,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" BorderBrush="Black" Width="267" IsReadOnly="True"/>
+        <TextBox HorizontalAlignment="Left" Margin="97,512,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" BorderBrush="Black" Width="267" IsReadOnly="True"/>
+        <TextBlock HorizontalAlignment="Left" Margin="39,512,0,0" TextWrapping="Wrap" Text="7" VerticalAlignment="Top" Height="32" Width="32" Foreground="Black" FontSize="24" FontWeight="Bold"/>
+        <TextBlock HorizontalAlignment="Left" Margin="39,465,0,0" TextWrapping="Wrap" Text="6" VerticalAlignment="Top" Height="32" Width="32" Foreground="Black" FontSize="24" FontWeight="Bold"/>
+        <TextBlock HorizontalAlignment="Left" Margin="39,418,0,0" TextWrapping="Wrap" Text="5" VerticalAlignment="Top" Height="32" Width="32" Foreground="Black" FontSize="24" FontWeight="Bold"/>
+        <TextBlock HorizontalAlignment="Left" Margin="39,371,0,0" TextWrapping="Wrap" Text="4" VerticalAlignment="Top" Height="32" Width="32" Foreground="Black" FontSize="24" FontWeight="Bold"/>
+        <TextBlock HorizontalAlignment="Left" Margin="39,324,0,0" TextWrapping="Wrap" Text="3" VerticalAlignment="Top" Height="32" Width="32" Foreground="Black" FontSize="24" FontWeight="Bold"/>
+        <TextBlock HorizontalAlignment="Left" Margin="39,277,0,0" TextWrapping="Wrap" Text="2" VerticalAlignment="Top" Height="32" Width="32" Foreground="Black" FontSize="24" FontWeight="Bold"/>
+        <TextBlock HorizontalAlignment="Left" Margin="39,230,0,0" TextWrapping="Wrap" Text="1" VerticalAlignment="Top" Height="32" Width="32" Foreground="Black" FontSize="24" FontWeight="Bold"/>
+        <Image HorizontalAlignment="Left" Height="32" VerticalAlignment="Top" Width="32" Source="Assets/VVV_logo.png" Margin="39,184,0,0"/>
+        <TextBox HorizontalAlignment="Left" Margin="212,-47,0,0" TextWrapping="Wrap" Text="nogwat Kilometer" VerticalAlignment="Top" BorderBrush="{x:Null}" Width="187" Grid.Column="1" Background="{x:Null}" Foreground="White" IsReadOnly="True" FontSize="18" FontWeight="Bold"/>
+        <TextBox HorizontalAlignment="Left" Margin="55,10,0,0" TextWrapping="Wrap" Text="Directions" VerticalAlignment="Top" BorderBrush="{x:Null}" Width="122" FontSize="18" FontWeight="Bold"/>
+        <Image HorizontalAlignment="Left" Height="32" Margin="342,137,0,0" VerticalAlignment="Top" Width="22" Source="Assets/walking-man.png" Opacity="0.5"/>
+
 
     </Grid>
 </Page>
