@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -22,9 +23,23 @@ namespace Wander
     /// </summary>
     public sealed partial class MainPage : Page
     {
+        string number;
         public MainPage()
         {
             this.InitializeComponent();
+            fillGrid();
+        }
+
+        private void fillGrid()
+        {
+            List<String> list = new List<String>();
+
+            for (int i = 0; i < 40; i++ )
+            {
+                number = i.ToString();
+                list.Add("Bezienswaardigheid"+i.ToString());
+            }
+            lijstje.ItemsSource = list;  
         }
     }
 }

@@ -26,6 +26,7 @@ namespace Wander
 
         private NavigationHelper navigationHelper;
         private ObservableDictionary defaultViewModel = new ObservableDictionary();
+        private string message;
 
         /// <summary>
         /// This can be changed to a strongly typed view model.
@@ -51,6 +52,7 @@ namespace Wander
             this.navigationHelper = new NavigationHelper(this);
             this.navigationHelper.LoadState += navigationHelper_LoadState;
             this.navigationHelper.SaveState += navigationHelper_SaveState;
+            MessageGrid.DataContext = message;
         }
 
         /// <summary>

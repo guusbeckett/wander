@@ -23,6 +23,7 @@ namespace Wander
         public Help()
         {
             this.InitializeComponent();
+            HelpGrid.DataContext = HelpMessage;
         }
 
         public void showHelp()

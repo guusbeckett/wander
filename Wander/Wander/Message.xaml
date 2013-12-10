@@ -37,16 +37,16 @@
                 <ColumnDefinition Width="120"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <Button x:Name="backButton" Margin="39,59,39,0" Command="{Binding NavigationHelper.GoBackCommand, ElementName=pageRoot}"
+            <Button x:Name="backButton" Margin="39,0,0,40" Command="{Binding NavigationHelper.GoBackCommand, ElementName=pageRoot}"
                         Style="{StaticResource NavigationBackButtonNormalStyle}"
-                        VerticalAlignment="Top"
+                        VerticalAlignment="Bottom"
                         AutomationProperties.Name="Back"
                         AutomationProperties.AutomationId="BackButton"
                         AutomationProperties.ItemType="Navigation Button"/>
             <TextBlock x:Name="pageTitle" Text="Bezienswaardigheid" Style="{StaticResource HeaderTextBlockStyle}" Grid.Column="1" 
                         IsHitTestVisible="false" TextWrapping="NoWrap" VerticalAlignment="Bottom" Margin="0,0,30,40"/>
         </Grid>
-        <Grid HorizontalAlignment="Left" Height="623" Margin="0,5,0,0" Grid.Row="1" VerticalAlignment="Top" Width="1366">
+        <Grid x:Name="MessageGrid" HorizontalAlignment="Left" Height="623" Margin="0,5,0,0" Grid.Row="1" VerticalAlignment="Top" Width="1366">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="470"/>
                 <ColumnDefinition/>
@@ -60,7 +60,7 @@
                 <Image HorizontalAlignment="Left" Height="287" VerticalAlignment="Top" Width="351" Source="Assets/Logo.png" Margin="43,52,0,0"/>
                 <Image HorizontalAlignment="Left" Height="156" Grid.Row="1" VerticalAlignment="Top" Width="309" Source="Assets/VVV_logo.png" Margin="43,45,0,0"/>
             </Grid>
-            <TextBox Grid.Column="1" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text &#xD;&#xA;Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text " VerticalAlignment="Top" Height="623" Width="896"/>
+            <TextBox Grid.Column="1" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding message}" VerticalAlignment="Top" Height="623" Width="896"/>
         </Grid>
     </Grid>
 </Page>
