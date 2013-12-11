@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wander", "Wander\Wander.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WanderLib", "WanderLib\WanderLib.csproj", "{AE3983B2-D49E-433A-A5CA-66852B1974DE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WanderLibrary", "WanderLibrary\WanderLibrary.csproj", "{8D9BE81E-EC8C-4AB9-8141-B8A35026DEF3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -53,6 +55,16 @@ Global
 		{AE3983B2-D49E-433A-A5CA-66852B1974DE}.Release|ARM.ActiveCfg = Release|Any CPU
 		{AE3983B2-D49E-433A-A5CA-66852B1974DE}.Release|x64.ActiveCfg = Release|Any CPU
 		{AE3983B2-D49E-433A-A5CA-66852B1974DE}.Release|x86.ActiveCfg = Release|Any CPU
+		{8D9BE81E-EC8C-4AB9-8141-B8A35026DEF3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8D9BE81E-EC8C-4AB9-8141-B8A35026DEF3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8D9BE81E-EC8C-4AB9-8141-B8A35026DEF3}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{8D9BE81E-EC8C-4AB9-8141-B8A35026DEF3}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{8D9BE81E-EC8C-4AB9-8141-B8A35026DEF3}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{8D9BE81E-EC8C-4AB9-8141-B8A35026DEF3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8D9BE81E-EC8C-4AB9-8141-B8A35026DEF3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8D9BE81E-EC8C-4AB9-8141-B8A35026DEF3}.Release|ARM.ActiveCfg = Release|Any CPU
+		{8D9BE81E-EC8C-4AB9-8141-B8A35026DEF3}.Release|x64.ActiveCfg = Release|Any CPU
+		{8D9BE81E-EC8C-4AB9-8141-B8A35026DEF3}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
