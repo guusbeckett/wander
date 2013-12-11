@@ -12,5 +12,9 @@ namespace WanderLib
         public Language language { get; set; }
         public Settings settings { get; set; }
 
+        public Session()
+        {
+
+        }
     }
 }
