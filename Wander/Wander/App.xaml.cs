@@ -32,6 +32,7 @@ namespace Wander
         {
             this.InitializeComponent();
             this.Suspending += OnSuspending;
+            DataController.getInstance();
         }
 
         /// <summary>

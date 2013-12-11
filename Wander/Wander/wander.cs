@@ -8,7 +8,7 @@ namespace Wander
 {
     class wander
     {
-        private List<Object> languages { get; } //TODO fix zodra library er is
+        //private List<Object> languages { get; } //TODO fix zodra library er is
         private object GUI; //FIXME zodra GUIController er is
         private object session; //FIX dit zodra library er is
         private List<object> routes; //HINT fix dit zodra library er is
