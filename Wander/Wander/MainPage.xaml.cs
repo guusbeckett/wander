@@ -6,6 +6,7 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI;
+using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -40,6 +41,12 @@ namespace Wander
                 list.Add("Bezienswaardigheid"+i.ToString());
             }
             lijstje.ItemsSource = list;  
+        }
+
+        private async void Settings_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            var dialog = new MessageDialog("Settings has been tapped", "Settings");
+            await dialog.ShowAsync();
         }
     }
 }

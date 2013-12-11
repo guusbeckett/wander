@@ -17,7 +17,7 @@
         <Maps:Map Credentials="As8VjwVOZeLoUDUfQqwGJxW1BSI03yu8wCWbeXbcN7FpsOkw1SnbD0VP0nXqH-rW" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Column="1" Height="702" Width="966" Grid.ColumnSpan="2"/>
         <Grid HorizontalAlignment="Left" Height="67" Margin="0,-67,0,0" VerticalAlignment="Top" Width="1366" Grid.ColumnSpan="3" Background="#FFC31616">
             <Image HorizontalAlignment="Left" Height="67" VerticalAlignment="Top" Width="67" Source="Assets/StoreLogo.png"/>
-            <Image HorizontalAlignment="Left" Height="67" VerticalAlignment="Top" Width="67" Source="Assets/SettingButton.png" Margin="1299,0,0,0"/>
+            <Image HorizontalAlignment="Left" Height="67" VerticalAlignment="Top" Width="67" Source="Assets/SettingButton.png" Margin="1299,0,0,0" Tapped="Settings_Tapped"/>
 
         </Grid>
         <TextBox HorizontalAlignment="Left" Margin="212,-47,0,0" TextWrapping="Wrap" Text="nogwat Kilometer" VerticalAlignment="Top" BorderBrush="{x:Null}" Width="187" Grid.Column="1" Background="{x:Null}" Foreground="White" IsReadOnly="True" FontSize="18" FontWeight="Bold" Grid.ColumnSpan="2"/>
