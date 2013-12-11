@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WanderLib
 {
-    class Language
+    public class Language
     {
         public string name { get; set; }
 

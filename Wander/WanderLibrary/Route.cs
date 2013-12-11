@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WanderLib
 {
-    class Route
+    public class Route
     {
         public List<Sight> sights { get; set; }
         public double totalDistance { get; set; }

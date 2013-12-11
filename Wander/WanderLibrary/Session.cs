@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WanderLib
 {
-    class Session
+    public class Session
     {
         public Route route { get; set; }
         public Language language { get; set; }

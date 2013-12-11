@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace WanderLib
 {
-    class Sight
+    public class Sight
     {
-        private Dictionary<Media.Media.Type, Media.Media> media { get; set; }
-        private string name { get; set; }
-        private string information { get; set; }
-        private Location location { get; set; }
-        private Boolean isVisited;
+        public Dictionary<Media.Media.Type, Media.Media> media { get; set; }
+        public string name { get; set; }
+        public string information { get; set; }
+        public Location location { get; set; }
+        public Boolean isVisited;
 
         public Sight(Dictionary<Media.Media.Type, Media.Media> media, string name, string information, Location location)
         {
@@ -30,7 +30,7 @@ namespace WanderLib
             this.location = location;
             this.isVisited = isVisited;
         }
-        private void setToVisited()
+        public void setToVisited()
         {
             isVisited = true;
         }

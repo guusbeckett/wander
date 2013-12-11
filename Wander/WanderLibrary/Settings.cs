@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace WanderLib
 {
-    class Settings
+    public class Settings
     {
 
-        private Language language { get; set; }
+        public Language language { get; set; }
 
         public Settings()
         {

@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace WanderLib
 {
-    class Location
+    public class Location
     {
-        public float latitude { get; set; }
-        public float longitude { get; set; }
+        public string latitude { get; set; }
+        public string longitude { get; set; }
         
-        public Location(float latitude, float longitude)
+        public Location(string latitude, string longitude)
         {
             this.latitude = latitude;
             this.longitude = longitude;

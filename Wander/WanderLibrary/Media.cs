@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace WanderLib.Media
 {
-    class Media
+    public class Media
     {
-        private string fileLocation { get; set; }
+        public string fileLocation { get; set; }
         
         public Media(Type type, string fileLocation)
         {
