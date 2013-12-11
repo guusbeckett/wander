@@ -9,7 +9,7 @@ namespace Wander
     class DataController
     {
         private static DataController instance;
-        private List<WanderLib.Sight> loadedSights { get { if (loadedSights == null) { loadedSights = giveAllSightsOnRoute(); } return loadedSights; } set { loadedSights=value; } }
+        private List<WanderLib.Sight> loadedSights { get; set; }
         
 
 
@@ -24,11 +24,11 @@ namespace Wander
         public List<string> giveStringsOfLoadedSights()
         {
             if (loadedSights == null)
-                return null;
+                loadedSights = giveAllSightsOnRoute();
             List<string> strings = new List<string>();
             foreach(WanderLib.Sight sight in loadedSights)
             {
-                strings.Add(sight.ToString());
+               strings.Add(sight.name);
             }
             return strings;
         }

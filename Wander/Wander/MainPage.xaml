@@ -24,12 +24,11 @@
         <TextBox HorizontalAlignment="Left" Margin="55,10,0,0" TextWrapping="Wrap" Text="Directions" VerticalAlignment="Top" BorderBrush="{x:Null}" Width="122" FontSize="18" FontWeight="Bold"/>
         <Image HorizontalAlignment="Left" Height="32" Margin="342,137,0,0" VerticalAlignment="Top" Width="22" Source="Assets/walking-man.png" Opacity="0.5"/>
         <Grid Name="GridSights" HorizontalAlignment="Left" Margin="0,174,0,0" VerticalAlignment="Top" Width="400" Height="528">
-            <ListView x:Name="lijstje" Foreground="Red">
+            <ListView x:Name="sightList" Foreground="Red" SelectionChanged="sightList_SelectionChanged">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal">
-                            <Image Source="Assets/VVV_logo.png" Width="32" Height="32"/>
-                            <TextBlock Margin="20,0,0,0"  Text="{Binding}" Foreground="Black"/>
+                            <TextBlock Margin="20,0,0,0"  Text="{Binding}" Foreground="Black"  />
                         </StackPanel>
                     </DataTemplate>
                 </ListView.ItemTemplate>

@@ -26,7 +26,9 @@ namespace Wander
 
         private NavigationHelper navigationHelper;
         private ObservableDictionary defaultViewModel = new ObservableDictionary();
-        private string message;
+        private String textPassed;
+        private WanderLib.Sight sight;
+        private DataController dataController;
 
         /// <summary>
         /// This can be changed to a strongly typed view model.
@@ -52,7 +54,8 @@ namespace Wander
             this.navigationHelper = new NavigationHelper(this);
             this.navigationHelper.LoadState += navigationHelper_LoadState;
             this.navigationHelper.SaveState += navigationHelper_SaveState;
-            MessageGrid.DataContext = message;
+            dataController = DataController.getInstance();
+            
         }
 
         /// <summary>
@@ -96,6 +99,23 @@ namespace Wander
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             navigationHelper.OnNavigatedTo(e);
+
+            textPassed = e.Parameter.ToString();
+            List<WanderLib.Sight> sights = new List<WanderLib.Sight>();
+
+            sights = dataController.giveAllSightsOnRoute();
+
+            foreach(WanderLib.Sight s in sights)
+            {
+                if(s.name == textPassed)
+                {
+                    sight = s;
+                    tekstboxtest.Text = sight.information;
+                    break;
+                }
+            }
+             
+            
         }
 
         protected override void OnNavigatedFrom(NavigationEventArgs e)
