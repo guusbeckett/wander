@@ -1,20 +1,27 @@
-﻿using System;
+﻿using SQLite;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using Windows.Storage;
 
 namespace Wander
 {
     class DataController
     {
-        private DataController instance;
+        private static DataController instance;
 
-        public DataController getInstance()
+        
+
+
+        public static DataController getInstance()
         {
+
             if (instance == null)
                 instance = new DataController();
             return instance;
         }
+
+        //public List<>giveAllSightsOnRoute
     }
 }
