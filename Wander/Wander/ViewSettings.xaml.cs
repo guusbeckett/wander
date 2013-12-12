@@ -20,6 +20,7 @@ namespace Wander
     public sealed partial class ViewSettings : UserControl
     {
         private string language = "Talen";
+        private int selectedIndex = 0;
         MainPage page;
         private DataController datacontroller;
         public ViewSettings(MainPage page)
@@ -28,6 +29,7 @@ namespace Wander
             GridSetting.DataContext = language;
             datacontroller = DataController.getInstance();
             LanguageComboBox.ItemsSource = datacontroller.giveAllLanguages();
+            LanguageComboBox.SelectedIndex = selectedIndex;
             this.page = page;
         }
 
@@ -38,7 +40,7 @@ namespace Wander
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
-            page.removeSettings(this);
+            page.removeChild(this);
         }
 
         public List<string> ListLanguages { get; set; }
@@ -46,6 +48,7 @@ namespace Wander
         private void LanguageComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var selectedItem = e.AddedItems[0];
+            selectedIndex = LanguageComboBox.SelectedIndex;
             
         }
     }
