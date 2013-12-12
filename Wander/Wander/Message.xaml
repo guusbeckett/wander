@@ -60,7 +60,7 @@
                 <Image HorizontalAlignment="Left" Height="287" VerticalAlignment="Top" Width="351" Source="Assets/Logo.png" Margin="43,52,0,0"/>
                 <Image HorizontalAlignment="Left" Height="156" Grid.Row="1" VerticalAlignment="Top" Width="309" Source="Assets/VVV_logo.png" Margin="43,45,0,0"/>
             </Grid>
-            <TextBox Name="tekstboxtest" Grid.Column="1" HorizontalAlignment="Left" TextWrapping="Wrap"  VerticalAlignment="Top" Height="623" Width="896"/>
+            <TextBox Name="tekstboxtest" Grid.Column="1" HorizontalAlignment="Left" TextWrapping="Wrap"  VerticalAlignment="Top" Height="623" Width="896" IsReadOnly="True"/>
         </Grid>
     </Grid>
 </Page>

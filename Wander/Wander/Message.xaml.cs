@@ -111,6 +111,7 @@ namespace Wander
                 {
                     sight = s;
                     tekstboxtest.Text = sight.information;
+                    pageTitle.Text = sight.name;
                     break;
                 }
             }
