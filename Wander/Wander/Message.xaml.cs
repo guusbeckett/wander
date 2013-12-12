@@ -101,18 +101,21 @@ namespace Wander
             navigationHelper.OnNavigatedTo(e);
 
             textPassed = e.Parameter.ToString();
-            List<WanderLib.Sight> sights = new List<WanderLib.Sight>();
+            List<WanderLib.Waypoint> sights = new List<WanderLib.Waypoint>();
 
-            sights = dataController.giveAllSightsOnRoute();
+            sights = dataController.giveAllWaypointsOnRoute();
 
-            foreach(WanderLib.Sight s in sights)
+            foreach(WanderLib.Waypoint s in sights)
             {
-                if(s.name == textPassed)
+                if (s.GetType() == (typeof(WanderLib.Sight)))
                 {
-                    sight = s;
-                    tekstboxtest.Text = sight.information;
-                    pageTitle.Text = sight.name;
-                    break;
+                    if (((WanderLib.Sight)s).name == textPassed)
+                    {
+                        sight = ((WanderLib.Sight)s);
+                        tekstboxtest.Text = sight.information;
+                        pageTitle.Text = sight.name;
+                        break;
+                    }
                 }
             }
              

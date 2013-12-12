@@ -1,0 +1,177 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Nassau_monument" xml:space="preserve">
+    <value>Als u de brug overgaat, ziet u aan uw linkerhand het 
+Nassau-Baroniemonument.
+
+Bij de ingang van het stadspark, het
+Valkenberg, staat een monument
+dat u iets vertelt over de wordings-
+geschiedenis van de stad Breda, maar
+vooral over de Heren van de stad uit het
+Huis van Nassau en de 500-jarige band
+tussen Breda en het Huis van Nassau.
+Op 3 juli 1905 werd het Nassau-Baronie-
+monument, zoals het officieel heet, met 
+veel feestelijk vertoon door Koningin
+Wilhelmina onthuld. Het beeld herinnert
+aan het feit, dat in 1404 Graaf Engelbert,
+de eerste Bredase Nassau en zijn gemalin, Johanna van Polanen,
+werden ingehuldigd als Heer en Vrouwe van Breda.
+De ontwerper is de welbekende dr. P.J.H. Cuypers, die o.m. het
+Rijksmuseum en het Centraal Station in Amsterdam ontwierp.
+Op dit monument zijn niet alleen de wapenschilden van twintig
+gemeenten in en rond de Baronie aangebracht maar ook de
+Leeuw van Nassau die boven alles uittorent met koningskroon,
+zwaard en wapenschild. In de drie reliëfs is de 'blijde incomste'
+van Graaf Engelbert en zijn gemalin afgebeeld. De poorters
+bieden de sleutel van de stad aan.</value>
+  </data>
+  <data name="Valkenberg" xml:space="preserve">
+    <value>U duikt meteen al in de vroege historie van
+Breda, als u het pad rechts over het bruggetje
+neemt en verder door het stadspark, het
+Valkenberg, wandelt.
+
+Tot 1812 deed dit park dienst als kasteeltuin voor de
+Heren van Breda. Het park dankt zijn naam aan een val-
+kenhuis, dat aan de rand ervan stond en van waaruit de
+kasteelbewoners en hun gasten de valkenjacht bedreven.
+Het park was van orgine een echt bos met hoge bomen.
+In de zeventiende eeuw verdween dat
+karakter door de aanleg van een tuin
+naar Franse stijl.
+Eén replica van de 17 beelden staat
+verderop in het park, in een speciaal
+aangelegd perkje. Dit perkje is een
+herinnering aan de Franse stijltuin.
+Het originele beeld is te bezichtigen
+in het Breda's Museum.
+In 1995 is het Valkenberg in een nieuw
+jasje gestoken. In het hele park zijn paden
+verlegd, struiken en bosschages weggehaald
+en nieuwe verlichting aangebracht. Daarnaast
+zijn er nieuwe banken in het park geplaatst en
+speelvoorzieningen voor de kinderen gemaakt. Bij opgravingen in
+het park zijn de fundamenten van een middeleeuwse muurtoren
+en van de stenen muur gevonden, die tot 1537 "klein Breda"
+omringde. Van twee muurtorens is een klein stukje opgebouwd.</value>
+  </data>
+</root>

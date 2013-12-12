@@ -154,6 +154,7 @@
     <Content Include="Assets\VVV_logo.png" />
     <Content Include="Assets\walking-man.png" />
     <Content Include="Common\ReadMe.txt" />
+    <Content Include="Assets\information.xml" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -180,11 +181,11 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="WanderLibrary">
-      <HintPath>..\..\..\..\..\..\..\..\..\Dropbox\23TI2.2A1\Fase 3\Library\WanderLibrary.dll</HintPath>
+    <Reference Include="WanderLibrary, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Z:\Dropbox\23TI2.2A1\Fase 3\Library\WanderLibrary.dll</HintPath>
     </Reference>
   </ItemGroup>
-  <ItemGroup />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '12.0' ">
     <VisualStudioVersion>12.0</VisualStudioVersion>
   </PropertyGroup>
