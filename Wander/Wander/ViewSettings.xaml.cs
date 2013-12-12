@@ -20,20 +20,23 @@ namespace Wander
     public sealed partial class ViewSettings : UserControl
     {
         private string language = "Talen";
-        public ViewSettings()
+        MainPage page;
+        public ViewSettings(MainPage page)
         {
             this.InitializeComponent();
+            GridSetting.DataContext = language;
             LanguageComboBox.ItemsSource = ListLanguages;
+            this.page = page;
         }
 
         private void HelpButton_Click(object sender, RoutedEventArgs e)
         {
-
+            page.setHelp();
         }
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
-
+            page.removeSettings(this);
         }
 
         public List<string> ListLanguages { get; set; }

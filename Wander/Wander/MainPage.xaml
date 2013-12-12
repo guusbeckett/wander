@@ -8,7 +8,7 @@
     x:Class="Wander.MainPage"
     mc:Ignorable="d">
 
-    <Grid Background="White" Margin="0,66,0,0">
+    <Grid x:Name="GridRoot" Background="White" Margin="0,66,0,0">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="400"/>
             <ColumnDefinition Width="1*"/>
