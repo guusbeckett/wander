@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WanderLib.Media
 {
-    class Photo
+    class Photo : Media
     {
     }
 }
