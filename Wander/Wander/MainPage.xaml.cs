@@ -5,6 +5,8 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI;
+using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -22,9 +24,61 @@ namespace Wander
     /// </summary>
     public sealed partial class MainPage : Page
     {
+        string number;
+        DataController datacontroller;
+        ViewSettings settings;
+        Help help;
+
         public MainPage()
         {
             this.InitializeComponent();
+            datacontroller = DataController.getInstance();
+            sightList.ItemsSource = datacontroller.giveStringsOfLoadedSights();
         }
+
+
+        private void Settings_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            if (settings == null)
+            {
+                settings = new ViewSettings(this);
+                GridRoot.Children.Add(settings);
+            }
+        }
+
+        public void setHelp()
+        {
+            help = new Help(this);
+            GridRoot.Children.Add(help);
+            removeSettings(settings);
+        }
+
+        public void removeSettings(ViewSettings vs)
+        {
+            GridRoot.Children.Remove(vs);
+            settings = null;
+        }
+
+        public void removeHelp(Help h)
+        {
+            GridRoot.Children.Remove(h);
+            help = null;
+        }
+
+        public async void showErrorMessage(string title, string content)
+        {
+            var dialog = new MessageDialog(content, title);
+            await dialog.ShowAsync();
+        }
+
+        private async void sightList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var selectedItem = e.AddedItems[0];
+            if (this.Frame != null)
+            {
+                this.Frame.Navigate(typeof(Message), selectedItem);
+            }
+        }
+
     }
 }
