@@ -40,29 +40,24 @@ namespace Wander
         private void Settings_Tapped(object sender, TappedRoutedEventArgs e)
         {
             if (settings == null)
-            {
                 settings = new ViewSettings(this);
+            if(!GridRoot.Children.Contains(settings))
+            {
                 GridRoot.Children.Add(settings);
             }
+            
         }
 
         public void setHelp()
         {
             help = new Help(this);
             GridRoot.Children.Add(help);
-            removeSettings(settings);
+            removeChild(settings);
         }
 
-        public void removeSettings(ViewSettings vs)
+        public void removeChild(UIElement e)
         {
-            GridRoot.Children.Remove(vs);
-            settings = null;
-        }
-
-        public void removeHelp(Help h)
-        {
-            GridRoot.Children.Remove(h);
-            help = null;
+            GridRoot.Children.Remove(e);
         }
 
         public async void showErrorMessage(string title, string content)

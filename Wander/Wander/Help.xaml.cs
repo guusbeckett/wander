@@ -31,7 +31,7 @@ namespace Wander
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
-            page.removeHelp(this);
+            page.removeChild(this);
         }
 
     }
