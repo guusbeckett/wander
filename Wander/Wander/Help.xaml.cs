@@ -19,13 +19,14 @@ namespace Wander
 {
     public sealed partial class Help : UserControl
     {
-        private string HelpMessage = "Bonjour ik spreek geen frans maar ik ken wel een frans duits. Haha, loljimlol, dit is een test voor scrollbar, Bonjour ik spreek geen frans maar ik ken wel een frans duits. Haha, loljimlol, dit is een test voor scrollbar, Bonjour ik spreek geen frans maar ik ken wel een frans duits. Haha, loljimlol, dit is een test voor scrollbar, Bonjour ik spreek geen frans maar ik ken wel een frans duits. Haha, loljimlol, dit is een test voor scrollbar, Bonjour ik spreek geen frans maar ik ken wel een frans duits. Haha, loljimlol, dit is een test voor scrollbar, Bonjour ik spreek geen frans maar ik ken wel een frans duits. Haha, loljimlol, dit is een test voor scrollbar, Bonjour ik spreek geen frans maar ik ken wel een frans duits. Haha, loljimlol, dit is een test voor scrollbar, Bonjour ik spreek geen frans maar ik ken wel een frans duits. Haha, loljimlol, dit is een test voor scrollbar, Bonjour ik spreek geen frans maar ik ken wel een frans duits. Haha, loljimlol, dit is een test voor scrollbar, Bonjour ik spreek geen frans maar ik ken wel een frans duits. Haha, loljimlol, dit is een test voor scrollbar, Bonjour ik spreek geen frans maar ik ken wel een frans duits. Haha, loljimlol, dit is een test voor scrollbar, Bonjour ik spreek geen frans maar ik ken wel een frans duits. Haha, loljimlol, dit is een test voor scrollbar";
-        MainPage page;
+        private MainPage page;
+        private DataController datacontroller;
         public Help(MainPage page)
         {
             this.InitializeComponent();
-            HelpGrid.DataContext = HelpMessage;
             this.page = page;
+            datacontroller = DataController.getInstance();
+            HelpGrid.DataContext = datacontroller.giveHelpMessage();
         }
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
