@@ -19,21 +19,19 @@ namespace Wander
 {
     public sealed partial class Help : UserControl
     {
-        private string HelpMessage;
-        public Help()
+        private MainPage page;
+        private DataController datacontroller;
+        public Help(MainPage page)
         {
             this.InitializeComponent();
-            HelpGrid.DataContext = HelpMessage;
-        }
-
-        public void showHelp()
-        {
-
+            this.page = page;
+            datacontroller = DataController.getInstance();
+            HelpGrid.DataContext = datacontroller.giveHelpMessage();
         }
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
-
+            page.removeHelp(this);
         }
 
     }

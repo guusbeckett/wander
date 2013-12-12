@@ -25,28 +25,60 @@ namespace Wander
     public sealed partial class MainPage : Page
     {
         string number;
+        DataController datacontroller;
+        ViewSettings settings;
+        Help help;
+
         public MainPage()
         {
             this.InitializeComponent();
-            fillGrid();
+            datacontroller = DataController.getInstance();
+            sightList.ItemsSource = datacontroller.giveStringsOfLoadedSights();
         }
 
-        private void fillGrid()
-        {
-            List<String> list = new List<String>();
 
-            for (int i = 0; i < 40; i++ )
+        private void Settings_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            if (settings == null)
             {
-                number = i.ToString();
-                list.Add("Bezienswaardigheid"+i.ToString());
+                settings = new ViewSettings(this);
+                GridRoot.Children.Add(settings);
             }
-            lijstje.ItemsSource = list;  
         }
 
-        private async void Settings_Tapped(object sender, TappedRoutedEventArgs e)
+        public void setHelp()
         {
-            var dialog = new MessageDialog("Settings has been tapped", "Settings");
+            help = new Help(this);
+            GridRoot.Children.Add(help);
+            removeSettings(settings);
+        }
+
+        public void removeSettings(ViewSettings vs)
+        {
+            GridRoot.Children.Remove(vs);
+            settings = null;
+        }
+
+        public void removeHelp(Help h)
+        {
+            GridRoot.Children.Remove(h);
+            help = null;
+        }
+
+        public async void showErrorMessage(string title, string content)
+        {
+            var dialog = new MessageDialog(content, title);
             await dialog.ShowAsync();
         }
+
+        private async void sightList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var selectedItem = e.AddedItems[0];
+            if (this.Frame != null)
+            {
+                this.Frame.Navigate(typeof(Message), selectedItem);
+            }
+        }
+
     }
 }

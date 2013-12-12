@@ -8,7 +8,7 @@
     x:Class="Wander.MainPage"
     mc:Ignorable="d">
 
-    <Grid Background="White" Margin="0,66,0,0">
+    <Grid x:Name="GridRoot" Background="White" Margin="0,66,0,0">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="400"/>
             <ColumnDefinition Width="1*"/>
@@ -20,16 +20,15 @@
             <Image HorizontalAlignment="Left" Height="67" VerticalAlignment="Top" Width="67" Source="Assets/SettingButton.png" Margin="1299,0,0,0" Tapped="Settings_Tapped"/>
 
         </Grid>
-        <TextBox HorizontalAlignment="Left" Margin="212,-47,0,0" TextWrapping="Wrap" Text="nogwat Kilometer" VerticalAlignment="Top" BorderBrush="{x:Null}" Width="187" Grid.Column="1" Background="{x:Null}" Foreground="White" IsReadOnly="True" FontSize="18" FontWeight="Bold" Grid.ColumnSpan="2"/>
-        <TextBox HorizontalAlignment="Left" Margin="55,10,0,0" TextWrapping="Wrap" Text="Directions" VerticalAlignment="Top" BorderBrush="{x:Null}" Width="122" FontSize="18" FontWeight="Bold"/>
-        <Image HorizontalAlignment="Left" Height="32" Margin="342,137,0,0" VerticalAlignment="Top" Width="22" Source="Assets/walking-man.png" Opacity="0.5"/>
+        <TextBox HorizontalAlignment="Left" Margin="212,-47,0,0" TextWrapping="Wrap" Text="nogwat Kilometer" VerticalAlignment="Top" BorderBrush="{x:Null}" Width="187" Grid.Column="1" Background="{x:Null}" Foreground="White" IsReadOnly="True" FontSize="18" FontWeight="Bold" Grid.ColumnSpan="2" Height="36"/>
+        <TextBox HorizontalAlignment="Left" Margin="79,30,0,0" TextWrapping="Wrap" Text="Directions" VerticalAlignment="Top" BorderBrush="{x:Null}" Width="122" FontSize="18" FontWeight="Bold" IsReadOnly="True" Height="36"/>
+        <Image HorizontalAlignment="Left" Height="32" Margin="54,32,0,0" VerticalAlignment="Top" Width="22" Source="Assets/walking-man.png" Opacity="0.5"/>
         <Grid Name="GridSights" HorizontalAlignment="Left" Margin="0,174,0,0" VerticalAlignment="Top" Width="400" Height="528">
-            <ListView x:Name="lijstje" Foreground="Red">
+            <ListView x:Name="sightList" Foreground="Red" SelectionChanged="sightList_SelectionChanged" Margin="0,-60,0,0">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal">
-                            <Image Source="Assets/VVV_logo.png" Width="32" Height="32"/>
-                            <TextBlock Margin="20,0,0,0"  Text="{Binding}" Foreground="Black"/>
+                            <TextBlock Margin="20,0,0,0"  Text="{Binding}" Foreground="Black"  />
                         </StackPanel>
                     </DataTemplate>
                 </ListView.ItemTemplate>
