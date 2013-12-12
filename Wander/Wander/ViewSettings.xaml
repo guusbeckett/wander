@@ -11,9 +11,9 @@
 
     <Grid x:Name="GridSetting">
         <Rectangle Fill="#FFC31616" HorizontalAlignment="Left" Height="100" Margin="334,220,-582,-20" VerticalAlignment="Top" Width="648"/>
-        <Button x:Name="HelpButton" Content="Help" HorizontalAlignment="Left" Margin="709,264,-426,-12" VerticalAlignment="Top" Click="HelpButton_Click" Width="117" Height="48" FontSize="16.667"/>
+        <Button x:Name="HelpButton" Content="Help" HorizontalAlignment="Left" Margin="709,264,-426,-12" VerticalAlignment="Top" Click="HelpButton_Click" Width="117" Height="48" FontSize="16.667" BorderBrush="White"/>
         <Button HorizontalAlignment="Left" Margin="431,-42,-93,0" VerticalAlignment="Top" Width="62" Height="45" BorderBrush="Transparent" Foreground="Transparent"/>
-        <ComboBox x:Name="LanguageComboBox" HorizontalAlignment="Left" Margin="363,270,-115,-9" VerticalAlignment="Top" Width="152" Foreground="Transparent" Background="#FFC31616" Height="39"/>
+        <ComboBox x:Name="LanguageComboBox" HorizontalAlignment="Left" Margin="363,270,-115,-9" VerticalAlignment="Top" Width="152" Foreground="White" Background="#00C31616" Height="39" SelectionChanged="LanguageComboBox_SelectionChanged" BorderBrush="White" IsDropDownOpen="True" PlaceholderText="Language"/>
         <Button x:Name="CloseButton" Content="X" HorizontalAlignment="Left" Margin="935,220,-579,0" VerticalAlignment="Top" Click="CloseButton_Click"/>
         <TextBox HorizontalAlignment="Left" Margin="365,232,-118,0" TextWrapping="Wrap" Text="{Binding}" VerticalAlignment="Top" Foreground="White" Background="Transparent" BorderBrush="Transparent" FontSize="20.667" IsReadOnly="True"/>
 

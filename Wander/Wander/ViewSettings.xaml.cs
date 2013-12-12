@@ -21,11 +21,13 @@ namespace Wander
     {
         private string language = "Talen";
         MainPage page;
+        private DataController datacontroller;
         public ViewSettings(MainPage page)
         {
             this.InitializeComponent();
             GridSetting.DataContext = language;
-            LanguageComboBox.ItemsSource = ListLanguages;
+            datacontroller = DataController.getInstance();
+            LanguageComboBox.ItemsSource = datacontroller.giveAllLanguages();
             this.page = page;
         }
 
@@ -40,5 +42,11 @@ namespace Wander
         }
 
         public List<string> ListLanguages { get; set; }
+
+        private void LanguageComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var selectedItem = e.AddedItems[0];
+            
+        }
     }
 }

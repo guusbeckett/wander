@@ -33,6 +33,19 @@ namespace Wander
             return strings;
         }
 
+        public string giveHelpMessage()
+        {
+            return "Dit is het helpscherm, blablablablablaablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablabla, test, blablablablablablablablablablablabla,test, blablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablasblablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablabla, miauw, bla";
+        }
+
+        public List<string> giveAllLanguages()
+        {
+            List<string> languages = new List<string>();
+            languages.Add("Nederlands");
+            languages.Add("English");
+            return languages;
+        }
+
         public List<WanderLib.Sight> giveAllSightsOnRoute(string Route="")
         {
             //TODO vervang stub
