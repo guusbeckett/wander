@@ -147,41 +147,51 @@ namespace Wander
         public async void calculateRoute(Map bingMap)
         {
             Bing.Maps.Directions.WaypointCollection waypoints = new Bing.Maps.Directions.WaypointCollection();
+            Bing.Maps.Directions.DirectionsManager directionsManager = bingMap.DirectionsManager;
+
             LocationConverter converter = new LocationConverter();
             List<WanderLib.Waypoint> waypointsOnRoute = giveAllWaypointsOnRoute();
 
-            //foreach(WanderLib.Waypoint w in waypointsOnRoute)
-            //{
-                
-            //    Location location = converter.convertToBingLocation(w.location);
+            for (int i = 0; i < 25; i++ )
+            {
+                WanderLib.Waypoint w = waypointsOnRoute[i];
 
-            //    Bing.Maps.Directions.Waypoint waypoint = new Bing.Maps.Directions.Waypoint(location);
+                Location location = converter.convertToBingLocation(w.location);
 
-            //    waypoints.Add(waypoint);
-            //}
-            Location startLocation = new Location(51.59380, 4.77963);
-            Location midLocation = new Location(51.59380, 1.77963);
-            Location endLocation = new Location(52.59380, 2.77963);
+                Bing.Maps.Directions.Waypoint waypoint = new Bing.Maps.Directions.Waypoint(location);
 
 
-            Bing.Maps.Directions.Waypoint startWaypoint = new Bing.Maps.Directions.Waypoint(startLocation);
-            Bing.Maps.Directions.Waypoint midWaypoint = new Bing.Maps.Directions.Waypoint(startLocation);
-            Bing.Maps.Directions.Waypoint endWaypoint = new Bing.Maps.Directions.Waypoint(endLocation);
+                waypoints.Add(waypoint);
 
-            waypoints.Add(startWaypoint);
-            waypoints.Add(midWaypoint);
-            waypoints.Add(endWaypoint);
+                directionsManager.Waypoints = waypoints;
 
-            Bing.Maps.Directions.DirectionsManager directionsManager = bingMap.DirectionsManager;
 
+            }
+
+            directionsManager.RequestOptions.RouteMode = Bing.Maps.Directions.RouteModeOption.Walking;
+            //directionsManager.RenderOptions.WaypointPushpinOptions.
             //directionsManager.RenderOptions.WaypointPushpinOptions.Visible = false;
             directionsManager.Waypoints = waypoints;
 
             // Calculate route directions
             Bing.Maps.Directions.RouteResponse response = await directionsManager.CalculateDirectionsAsync();
 
-            directionsManager.ShowRoutePath(response.Routes[0]);
-        } 
+        }
+
+        //public List<Location> getWaypointLocations()
+        //{
+        //    List<WanderLib.Waypoint> waypointsOnRoute = giveAllWaypointsOnRoute();
+        //    List<Location> locations = new List<Location>(); ;
+
+        //    foreach (WanderLib.Waypoint w in waypointsOnRoute)
+        //    {
+        //        Location location = converter.convertToBingLocation(w.location);
+
+        //        locations.Add(location);
+        //    }
+
+        //    return locations;
+        //}
     }
 
 
