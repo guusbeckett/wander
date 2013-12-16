@@ -31,8 +31,11 @@ namespace Wander
         public App()
         {
             this.InitializeComponent();
+            Windows.Globalization.ApplicationLanguages.PrimaryLanguageOverride = "nl";
             this.Suspending += OnSuspending;
-            DataController.getInstance();
+            DataController control = DataController.getInstance();
+            control.session = new WanderLib.Session();
+            control.session.language = new WanderLib.Language("Nederlands");
         }
 
         /// <summary>

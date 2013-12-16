@@ -8,6 +8,15 @@ namespace Wander
 {
     class MediaPlayer
     {
+        public MediaPlayer()
+        {
+            getLocation();
+        }
 
+        public string getLocation()
+        {
+            string test = "lol";
+            return test;
+        }
     }
 }

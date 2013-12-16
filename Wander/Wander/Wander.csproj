@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Wander</RootNamespace>
     <AssemblyName>Wander</AssemblyName>
-    <DefaultLanguage>en-US</DefaultLanguage>
+    <DefaultLanguage>nl</DefaultLanguage>
     <TargetPlatformVersion>8.1</TargetPlatformVersion>
     <MinimumVisualStudioVersion>12</MinimumVisualStudioVersion>
     <FileAlignment>512</FileAlignment>
@@ -142,11 +142,14 @@
     <AppxManifest Include="Package.appxmanifest">
       <SubType>Designer</SubType>
     </AppxManifest>
-    <PRIResource Include="Strings\nl\Resources.resw" />
+    <PRIResource Include="Languages\nl\Resources.resw" />
+    <PRIResource Include="Languages\en\Resources.resw" />
+    <PRIResource Include="Languages\ja\Resources.resw" />
     <None Include="Wander_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\GPS2.xml" />
+    <Content Include="Assets\Farmer Dan - The Combine Harvester.mp3" />
     <Content Include="Assets\Logo.scale-100.png" />
     <Content Include="Assets\SmallLogo.scale-100.png" />
     <Content Include="Assets\SplashScreen.scale-100.png" />
@@ -158,6 +161,8 @@
     <Content Include="Assets\walking-man.png" />
     <Content Include="Common\ReadMe.txt" />
     <Content Include="Assets\information.xml" />
+    <Content Include="Languages\en\information.xml" />
+    <Content Include="Languages\nl\information.xml" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">

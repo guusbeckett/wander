@@ -15,7 +15,7 @@
         <Button HorizontalAlignment="Left" Margin="431,-42,-93,0" VerticalAlignment="Top" Width="62" Height="45" BorderBrush="Transparent" Foreground="Transparent"/>
         <ComboBox x:Name="LanguageComboBox" HorizontalAlignment="Left" Margin="363,270,-115,-9" VerticalAlignment="Top" Width="152" Foreground="White" Background="#00C31616" Height="39" SelectionChanged="LanguageComboBox_SelectionChanged" BorderBrush="White" IsDropDownOpen="True" PlaceholderText="Language"/>
         <Button x:Name="CloseButton" Content="X" HorizontalAlignment="Left" Margin="935,220,-579,0" VerticalAlignment="Top" Click="CloseButton_Click"/>
-        <TextBox HorizontalAlignment="Left" Margin="365,232,-118,0" TextWrapping="Wrap" Text="{Binding}" VerticalAlignment="Top" Foreground="White" Background="Transparent" BorderBrush="Transparent" FontSize="20.667" IsReadOnly="True"/>
+        <TextBox x:Uid="taalSetting" HorizontalAlignment="Left" Margin="365,232,-118,0" TextWrapping="Wrap" Text="{Binding}" VerticalAlignment="Top" Foreground="White" Background="Transparent" BorderBrush="Transparent" FontSize="20.667" IsReadOnly="True"/>
 
     </Grid>
 </UserControl>

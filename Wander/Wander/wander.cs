@@ -22,5 +22,10 @@ namespace Wander
             mapcontroller = new object();
             inputhandler = new object();
         }
+
+        public void createMediaplayer()
+        {
+            MediaPlayer player = new MediaPlayer();
+        }
     }
 }
