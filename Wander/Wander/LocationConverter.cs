@@ -13,8 +13,16 @@ namespace Wander
             Bing.Maps.Location bingLocation = new Bing.Maps.Location();
             string longitude = wanderLocation.longitude.Remove(wanderLocation.longitude.Length - 1);
             string latitude = wanderLocation.latitude.Remove(wanderLocation.latitude.Length - 1);
-            bingLocation.Longitude = Convert.ToDouble(longitude);
-            bingLocation.Latitude = Convert.ToDouble(latitude);
+            if (DataController.getInstance().session.language.name == "Nederlands")
+            {
+                bingLocation.Longitude = Convert.ToDouble(longitude.Replace(".", ","));
+                bingLocation.Latitude = Convert.ToDouble(latitude.Replace(".", ","));
+            }
+            else
+            {
+                bingLocation.Longitude = Convert.ToDouble(longitude);
+                bingLocation.Latitude = Convert.ToDouble(latitude);
+            }
             return bingLocation;
         }
 

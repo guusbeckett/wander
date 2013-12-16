@@ -129,5 +129,25 @@ namespace Wander
             datacontroller.calculateRoute(bingMap);
         }
 
+
+        //private void drawRoute()
+        //{
+        //    MapPolyline polyline = new MapPolyline();
+        //    polyline.Width = 3;
+        //    polyline.Locations = new LocationCollection();
+        //    List<Location> locations = datacontroller.getWaypointLocations();
+
+        //    foreach (Location location in locations)
+        //    {
+        //        polyline.Locations.Add(location);
+        //    }
+
+
+        //    polyline.Visible = true;
+
+
+        //    polygonLayer.Shapes.Add(polyline);
+        //}
+
     }
 }
