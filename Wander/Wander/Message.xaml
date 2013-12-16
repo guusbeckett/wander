@@ -62,7 +62,7 @@
                 <Button x:Name="geluid" Content="Geluids Fragment" HorizontalAlignment="Left" Margin="112,233,0,0" Grid.Row="1" VerticalAlignment="Top" Background="Red" Click="geluid_Click"/>
                 <Image x:Name="imageElement" HorizontalAlignment="Left" Height="180" Margin="48,63,0,0" VerticalAlignment="Top" Width="380"/>
             </Grid>
-            <TextBox Name="tekstboxtest" Grid.Column="1" HorizontalAlignment="Left" TextWrapping="Wrap"  VerticalAlignment="Top" Height="623" Width="896" IsReadOnly="True" TextChanged="tekstboxtest_TextChanged"/>
+            <TextBox Name="tekstboxtest" Grid.Column="1" HorizontalAlignment="Left" TextWrapping="Wrap"  VerticalAlignment="Top" Height="623" Width="896" IsReadOnly="True"/>
         </Grid>
     </Grid>
 </Page>
