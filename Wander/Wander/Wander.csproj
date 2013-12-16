@@ -140,9 +140,13 @@
     <AppxManifest Include="Package.appxmanifest">
       <SubType>Designer</SubType>
     </AppxManifest>
+    <PRIResource Include="Languages\Dutch\Resources.resw" />
+    <PRIResource Include="Languages\English\Resources.resw" />
+    <PRIResource Include="Languages\Japanese\Resources.resw" />
     <None Include="Wander_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\Farmer Dan - The Combine Harvester.mp3" />
     <Content Include="Assets\Logo.scale-100.png" />
     <Content Include="Assets\SmallLogo.scale-100.png" />
     <Content Include="Assets\SplashScreen.scale-100.png" />

@@ -57,12 +57,12 @@
                     <RowDefinition Height="44*"/>
 
                 </Grid.RowDefinitions>
-                <Image HorizontalAlignment="Left" Height="287" VerticalAlignment="Top" Width="351" Source="Assets/Logo.png" Margin="43,52,0,0" Grid.RowSpan="2"/>
-                <MediaElement x:Name="mediaElement" HorizontalAlignment="Left" Height="180" Margin="43,33,0,0" Grid.Row="1" VerticalAlignment="Top" Width="379" AreTransportControlsEnabled="true" DoubleTapped="MediaElement_DoubleTapped"/>
+                <MediaElement x:Name="mediaElement" HorizontalAlignment="Left" Height="180" Margin="43,33,0,0" Grid.Row="1" VerticalAlignment="Top" Width="380" AreTransportControlsEnabled="true" DoubleTapped="MediaElement_DoubleTapped"/>
                 <Button x:Name="video" Content="Video" HorizontalAlignment="Left" Margin="40,233,0,0" Grid.Row="1" VerticalAlignment="Top" RenderTransformOrigin="0.506,0.678" Background="Red" Click="video_Click"/>
                 <Button x:Name="geluid" Content="Geluids Fragment" HorizontalAlignment="Left" Margin="112,233,0,0" Grid.Row="1" VerticalAlignment="Top" Background="Red" Click="geluid_Click"/>
+                <Image x:Name="imageElement" HorizontalAlignment="Left" Height="180" Margin="48,63,0,0" VerticalAlignment="Top" Width="380"/>
             </Grid>
-            <TextBox Name="tekstboxtest" Grid.Column="1" HorizontalAlignment="Left" TextWrapping="Wrap"  VerticalAlignment="Top" Height="623" Width="896" IsReadOnly="True"/>
+            <TextBox Name="tekstboxtest" Grid.Column="1" HorizontalAlignment="Left" TextWrapping="Wrap"  VerticalAlignment="Top" Height="623" Width="896" IsReadOnly="True" TextChanged="tekstboxtest_TextChanged"/>
         </Grid>
     </Grid>
 </Page>
