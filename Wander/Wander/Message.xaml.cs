@@ -6,6 +6,7 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -128,5 +129,22 @@ namespace Wander
         }
 
         #endregion
+
+        private void MediaElement_DoubleTapped(object sender, DoubleTappedRoutedEventArgs e)
+        {
+            mediaElement.IsFullWindow = !mediaElement.IsFullWindow;
+        }
+
+        private async void geluid_Click(object sender, RoutedEventArgs e)
+        {
+            var dialog = new MessageDialog("Geluid tapped", "Geluid");
+            await dialog.ShowAsync();
+        }
+
+        private async void video_Click(object sender, RoutedEventArgs e)
+        {
+            var dialog = new MessageDialog("Geluid tapped", "Geluid");
+            await dialog.ShowAsync();
+        }
     }
 }

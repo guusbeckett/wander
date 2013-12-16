@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace WanderLib.Media
 {
-    class Audio
+    class Audio : Media
     {
-
+        
     }
 }

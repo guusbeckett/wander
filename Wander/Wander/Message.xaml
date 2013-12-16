@@ -53,12 +53,14 @@
             </Grid.ColumnDefinitions>
             <Grid HorizontalAlignment="Left" Height="623" VerticalAlignment="Top" Width="470">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="400*"/>
-                    <RowDefinition Height="223*"/>
+                    <RowDefinition Height="45*"/>
+                    <RowDefinition Height="44*"/>
 
                 </Grid.RowDefinitions>
-                <Image HorizontalAlignment="Left" Height="287" VerticalAlignment="Top" Width="351" Source="Assets/Logo.png" Margin="43,52,0,0"/>
-                <Image HorizontalAlignment="Left" Height="156" Grid.Row="1" VerticalAlignment="Top" Width="309" Source="Assets/VVV_logo.png" Margin="43,45,0,0"/>
+                <Image HorizontalAlignment="Left" Height="287" VerticalAlignment="Top" Width="351" Source="Assets/Logo.png" Margin="43,52,0,0" Grid.RowSpan="2"/>
+                <MediaElement x:Name="mediaElement" HorizontalAlignment="Left" Height="180" Margin="43,33,0,0" Grid.Row="1" VerticalAlignment="Top" Width="379" AreTransportControlsEnabled="true" DoubleTapped="MediaElement_DoubleTapped"/>
+                <Button x:Name="video" Content="Video" HorizontalAlignment="Left" Margin="40,233,0,0" Grid.Row="1" VerticalAlignment="Top" RenderTransformOrigin="0.506,0.678" Background="Red" Click="video_Click"/>
+                <Button x:Name="geluid" Content="Geluids Fragment" HorizontalAlignment="Left" Margin="112,233,0,0" Grid.Row="1" VerticalAlignment="Top" Background="Red" Click="geluid_Click"/>
             </Grid>
             <TextBox Name="tekstboxtest" Grid.Column="1" HorizontalAlignment="Left" TextWrapping="Wrap"  VerticalAlignment="Top" Height="623" Width="896" IsReadOnly="True"/>
         </Grid>

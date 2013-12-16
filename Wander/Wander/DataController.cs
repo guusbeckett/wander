@@ -15,6 +15,7 @@ namespace Wander
         private List<WanderLib.Waypoint> loadedSights { get; set; }
         private List<WanderLib.Sight> sights { get; set; }
         
+        
 
 
         public static DataController getInstance()

@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WanderLib.Media
+namespace Wander
 {
-    class Photo : Media
+    class MediaPlayer
     {
+
     }
 }

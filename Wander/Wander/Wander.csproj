@@ -104,7 +104,7 @@
   <ItemGroup>
     <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
     <SDKReference Include="Bing.Maps.Xaml, Version=1.313.0825.0">
-      <Name>Bing.Maps.Xaml</Name>
+      <Name>Bing Maps for C#, C++, or Visual Basic</Name>
     </SDKReference>
     <SDKReference Include="Microsoft.VCLibs, version=12.0">
       <Name>Microsoft Visual C++ 2013 Runtime Package for Windows</Name>
@@ -115,6 +115,7 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="DataController.cs" />
+    <Compile Include="GPS.cs" />
     <Compile Include="Help.xaml.cs">
       <DependentUpon>Help.xaml</DependentUpon>
     </Compile>
@@ -126,6 +127,7 @@
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="MapController.cs" />
+    <Compile Include="MediaPlayer.cs" />
     <Compile Include="Message.xaml.cs">
       <DependentUpon>Message.xaml</DependentUpon>
     </Compile>
@@ -183,7 +185,7 @@
   <ItemGroup>
     <Reference Include="WanderLibrary, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>Z:\Dropbox\23TI2.2A1\Fase 3\Library\WanderLibrary.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\New folder\Dropbox\23TI2.2A1\Fase 3\WanderLibrary.dll</HintPath>
     </Reference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '12.0' ">
