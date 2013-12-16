@@ -44,12 +44,17 @@ namespace Wander
                 languageNames.Add(l.name);
             }
 
+            if (datacontroller.selectedLanguage == null)
+                selectedIndex = 0;
+            else
+                selectedIndex = datacontroller.selectedLanguage;
             LanguageComboBox.ItemsSource = languageNames;
             LanguageComboBox.SelectedIndex = selectedIndex;
         }
 
         private void HelpButton_Click(object sender, RoutedEventArgs e)
         {
+            datacontroller.selectedLanguage = selectedIndex;
             page.setHelp();
             System.Diagnostics.Debug.WriteLine(Windows.Globalization.ApplicationLanguages.PrimaryLanguageOverride);
         }
@@ -60,6 +65,7 @@ namespace Wander
             _Frame.Navigate(_Frame.Content.GetType());
             _Frame.GoBack();
             page.removeChild(this);
+            datacontroller.selectedLanguage = selectedIndex;
         }
 
         public List<string> ListLanguages { get; set; }
