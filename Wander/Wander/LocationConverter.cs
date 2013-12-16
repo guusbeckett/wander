@@ -1,0 +1,29 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Wander
+{
+    public class LocationConverter
+    {
+        public Bing.Maps.Location convertToBingLocation(WanderLib.Location wanderLocation)
+        {
+            Bing.Maps.Location bingLocation = null;
+            string longitude = wanderLocation.longitude.Remove(wanderLocation.longitude.Length - 1);
+            string latitude = wanderLocation.latitude.Remove(wanderLocation.latitude.Length - 1);
+            bingLocation.Longitude = Convert.ToDouble(longitude);
+            bingLocation.Latitude = Convert.ToDouble(latitude);
+            return bingLocation;
+        }
+
+        public WanderLib.Location convertToWanderLocation(Bing.Maps.Location bingLocation)
+        {
+            WanderLib.Location wanderLocation = null;
+            wanderLocation.longitude = bingLocation.Longitude.ToString() + "E";
+            wanderLocation.latitude = bingLocation.Latitude.ToString() + "N";
+            return wanderLocation;
+        }
+    }
+}
