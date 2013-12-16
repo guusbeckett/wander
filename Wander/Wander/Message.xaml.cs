@@ -6,6 +6,7 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -13,6 +14,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using Windows.UI.Xaml.Media.Imaging;
 
 // The Basic Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234237
 
@@ -56,6 +58,7 @@ namespace Wander
             this.navigationHelper.SaveState += navigationHelper_SaveState;
             dataController = DataController.getInstance();
             
+            
         }
 
         /// <summary>
@@ -83,6 +86,7 @@ namespace Wander
         /// serializable state.</param>
         private void navigationHelper_SaveState(object sender, SaveStateEventArgs e)
         {
+
         }
 
         #region NavigationHelper registration
@@ -114,6 +118,24 @@ namespace Wander
                         sight = ((WanderLib.Sight)s);
                         tekstboxtest.Text = sight.information;
                         pageTitle.Text = sight.name;
+                        List<string> l = new List<string>();
+                        if (sight.media == null)
+                        {
+                            System.Diagnostics.Debug.WriteLine("NULL");
+                        }
+                        else
+                        {
+
+                            for (int i = 0; i < sight.media.Values.Count; i++)
+                            {
+                                l.Add(sight.media.Values.ToArray()[i].fileLocation); //jim oplossing, GENIUS!
+                                System.Diagnostics.Debug.WriteLine(i);
+                            }
+                            mediaElement.Source = new Uri(l[1]);
+                        }
+                        imageElement.Source = new BitmapImage(new Uri("ms-appx:///Assets/Logo.scale-100.png"));
+                        mediaElement.Source = new Uri("ms-appx:///Assets/Farmer Dan - The Combine Harvester.mp3");
+                        mediaElement.AutoPlay = false;
                         break;
                     }
                 }
@@ -128,5 +150,25 @@ namespace Wander
         }
 
         #endregion
+
+        private void MediaElement_DoubleTapped(object sender, DoubleTappedRoutedEventArgs e)
+        {
+            mediaElement.IsFullWindow = !mediaElement.IsFullWindow;
+        }
+
+        private async void geluid_Click(object sender, RoutedEventArgs e)
+        {
+            var dialog = new MessageDialog("Geluid tapped", "Geluid");
+            await dialog.ShowAsync();
+            mediaElement.Source = new Uri("ms-appx:///Assets/Farmer Dan - The Combine Harvester.mp3");
+        }
+
+        private async void video_Click(object sender, RoutedEventArgs e)
+        {
+            var dialog = new MessageDialog("Video tapped", "Video");
+            await dialog.ShowAsync();
+        }
+
+   
     }
 }

@@ -10,6 +10,7 @@ namespace Wander
     {
         private static DataController instance;
         private List<WanderLib.Waypoint> loadedSights { get; set; }
+        public WanderLib.Session session { get; set; }
         
 
 
@@ -34,16 +35,12 @@ namespace Wander
             return strings;
         }
 
-        public string giveHelpMessage()
+        public List<WanderLib.Language> giveAllLanguages()
         {
-            return "Dit is het helpscherm, blablablablablaablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablabla, test, blablablablablablablablablablablabla,test, blablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablasblablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablabla, miauw, bla";
-        }
-
-        public List<string> giveAllLanguages()
-        {
-            List<string> languages = new List<string>();
-            languages.Add("Nederlands");
-            languages.Add("English");
+            List<WanderLib.Language> languages = new List<WanderLib.Language>();
+            languages.Add(new WanderLib.Language("Nederlands"));
+            languages.Add(new WanderLib.Language("English"));
+            languages.Add(new WanderLib.Language("日本人"));
             return languages;
         }
 
@@ -58,16 +55,16 @@ namespace Wander
                            name = item.Element("Site").Value
                        };
             string informationfile = "";
-            switch("")
+            switch(session.language.name)
             {
                 case "English":
-                    informationfile = "";
+                    informationfile = "Languages/en/information.xml";
                     break;
                 case "Nederlands":
-                    informationfile = "Assets/information.xml";
+                    informationfile = "Languages/nl/information.xml";
                     break;
                 default:
-                    informationfile = "Assets/information.xml";
+                    informationfile = "Languages/nl/information.xml";
                     break;
 
             }
