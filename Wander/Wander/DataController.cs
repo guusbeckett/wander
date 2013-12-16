@@ -33,16 +33,12 @@ namespace Wander
             return strings;
         }
 
-        public string giveHelpMessage()
-        {
-            return "Dit is het helpscherm, blablablablablaablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablabla, test, blablablablablablablablablablablabla,test, blablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablasblablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablabla, miauw, bla";
-        }
-
         public List<WanderLib.Language> giveAllLanguages()
         {
             List<WanderLib.Language> languages = new List<WanderLib.Language>();
             languages.Add(new WanderLib.Language("Nederlands"));
             languages.Add(new WanderLib.Language("English"));
+            languages.Add(new WanderLib.Language("日本人"));
             return languages;
         }
 

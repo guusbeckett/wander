@@ -12,6 +12,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using Windows.ApplicationModel.Resources.Core;
 
 // The User Control item template is documented at http://go.microsoft.com/fwlink/?LinkId=234236
 
@@ -50,10 +51,14 @@ namespace Wander
         private void HelpButton_Click(object sender, RoutedEventArgs e)
         {
             page.setHelp();
+            System.Diagnostics.Debug.WriteLine(Windows.Globalization.ApplicationLanguages.PrimaryLanguageOverride);
         }
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
+            var _Frame = Window.Current.Content as Frame;
+            _Frame.Navigate(_Frame.Content.GetType());
+            _Frame.GoBack();
             page.removeChild(this);
         }
 
@@ -63,6 +68,18 @@ namespace Wander
         {
             selectedIndex = LanguageComboBox.SelectedIndex;
             WanderLib.Language chosenLanguage = languages[selectedIndex];
+            if (chosenLanguage.name == "English")
+            {
+                Windows.Globalization.ApplicationLanguages.PrimaryLanguageOverride = "en";
+            }
+            else if(chosenLanguage.name == "Nederlands")
+            {
+                Windows.Globalization.ApplicationLanguages.PrimaryLanguageOverride = "nl";
+            }
+            else if (chosenLanguage.name == "日本人")
+            {
+                Windows.Globalization.ApplicationLanguages.PrimaryLanguageOverride = "ja";
+            }
             
         }
     }

@@ -26,11 +26,13 @@ namespace Wander
             this.InitializeComponent();
             this.page = page;
             datacontroller = DataController.getInstance();
-            HelpGrid.DataContext = datacontroller.giveHelpMessage();
         }
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
+            var _Frame = Window.Current.Content as Frame;
+            _Frame.Navigate(_Frame.Content.GetType());
+            _Frame.GoBack();
             page.removeChild(this);
         }
 

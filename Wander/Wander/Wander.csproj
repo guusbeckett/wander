@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Wander</RootNamespace>
     <AssemblyName>Wander</AssemblyName>
-    <DefaultLanguage>en-US</DefaultLanguage>
+    <DefaultLanguage>nl</DefaultLanguage>
     <TargetPlatformVersion>8.1</TargetPlatformVersion>
     <MinimumVisualStudioVersion>12</MinimumVisualStudioVersion>
     <FileAlignment>512</FileAlignment>
@@ -140,9 +140,9 @@
     <AppxManifest Include="Package.appxmanifest">
       <SubType>Designer</SubType>
     </AppxManifest>
-    <PRIResource Include="Languages\Dutch\Resources.resw" />
-    <PRIResource Include="Languages\English\Resources.resw" />
-    <PRIResource Include="Languages\Japanese\Resources.resw" />
+    <PRIResource Include="Languages\nl\Resources.resw" />
+    <PRIResource Include="Languages\en\Resources.resw" />
+    <PRIResource Include="Languages\ja\Resources.resw" />
     <None Include="Wander_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
@@ -157,7 +157,6 @@
     <Content Include="Assets\VVV_logo.png" />
     <Content Include="Assets\walking-man.png" />
     <Content Include="Common\ReadMe.txt" />
-    <Content Include="WanderLibrary.dll" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -186,7 +185,7 @@
   <ItemGroup>
     <Reference Include="WanderLibrary, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\..\..\..\Dropbox\23TI2.2A1\Fase 3\Library\WanderLibrary.dll</HintPath>
+      <HintPath>..\..\..\Dropbox\23TI2.2A1\Fase 3\Library\WanderLibrary.dll</HintPath>
     </Reference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '12.0' ">
