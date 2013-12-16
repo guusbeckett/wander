@@ -57,7 +57,21 @@ namespace Wander
                            Long = item.Element("Longitude").Value,
                            name = item.Element("Site").Value
                        };
-            System.Xml.Linq.XDocument informations = System.Xml.Linq.XDocument.Load("Assets/information.xml");
+            string informationfile = "";
+            switch("")
+            {
+                case "English":
+                    informationfile = "";
+                    break;
+                case "Nederlands":
+                    informationfile = "Assets/information.xml";
+                    break;
+                default:
+                    informationfile = "Assets/information.xml";
+                    break;
+
+            }
+            System.Xml.Linq.XDocument informations = System.Xml.Linq.XDocument.Load(informationfile);
             var data2 = from item in informations.Descendants("item")
                        select new
                        {
