@@ -76,7 +76,7 @@ namespace Wander
             {
                 Windows.Globalization.ApplicationLanguages.PrimaryLanguageOverride = "nl";
             }
-            else if (chosenLanguage.name == "日本人")
+            else if (chosenLanguage.name == "日本語")
             {
                 Windows.Globalization.ApplicationLanguages.PrimaryLanguageOverride = "ja";
             }

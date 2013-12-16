@@ -40,7 +40,7 @@ namespace Wander
             List<WanderLib.Language> languages = new List<WanderLib.Language>();
             languages.Add(new WanderLib.Language("Nederlands"));
             languages.Add(new WanderLib.Language("English"));
-            languages.Add(new WanderLib.Language("日本人"));
+            languages.Add(new WanderLib.Language("日本語"));
             return languages;
         }
 
