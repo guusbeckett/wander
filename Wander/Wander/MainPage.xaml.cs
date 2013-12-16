@@ -26,6 +26,8 @@ namespace Wander
     {
         string number;
         DataController datacontroller;
+        ViewSettings settings;
+        Help help;
 
         public MainPage()
         {
@@ -35,9 +37,32 @@ namespace Wander
         }
 
 
-        private async void Settings_Tapped(object sender, TappedRoutedEventArgs e)
+        private void Settings_Tapped(object sender, TappedRoutedEventArgs e)
         {
-            var dialog = new MessageDialog("Settings has been tapped", "Settings");
+            if (settings == null)
+                settings = new ViewSettings(this);
+            if(!GridRoot.Children.Contains(settings))
+            {
+                GridRoot.Children.Add(settings);
+            }
+            
+        }
+
+        public void setHelp()
+        {
+            help = new Help(this);
+            GridRoot.Children.Add(help);
+            removeChild(settings);
+        }
+
+        public void removeChild(UIElement e)
+        {
+            GridRoot.Children.Remove(e);
+        }
+
+        public async void showErrorMessage(string title, string content)
+        {
+            var dialog = new MessageDialog(content, title);
             await dialog.ShowAsync();
         }
 
