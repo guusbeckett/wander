@@ -1,7 +1,10 @@
-﻿using System;
+﻿using Bing.Maps;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Windows.Devices.Geolocation;
+using Windows.Devices.Geolocation.Geofencing;
 using Windows.Storage;
 
 namespace Wander
@@ -10,12 +13,14 @@ namespace Wander
     {
         private static DataController instance;
         private List<WanderLib.Waypoint> loadedSights { get; set; }
+        private List<WanderLib.Sight> sights { get; set; }
         
 
 
         public static DataController getInstance()
         {
-           
+            GeofenceMonitor.Current.Geofences.Clear();
+
             if (instance == null)
                 instance = new DataController();
             return instance;
@@ -81,6 +86,38 @@ namespace Wander
             }
             //TODO vervang stub
             return list;
+        }
+
+        private void setSightsWithGeofences()
+        {
+            foreach(WanderLib.Sight s in sights)
+            {
+                Location location = new Location(150, 150);
+
+                Pushpin pin = new Pushpin();
+                MapLayer.SetPosition(pin, location);
+
+                Geofence geofence = new Geofence(s.name+"_20m", new Geocircle(
+                new BasicGeoposition
+                {
+                    Altitude = 0.0,
+                    Latitude = location.Latitude,
+                    Longitude = location.Longitude
+                },
+                20), MonitoredGeofenceStates.Entered, true, new TimeSpan(5));
+
+                GeofenceMonitor.Current.Geofences.Add(geofence);
+
+                geofence = new Geofence(s.name + "_5m", new Geocircle(
+                new BasicGeoposition
+                {
+                    Altitude = 0.0,
+                    Latitude = location.Latitude,
+                    Longitude = location.Longitude
+                },
+                20), MonitoredGeofenceStates.Entered, true, new TimeSpan(5));
+                GeofenceMonitor.Current.Geofences.Add(geofence);
+            }
         }
     }
 }
