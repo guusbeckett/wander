@@ -9,6 +9,7 @@ namespace Wander
     class MapController
     {
         private MapController instance;
+        private List<Bing.Maps.Location> previouspoints;
 
         public MapController getInstance()
         {
