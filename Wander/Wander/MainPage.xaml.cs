@@ -1,8 +1,10 @@
-﻿using System;
+﻿using Bing.Maps;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using Windows.Devices.Geolocation.Geofencing;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI;
@@ -24,6 +26,7 @@ namespace Wander
     /// </summary>
     public sealed partial class MainPage : Page
     {
+
         string number;
         DataController datacontroller;
         ViewSettings settings;
@@ -32,8 +35,13 @@ namespace Wander
         public MainPage()
         {
             this.InitializeComponent();
+
+            GeofenceMonitor.Current.GeofenceStateChanged += Current_GeofenceStateChanged;
             datacontroller = DataController.getInstance();
             sightList.ItemsSource = datacontroller.giveStringsOfLoadedSights();
+            datacontroller.setSightsWithGeofences(bingMap);
+            calculateRoute();
+            setPinListeners();
         }
 
 
@@ -71,6 +79,25 @@ namespace Wander
             await dialog.ShowAsync();
         }
 
+        private void setPinListeners()
+        {
+            foreach(Pushpin pin in bingMap.Children)
+            {
+
+                pin.Tapped += Current_location_pushpin_tapped;
+
+            }
+        }
+
+        void Current_location_pushpin_tapped(object sender, TappedRoutedEventArgs e)
+        {
+            var selectedItem = ((Pushpin)sender).Text;
+            if (this.Frame != null)
+            {
+                this.Frame.Navigate(typeof(Message), selectedItem);
+            }
+        }
+
         private async void sightList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var selectedItem = e.AddedItems[0];
@@ -78,6 +105,33 @@ namespace Wander
             {
                 this.Frame.Navigate(typeof(Message), selectedItem);
             }
+        }
+
+        async void Current_GeofenceStateChanged(GeofenceMonitor sender, object args)
+        {
+            var reports = sender.ReadReports();
+
+            await Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, async () =>
+            {
+
+                foreach (GeofenceStateChangeReport report in reports)
+                {
+                    GeofenceState state = report.NewState;
+
+                    Geofence geofence = report.Geofence;
+
+                    if (state == GeofenceState.Entered)
+                    {
+                        var message = new MessageDialog(geofence.Id, "Het werkt!");
+                        await message.ShowAsync();
+                    }
+                }
+            });
+        }
+
+        private async void calculateRoute()
+        {
+            datacontroller.calculateRoute(bingMap);
         }
 
     }
