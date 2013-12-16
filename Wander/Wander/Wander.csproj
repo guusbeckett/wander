@@ -160,7 +160,6 @@
     <Content Include="Assets\VVV_logo.png" />
     <Content Include="Assets\walking-man.png" />
     <Content Include="Common\ReadMe.txt" />
-    <Content Include="Assets\information.xml" />
     <Content Include="Languages\en\information.xml" />
     <Content Include="Languages\nl\information.xml" />
   </ItemGroup>

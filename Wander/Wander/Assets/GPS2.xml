@@ -1,49 +1,49 @@
-<xml>
+﻿<xml>
   <waypoint>
-    <Latitude>51,59380N</Latitude>
-    <Longitude>4,77963E</Longitude>
+    <Latitude>51.59380N</Latitude>
+    <Longitude>4.77963E</Longitude>
     <Site>VVV Breda</Site>
     <Opmerking>Beginpunt</Opmerking>
     <Fotos>2</Fotos>
   </waypoint>
   <waypoint>
-    <Latitude>51,59307N</Latitude>
-    <Longitude>4,77969E</Longitude>
+    <Latitude>51.59307N</Latitude>
+    <Longitude>4.77969E</Longitude>
     <Site>Liefdeszuster</Site>
     <Opmerking />
     <Fotos>3</Fotos>
   </waypoint>
   <waypoint>
-    <Latitude>51,59250N</Latitude>
-    <Longitude>4,77969E</Longitude>
+    <Latitude>51.59250N</Latitude>
+    <Longitude>4.77969E</Longitude>
     <Site>Valkenberg</Site>
     <Opmerking />
     <Fotos />
   </waypoint>
   <waypoint>
-    <Latitude>51,59250N</Latitude>
-    <Longitude>4,77969E</Longitude>
+    <Latitude>51.59250N</Latitude>
+    <Longitude>4.77969E</Longitude>
     <Site>Nassau Baronie Monument</Site>
     <Opmerking />
     <Fotos>4</Fotos>
   </waypoint>
   <waypoint>
-    <Latitude>51,59256N</Latitude>
-    <Longitude>4,77889E</Longitude>
+    <Latitude>51.59256N</Latitude>
+    <Longitude>4.77889E</Longitude>
     <Site>The Light House</Site>
     <Opmerking />
     <Fotos>5</Fotos>
   </waypoint>
   <waypoint>
-    <Latitude>51,59265N</Latitude>
-    <Longitude>4,77844E</Longitude>
+    <Latitude>51.59265N</Latitude>
+    <Longitude>4.77844E</Longitude>
     <Site />
     <Opmerking>1e bocht Valkenberg</Opmerking>
     <Fotos />
   </waypoint>
   <waypoint>
-    <Latitude>51,59258N</Latitude>
-    <Longitude>4,77806E</Longitude>
+    <Latitude>51.59258N</Latitude>
+    <Longitude>4.77806E</Longitude>
     <Site />
     <Opmerking>2e bocht Valkenberg</Opmerking>
     <Fotos />
@@ -56,295 +56,295 @@
     <Fotos />
   </waypoint>
   <waypoint>
-    <Latitude>51,59061N</Latitude>
-    <Longitude>4,77624E</Longitude>
+    <Latitude>51.59061N</Latitude>
+    <Longitude>4.77624E</Longitude>
     <Site>Kasteel van Breda</Site>
     <Opmerking />
     <Fotos>9</Fotos>
   </waypoint>
   <waypoint>
-    <Latitude>51,58992N</Latitude>
-    <Longitude>4,77634E</Longitude>
+    <Latitude>51.58992N</Latitude>
+    <Longitude>4.77634E</Longitude>
     <Site>Stadhouderspoort</Site>
     <Opmerking />
     <Fotos>11</Fotos>
   </waypoint>
   <waypoint>
-    <Latitude>51,59033N</Latitude>
-    <Longitude>4,77623E</Longitude>
+    <Latitude>51.59033N</Latitude>
+    <Longitude>4.77623E</Longitude>
     <Site />
     <Opmerking>Kruising Kasteelplein/Cingelstraat</Opmerking>
     <Fotos />
   </waypoint>
   <waypoint>
-    <Latitude>51,59043N</Latitude>
-    <Longitude>4,77518E</Longitude>
+    <Latitude>51.59043N</Latitude>
+    <Longitude>4.77518E</Longitude>
     <Site>Huis van Brecht (rechter zijde)</Site>
     <Opmerking>1e bocht Cingelstraat</Opmerking>
     <Fotos>7</Fotos>
   </waypoint>
   <waypoint>
-    <Latitude>51,59000N</Latitude>
-    <Longitude>4,77429E</Longitude>
+    <Latitude>51.59000N</Latitude>
+    <Longitude>4.77429E</Longitude>
     <Site />
     <Opmerking>2e bocht Cingelstraat</Opmerking>
     <Fotos />
   </waypoint>
   <waypoint>
-    <Latitude>51,59010N</Latitude>
-    <Longitude>4,77336E</Longitude>
+    <Latitude>51.59010N</Latitude>
+    <Longitude>4.77336E</Longitude>
     <Site>Spanjaardsgat (rechter zijde)</Site>
     <Opmerking />
     <Fotos>6:14:22:21</Fotos>
   </waypoint>
   <waypoint>
-    <Latitude>51,58982N</Latitude>
-    <Longitude>4,77321E</Longitude>
+    <Latitude>51.58982N</Latitude>
+    <Longitude>4.77321E</Longitude>
     <Site>Begin Vismarkt</Site>
     <Opmerking />
     <Fotos>20</Fotos>
   </waypoint>
   <waypoint>
-    <Latitude>51,58932N</Latitude>
-    <Longitude>4,77444E</Longitude>
+    <Latitude>51.58932N</Latitude>
+    <Longitude>4.77444E</Longitude>
     <Site>Begin Havermarkt</Site>
     <Opmerking />
     <Fotos>19</Fotos>
   </waypoint>
   <waypoint>
-    <Latitude>51,58872N</Latitude>
-    <Longitude>4,77501E</Longitude>
+    <Latitude>51.58872N</Latitude>
+    <Longitude>4.77501E</Longitude>
     <Site />
     <Opmerking>Driehoek Kerkplein 1</Opmerking>
     <Fotos />
   </waypoint>
   <waypoint>
-    <Latitude>51,58878N</Latitude>
-    <Longitude>4,77549E</Longitude>
+    <Latitude>51.58878N</Latitude>
+    <Longitude>4.77549E</Longitude>
     <Site>Grote Kerk</Site>
     <Opmerking>Driehoek Kerkplein 2</Opmerking>
     <Fotos>10</Fotos>
   </waypoint>
   <waypoint>
-    <Latitude>51,58864N</Latitude>
-    <Longitude>4,77501E</Longitude>
+    <Latitude>51.58864N</Latitude>
+    <Longitude>4.77501E</Longitude>
     <Site />
     <Opmerking>Driehoek Kerkplein 3</Opmerking>
     <Fotos />
   </waypoint>
   <waypoint>
-    <Latitude>51,58822N</Latitude>
-    <Longitude>4,77525E</Longitude>
+    <Latitude>51.58822N</Latitude>
+    <Longitude>4.77525E</Longitude>
     <Site>Het poortje</Site>
     <Opmerking />
     <Fotos />
   </waypoint>
   <waypoint>
-    <Latitude>51,58716N</Latitude>
-    <Longitude>4,77582E</Longitude>
+    <Latitude>51.58716N</Latitude>
+    <Longitude>4.77582E</Longitude>
     <Site>Ridderstraat</Site>
     <Opmerking />
     <Fotos />
   </waypoint>
   <waypoint>
-    <Latitude>51,58747N</Latitude>
-    <Longitude>4,77662E</Longitude>
+    <Latitude>51.58747N</Latitude>
+    <Longitude>4.77662E</Longitude>
     <Site>Grote Markt</Site>
     <Opmerking />
     <Fotos>17</Fotos>
   </waypoint>
   <waypoint>
-    <Latitude>51,58771N</Latitude>
-    <Longitude>4,77652E</Longitude>
+    <Latitude>51.58771N</Latitude>
+    <Longitude>4.77652E</Longitude>
     <Site>Het Wit Lam</Site>
     <Opmerking />
     <Fotos />
   </waypoint>
   <waypoint>
-    <Latitude>51,58797N</Latitude>
-    <Longitude>4,77638E</Longitude>
+    <Latitude>51.58797N</Latitude>
+    <Longitude>4.77638E</Longitude>
     <Site>Bevrijdingsmonument</Site>
     <Opmerking />
     <Fotos>24:25</Fotos>
   </waypoint>
   <waypoint>
-    <Latitude>51,58885N</Latitude>
-    <Longitude>4,77616E</Longitude>
+    <Latitude>51.58885N</Latitude>
+    <Longitude>4.77616E</Longitude>
     <Site>Stadshuis</Site>
     <Opmerking />
     <Fotos />
   </waypoint>
   <waypoint>
-    <Latitude>51,58883N</Latitude>
-    <Longitude>4,77617E</Longitude>
+    <Latitude>51.58883N</Latitude>
+    <Longitude>4.77617E</Longitude>
     <Site />
     <Opmerking>Kruising Grote Markt / Stadserf</Opmerking>
     <Fotos />
   </waypoint>
   <waypoint>
-    <Latitude>51,58889N</Latitude>
-    <Longitude>4,77659E</Longitude>
+    <Latitude>51.58889N</Latitude>
+    <Longitude>4.77659E</Longitude>
     <Site />
     <Opmerking>Achterkant stadshuis</Opmerking>
     <Fotos />
   </waypoint>
   <waypoint>
-    <Latitude>51,58883N</Latitude>
-    <Longitude>4,77617E</Longitude>
+    <Latitude>51.58883N</Latitude>
+    <Longitude>4.77617E</Longitude>
     <Site />
     <Opmerking>Kruising Grote Markt / Stadserf (je gaat weer terug)</Opmerking>
     <Fotos />
   </waypoint>
   <waypoint>
-    <Latitude>51,58747N</Latitude>
-    <Longitude>4,77662E</Longitude>
+    <Latitude>51.58747N</Latitude>
+    <Longitude>4.77662E</Longitude>
     <Site />
     <Opmerking>Terug naar begin Grote Markt</Opmerking>
     <Fotos />
   </waypoint>
   <waypoint>
-    <Latitude>51,58761N</Latitude>
-    <Longitude>4,77712E</Longitude>
+    <Latitude>51.58761N</Latitude>
+    <Longitude>4.77712E</Longitude>
     <Site>Antonius van Paduakerk</Site>
     <Opmerking />
     <Fotos />
   </waypoint>
   <waypoint>
-    <Latitude>51,58828N</Latitude>
-    <Longitude>4,77858E</Longitude>
+    <Latitude>51.58828N</Latitude>
+    <Longitude>4.77858E</Longitude>
     <Site />
-    <Opmerking>Kruising St, Jansstraat / Molenstraat</Opmerking>
+    <Opmerking>Kruising St. Jansstraat / Molenstraat</Opmerking>
     <Fotos />
   </waypoint>
   <waypoint>
-    <Latitude>51,58773N</Latitude>
-    <Longitude>4,77948E</Longitude>
+    <Latitude>51.58773N</Latitude>
+    <Longitude>4.77948E</Longitude>
     <Site>Bibliotheek</Site>
     <Opmerking />
     <Fotos />
   </waypoint>
   <waypoint>
-    <Latitude>51,58752N</Latitude>
-    <Longitude>4,77994E</Longitude>
+    <Latitude>51.58752N</Latitude>
+    <Longitude>4.77994E</Longitude>
     <Site />
     <Opmerking>Kruising Molenstraat / Kloosterplein</Opmerking>
     <Fotos />
   </waypoint>
   <waypoint>
-    <Latitude>51,58794N</Latitude>
-    <Longitude>4,78105E</Longitude>
+    <Latitude>51.58794N</Latitude>
+    <Longitude>4.78105E</Longitude>
     <Site>Kloosterkazerne</Site>
     <Opmerking>1e bocht Kloosterplein</Opmerking>
     <Fotos />
   </waypoint>
   <waypoint>
-    <Latitude>51,58794N</Latitude>
-    <Longitude>4,78218E</Longitude>
+    <Latitude>51.58794N</Latitude>
+    <Longitude>4.78218E</Longitude>
     <Site>Chasse theater</Site>
     <Opmerking>2e bocht Kloosterplein</Opmerking>
     <Fotos />
   </waypoint>
   <waypoint>
-    <Latitude>51,58794N</Latitude>
-    <Longitude>4,78105E</Longitude>
+    <Latitude>51.58794N</Latitude>
+    <Longitude>4.78105E</Longitude>
     <Site />
     <Opmerking>1e bocht Kloosterplein / Begin Vlaszak</Opmerking>
     <Fotos />
   </waypoint>
   <waypoint>
-    <Latitude>51,58862N</Latitude>
-    <Longitude>4,78079E</Longitude>
+    <Latitude>51.58862N</Latitude>
+    <Longitude>4.78079E</Longitude>
     <Site>Binding van Isaäc</Site>
     <Opmerking />
     <Fotos />
   </waypoint>
   <waypoint>
-    <Latitude>51,58955N</Latitude>
-    <Longitude>4,78038E</Longitude>
+    <Latitude>51.58955N</Latitude>
+    <Longitude>4.78038E</Longitude>
     <Site />
     <Opmerking>Einde Vlaszak / Begin Boschstraat</Opmerking>
     <Fotos />
   </waypoint>
   <waypoint>
-    <Latitude>51,58966N</Latitude>
-    <Longitude>4,78076E</Longitude>
+    <Latitude>51.58966N</Latitude>
+    <Longitude>4.78076E</Longitude>
     <Site>Beyerd</Site>
     <Opmerking />
     <Fotos />
   </waypoint>
   <waypoint>
-    <Latitude>51,58939N</Latitude>
-    <Longitude>4,77982E</Longitude>
+    <Latitude>51.58939N</Latitude>
+    <Longitude>4.77982E</Longitude>
     <Site>Gasthuispoort</Site>
     <Opmerking>1e bocht Catharinastraat / Veemarktstraat</Opmerking>
     <Fotos />
   </waypoint>
   <waypoint>
-    <Latitude>51,58905N</Latitude>
-    <Longitude>4,77981E</Longitude>
+    <Latitude>51.58905N</Latitude>
+    <Longitude>4.77981E</Longitude>
     <Site />
     <Opmerking>2e bocht Veemarktstraat</Opmerking>
     <Fotos />
   </waypoint>
   <waypoint>
-    <Latitude>51,58846N</Latitude>
-    <Longitude>4,77830E</Longitude>
+    <Latitude>51.58846N</Latitude>
+    <Longitude>4.77830E</Longitude>
     <Site />
-    <Opmerking>Kruising St, Annastraat / Veemarktstraat</Opmerking>
+    <Opmerking>Kruising St. Annastraat / Veemarktstraat</Opmerking>
     <Fotos />
   </waypoint>
   <waypoint>
-    <Latitude>51,58905N</Latitude>
-    <Longitude>4,77801E</Longitude>
+    <Latitude>51.58905N</Latitude>
+    <Longitude>4.77801E</Longitude>
     <Site>Willem Merkxtuin</Site>
     <Opmerking>De ingang</Opmerking>
     <Fotos />
   </waypoint>
   <waypoint>
-    <Latitude>51,58918N</Latitude>
-    <Longitude>4,77841E</Longitude>
+    <Latitude>51.58918N</Latitude>
+    <Longitude>4.77841E</Longitude>
     <Site />
     <Opmerking>Binnen Willem Merkxtuin</Opmerking>
     <Fotos />
   </waypoint>
   <waypoint>
-    <Latitude>51,58905N</Latitude>
-    <Longitude>4,77801E</Longitude>
+    <Latitude>51.58905N</Latitude>
+    <Longitude>4.77801E</Longitude>
     <Site />
     <Opmerking>Uitgang Willem Merkxtuin</Opmerking>
     <Fotos />
   </waypoint>
   <waypoint>
-    <Latitude>51,58960N</Latitude>
-    <Longitude>4,77770E</Longitude>
+    <Latitude>51.58960N</Latitude>
+    <Longitude>4.77770E</Longitude>
     <Site />
-    <Opmerking>Kruising Catharinastraat / St, Annastraat</Opmerking>
+    <Opmerking>Kruising Catharinastraat / St. Annastraat</Opmerking>
     <Fotos />
   </waypoint>
   <waypoint>
-    <Latitude>51,58965N</Latitude>
-    <Longitude>4,77830E</Longitude>
+    <Latitude>51.58965N</Latitude>
+    <Longitude>4.77830E</Longitude>
     <Site>Begijnenhof</Site>
     <Opmerking>De ingang</Opmerking>
     <Fotos />
   </waypoint>
   <waypoint>
-    <Latitude>51,58997N</Latitude>
-    <Longitude>4,77810E</Longitude>
+    <Latitude>51.58997N</Latitude>
+    <Longitude>4.77810E</Longitude>
     <Site />
     <Opmerking>Binnen Begijnenhof</Opmerking>
     <Fotos />
   </waypoint>
   <waypoint>
-    <Latitude>51,58965N</Latitude>
-    <Longitude>4,77830E</Longitude>
+    <Latitude>51.58965N</Latitude>
+    <Longitude>4.77830E</Longitude>
     <Site />
     <Opmerking>Uitgang Begijnenhof</Opmerking>
     <Fotos />
   </waypoint>
   <waypoint>
-    <Latitude>51,58950N</Latitude>
-    <Longitude>4,77649E</Longitude>
+    <Latitude>51.58950N</Latitude>
+    <Longitude>4.77649E</Longitude>
     <Site>Eindpunt stadswandeling</Site>
     <Opmerking>Eindpunt</Opmerking>
     <Fotos />
