@@ -118,8 +118,22 @@ namespace Wander
 
                     if (state == GeofenceState.Entered)
                     {
-                        var message = new MessageDialog(geofence.Id, "Het werkt!");
-                        await message.ShowAsync();
+                        if (geofence.Id.EndsWith("_20m"))
+                        {
+                            var message = new MessageDialog(((String)geofence.Id).Split('_').First(), "U bent in de buurt van de volgende locatie;");
+                            await message.ShowAsync();
+                        }
+                        else if (geofence.Id.EndsWith("_5m"))
+                        {
+                            foreach(Pushpin pin in bingMap.Children)
+                            {
+                                if(pin.Text == ((String)geofence.Id).Split('_').First())
+                                {
+                                    pin.Background = new SolidColorBrush(Colors.Black);
+                                }
+                            }
+                        }
+                        
                     }
                 }
             });
