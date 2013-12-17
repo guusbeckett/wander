@@ -140,4 +140,13 @@
   <data name="taalSetting.Text" xml:space="preserve">
     <value>Language</value>
   </data>
+  <data name="noButton.Content" xml:space="preserve">
+    <value>No</value>
+  </data>
+  <data name="resumeSession.Text" xml:space="preserve">
+    <value>Resume last session?</value>
+  </data>
+  <data name="yesButton.Content" xml:space="preserve">
+    <value>Yes</value>
+  </data>
 </root>

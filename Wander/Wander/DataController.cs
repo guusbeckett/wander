@@ -16,8 +16,8 @@ namespace Wander
         private static DataController instance;
         private List<WanderLib.Waypoint> loadedSights { get; set; }
         public WanderLib.Session session { get; set; }
-        
-        
+        public int selectedLanguage { get; set; }
+
 
 
         public static DataController getInstance()

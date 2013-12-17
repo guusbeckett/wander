@@ -133,6 +133,9 @@
       <DependentUpon>Message.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ResumeSession.xaml.cs">
+      <DependentUpon>ResumeSession.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ViewSettings.xaml.cs">
       <DependentUpon>ViewSettings.xaml</DependentUpon>
     </Compile>
@@ -178,6 +181,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="ResumeSession.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="ViewSettings.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -190,7 +197,7 @@
   <ItemGroup>
     <Reference Include="WanderLibrary, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\New folder\Dropbox\23TI2.2A1\Fase 3\WanderLibrary.dll</HintPath>
+      <HintPath>..\..\..\Dropbox\23TI2.2A1\Fase 3\Library\WanderLibrary.dll</HintPath>
     </Reference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '12.0' ">
