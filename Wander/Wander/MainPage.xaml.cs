@@ -32,7 +32,7 @@ namespace Wander
         ViewSettings settings;
         Help help;
         Geolocator geo = null;
-        Location currentLocation = new Location();
+        Location currentLocation;
         Pushpin location = new Pushpin();
 
         public MainPage()
@@ -90,7 +90,11 @@ namespace Wander
             await this.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, new DispatchedHandler(
             () =>
             {
-                currentLocation = new Location(args.Position.Coordinate.Latitude, args.Position.Coordinate.Longitude);
+                if(currentLocation == null)
+                {
+                    currentLocation = new Location(args.Position.Coordinate.Latitude, args.Position.Coordinate.Longitude);
+                    Map.SetView(currentLocation, 16);
+                }
                 MapLayer.SetPosition(location, currentLocation);
             }));
         }
