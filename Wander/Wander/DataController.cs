@@ -1,8 +1,13 @@
-﻿using System;
+﻿using Bing.Maps;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
+using Windows.Devices.Geolocation;
+using Windows.Devices.Geolocation.Geofencing;
 using Windows.Storage;
+using Windows.UI.Xaml.Input;
 
 namespace Wander
 {
@@ -14,9 +19,10 @@ namespace Wander
         public int selectedLanguage { get; set; }
 
 
+
         public static DataController getInstance()
         {
-           
+            
             if (instance == null)
                 instance = new DataController();
             return instance;
@@ -94,5 +100,99 @@ namespace Wander
             //TODO vervang stub
             return list;
         }
+
+        public void setSightsWithGeofences(Map bingMap)
+        {
+
+            foreach(WanderLib.Waypoint s in loadedSights)
+            {
+                    if (s.GetType() == (typeof(WanderLib.Sight)))
+                    {
+                        WanderLib.Sight sight = (WanderLib.Sight)s;
+
+                        LocationConverter converter = new LocationConverter();
+                        Location location = converter.convertToBingLocation(s.location);
+
+                        Pushpin pin = new Pushpin();
+
+                        Geofence geofence = new Geofence(sight.name+"_20m", new Geocircle(
+                        new BasicGeoposition
+                        {
+                            Altitude = 0.0,
+                            Latitude = location.Latitude,
+                            Longitude = location.Longitude
+                        },
+                        20), MonitoredGeofenceStates.Entered, true, new TimeSpan(5));
+
+                        GeofenceMonitor.Current.Geofences.Add(geofence);
+
+                        geofence = new Geofence(sight.name + "_5m", new Geocircle(
+                        new BasicGeoposition
+                        {
+                            Altitude = 0.0,
+                            Latitude = location.Latitude,
+                            Longitude = location.Longitude
+                        },
+                        20), MonitoredGeofenceStates.Entered, true, new TimeSpan(5));
+                        GeofenceMonitor.Current.Geofences.Add(geofence);
+
+                        pin.Text = sight.name;
+                        MapLayer.SetPosition(pin, location);
+                        bingMap.Children.Add(pin);
+                } 
+            }
+        }
+
+
+        //public async void calculateRoute(Map bingMap)
+        //{
+        //    Bing.Maps.Directions.WaypointCollection waypoints = new Bing.Maps.Directions.WaypointCollection();
+        //    Bing.Maps.Directions.DirectionsManager directionsManager = bingMap.DirectionsManager;
+
+        //    LocationConverter converter = new LocationConverter();
+        //    List<WanderLib.Waypoint> waypointsOnRoute = giveAllWaypointsOnRoute();
+
+        //    foreach (WanderLib.Waypoint s in loadedSights)
+        //    {
+        //        if (s.GetType() == (typeof(WanderLib.Sight)))
+        //        {
+
+        //            Location location = converter.convertToBingLocation(s.location);
+
+        //            Bing.Maps.Directions.Waypoint waypoint = new Bing.Maps.Directions.Waypoint(location);
+
+
+        //            waypoints.Add(waypoint);
+        //        }
+
+
+        //    }
+
+        //    directionsManager.RequestOptions.RouteMode = Bing.Maps.Directions.RouteModeOption.Walking;
+        //    //directionsManager.RenderOptions.WaypointPushpinOptions.
+        //    //directionsManager.RenderOptions.WaypointPushpinOptions.Visible = false;
+        //    directionsManager.Waypoints = waypoints;
+
+        //    // Calculate route directions
+        //    Bing.Maps.Directions.RouteResponse response = await directionsManager.CalculateDirectionsAsync();
+        //}
+
+        public List<Location> getWaypointLocations()
+        {
+            List<WanderLib.Waypoint> waypointsOnRoute = giveAllWaypointsOnRoute();
+            LocationConverter converter = new LocationConverter();
+            List<Location> locations = new List<Location>(); ;
+
+            foreach (WanderLib.Waypoint w in waypointsOnRoute)
+            {
+                Location location = converter.convertToBingLocation(w.location);
+
+                locations.Add(location);
+            }
+
+            return locations;
+        }
     }
+
+
 }

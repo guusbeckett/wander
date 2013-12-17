@@ -12,8 +12,8 @@
     <Grid>
         <Rectangle Fill="#FFC31616" HorizontalAlignment="Left" Height="150" Margin="726,278,-928,-128" VerticalAlignment="Top" Width="602"/>
         <TextBox x:Uid="resumeSession" HorizontalAlignment="Left" Margin="741,294,-629,-43" TextWrapping="Wrap" Text="{Binding}" VerticalAlignment="Top" Foreground="White" Background="Transparent" BorderBrush="Transparent" FontSize="20.667" IsReadOnly="True" Width="288" Height="49"/>
-        <Button x:Name="Button_Yes" x:Uid="yesButton" HorizontalAlignment="Left" Margin="831,355,-554,-101" VerticalAlignment="Top" Width="123" Background="#FF3ED317" Height="46" Click="Button_Click_1"/>
-        <Button x:Name="Button_No" x:Uid="noButton" HorizontalAlignment="Left" Margin="1068,355,-791,-101" VerticalAlignment="Top" Width="123" Background="#FF920A0A" Height="46" Click="Button_Click"/>
+        <Button x:Name="Button_Yes" x:Uid="yesButton" HorizontalAlignment="Left" Margin="831,355,-554,-101" VerticalAlignment="Top" Width="123" Background="#FF3ED317" Height="46"/>
+        <Button x:Name="Button_No" x:Uid="noButton" HorizontalAlignment="Left" Margin="1068,355,-791,-101" VerticalAlignment="Top" Width="123" Background="#FF920A0A" Height="46"/>
 
     </Grid>
 </UserControl>
