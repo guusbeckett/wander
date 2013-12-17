@@ -1,11 +1,14 @@
-﻿using System;
+﻿using Bing.Maps;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using Windows.Devices.Geolocation;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI;
+using Windows.UI.Core;
 using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -28,12 +31,19 @@ namespace Wander
         DataController datacontroller;
         ViewSettings settings;
         Help help;
+        Geolocator geo = null;
+        Location currentLocation = new Location();
+        Pushpin location = new Pushpin();
 
         public MainPage()
         {
             this.InitializeComponent();
             datacontroller = DataController.getInstance();
             sightList.ItemsSource = datacontroller.giveStringsOfLoadedSights();
+            geo = new Geolocator();
+            geo.DesiredAccuracy = PositionAccuracy.High;
+            geo.PositionChanged += geolocator_PositionChanged;
+            Map.Children.Add(location);
         }
 
 
@@ -73,6 +83,16 @@ namespace Wander
             {
                 this.Frame.Navigate(typeof(Message), selectedItem);
             }
+        }
+
+        private async void geolocator_PositionChanged(Geolocator sender, PositionChangedEventArgs args)
+        {
+            await this.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, new DispatchedHandler(
+            () =>
+            {
+                currentLocation = new Location(args.Position.Coordinate.Latitude, args.Position.Coordinate.Longitude);
+                MapLayer.SetPosition(location, currentLocation);
+            }));
         }
 
     }
