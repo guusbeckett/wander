@@ -125,6 +125,27 @@ namespace Wander
             });
         }
 
+        private void drawWalkedRoute()
+        {
+            MapPolyline polyline = new MapPolyline();
+            polyline.Color = Windows.UI.Colors.Blue;
+            polyline.Width = 3;
+
+            polyline.Locations = new LocationCollection();
+            List<Bing.Maps.Location> locations = null;
+
+            foreach (Bing.Maps.Location location in locations)
+            {
+                polyline.Locations.Add(location);
+            }
+
+
+            polyline.Visible = true;
+
+
+            polygonLayer.Shapes.Add(polyline);
+        }
+
         private void drawRoute()
         {
             MapPolyline polyline = new MapPolyline(); 
