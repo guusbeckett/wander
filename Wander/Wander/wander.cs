@@ -11,7 +11,7 @@ namespace Wander
         //private List<Object> languages { get; } //TODO fix zodra library er is
         private GPS GPS; //FIXME zodra GUIController er is
         private List<object> routes; //HINT fix dit zodra library er is
-        private MapController mapcontroller; //TASK fix dit zodra MapController er is
+        public MapController mapcontroller; //TASK fix dit zodra MapController er is
 
         public wander()
         {
