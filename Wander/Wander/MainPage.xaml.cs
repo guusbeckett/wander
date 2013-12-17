@@ -48,9 +48,9 @@ namespace Wander
             
         }
 
-        public void setHelp()
+        public void setHelp(Boolean refresh)
         {
-            help = new Help(this);
+            help = new Help(this, refresh);
             GridRoot.Children.Add(help);
             removeChild(settings);
         }

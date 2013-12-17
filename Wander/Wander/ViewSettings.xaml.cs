@@ -25,6 +25,7 @@ namespace Wander
         private List<WanderLib.Language> languages;
         MainPage page;
         private DataController datacontroller;
+        private Boolean refresh = false;
         public ViewSettings(MainPage page)
         {
             this.InitializeComponent();
@@ -55,23 +56,29 @@ namespace Wander
         private void HelpButton_Click(object sender, RoutedEventArgs e)
         {
             datacontroller.selectedLanguage = selectedIndex;
-            page.setHelp();
+            page.setHelp(refresh);
             System.Diagnostics.Debug.WriteLine(Windows.Globalization.ApplicationLanguages.PrimaryLanguageOverride);
         }
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
-            var _Frame = Window.Current.Content as Frame;
-            _Frame.Navigate(_Frame.Content.GetType());
-            _Frame.GoBack();
+            if (refresh)
+            {
+                var _Frame = Window.Current.Content as Frame;
+                _Frame.Navigate(_Frame.Content.GetType());
+                _Frame.GoBack();
+                datacontroller.selectedLanguage = selectedIndex;
+                refresh = false;
+            }
             page.removeChild(this);
-            datacontroller.selectedLanguage = selectedIndex;
+            
         }
 
         public List<string> ListLanguages { get; set; }
 
         private void LanguageComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            int tempIndex = selectedIndex;
             selectedIndex = LanguageComboBox.SelectedIndex;
             WanderLib.Language chosenLanguage = languages[selectedIndex];
             if (chosenLanguage.name == "English")
@@ -87,7 +94,9 @@ namespace Wander
                 Windows.Globalization.ApplicationLanguages.PrimaryLanguageOverride = "ja";
             }
             datacontroller.session.language = new WanderLib.Language(chosenLanguage.name);
-            
+
+            if (tempIndex != selectedIndex)
+                refresh = true;
         }
     }
 }

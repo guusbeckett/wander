@@ -21,18 +21,24 @@ namespace Wander
     {
         private MainPage page;
         private DataController datacontroller;
-        public Help(MainPage page)
+        private Boolean refresh = false;
+        public Help(MainPage page, Boolean refresh)
         {
             this.InitializeComponent();
             this.page = page;
             datacontroller = DataController.getInstance();
+            this.refresh = refresh;
         }
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
-            var _Frame = Window.Current.Content as Frame;
-            _Frame.Navigate(_Frame.Content.GetType());
-            _Frame.GoBack();
+            if (refresh)
+            {
+                var _Frame = Window.Current.Content as Frame;
+                _Frame.Navigate(_Frame.Content.GetType());
+                _Frame.GoBack();
+                refresh = false;
+            }
             page.removeChild(this);
         }
 
