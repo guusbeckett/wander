@@ -22,7 +22,7 @@ namespace Wander
 
         public static DataController getInstance()
         {
-            GeofenceMonitor.Current.Geofences.Clear();
+            
             if (instance == null)
                 instance = new DataController();
             return instance;
@@ -143,55 +143,55 @@ namespace Wander
             }
         }
 
-        
-        public async void calculateRoute(Map bingMap)
-        {
-            Bing.Maps.Directions.WaypointCollection waypoints = new Bing.Maps.Directions.WaypointCollection();
-            Bing.Maps.Directions.DirectionsManager directionsManager = bingMap.DirectionsManager;
 
-            LocationConverter converter = new LocationConverter();
-            List<WanderLib.Waypoint> waypointsOnRoute = giveAllWaypointsOnRoute();
-
-            for (int i = 0; i < 25; i++ )
-            {
-                WanderLib.Waypoint w = waypointsOnRoute[i];
-
-                Location location = converter.convertToBingLocation(w.location);
-
-                Bing.Maps.Directions.Waypoint waypoint = new Bing.Maps.Directions.Waypoint(location);
-
-
-                waypoints.Add(waypoint);
-
-                directionsManager.Waypoints = waypoints;
-
-
-            }
-
-            directionsManager.RequestOptions.RouteMode = Bing.Maps.Directions.RouteModeOption.Walking;
-            //directionsManager.RenderOptions.WaypointPushpinOptions.
-            //directionsManager.RenderOptions.WaypointPushpinOptions.Visible = false;
-            directionsManager.Waypoints = waypoints;
-
-            // Calculate route directions
-            Bing.Maps.Directions.RouteResponse response = await directionsManager.CalculateDirectionsAsync();
-
-        }
-
-        //public List<Location> getWaypointLocations()
+        //public async void calculateRoute(Map bingMap)
         //{
+        //    Bing.Maps.Directions.WaypointCollection waypoints = new Bing.Maps.Directions.WaypointCollection();
+        //    Bing.Maps.Directions.DirectionsManager directionsManager = bingMap.DirectionsManager;
+
+        //    LocationConverter converter = new LocationConverter();
         //    List<WanderLib.Waypoint> waypointsOnRoute = giveAllWaypointsOnRoute();
-        //    List<Location> locations = new List<Location>(); ;
 
-        //    foreach (WanderLib.Waypoint w in waypointsOnRoute)
+        //    foreach (WanderLib.Waypoint s in loadedSights)
         //    {
-        //        Location location = converter.convertToBingLocation(w.location);
+        //        if (s.GetType() == (typeof(WanderLib.Sight)))
+        //        {
 
-        //        locations.Add(location);
+        //            Location location = converter.convertToBingLocation(s.location);
+
+        //            Bing.Maps.Directions.Waypoint waypoint = new Bing.Maps.Directions.Waypoint(location);
+
+
+        //            waypoints.Add(waypoint);
+        //        }
+
+
         //    }
 
-        //    return locations;
+        //    directionsManager.RequestOptions.RouteMode = Bing.Maps.Directions.RouteModeOption.Walking;
+        //    //directionsManager.RenderOptions.WaypointPushpinOptions.
+        //    //directionsManager.RenderOptions.WaypointPushpinOptions.Visible = false;
+        //    directionsManager.Waypoints = waypoints;
+
+        //    // Calculate route directions
+        //    Bing.Maps.Directions.RouteResponse response = await directionsManager.CalculateDirectionsAsync();
         //}
+
+        public List<Location> getWaypointLocations()
+        {
+            List<WanderLib.Waypoint> waypointsOnRoute = giveAllWaypointsOnRoute();
+            LocationConverter converter = new LocationConverter();
+            List<Location> locations = new List<Location>(); ;
+
+            foreach (WanderLib.Waypoint w in waypointsOnRoute)
+            {
+                Location location = converter.convertToBingLocation(w.location);
+
+                locations.Add(location);
+            }
+
+            return locations;
+        }
     }
 
 

@@ -26,21 +26,22 @@ namespace Wander
     /// </summary>
     public sealed partial class MainPage : Page
     {
-
-        string number;
         DataController datacontroller;
         ViewSettings settings;
+        MapShapeLayer polygonLayer;
         Help help;
 
         public MainPage()
         {
             this.InitializeComponent();
-
+            GeofenceMonitor.Current.Geofences.Clear();
             GeofenceMonitor.Current.GeofenceStateChanged += Current_GeofenceStateChanged;
+            polygonLayer = new MapShapeLayer();
+            bingMap.ShapeLayers.Add(polygonLayer);
             datacontroller = DataController.getInstance();
             sightList.ItemsSource = datacontroller.giveStringsOfLoadedSights();
             datacontroller.setSightsWithGeofences(bingMap);
-            calculateRoute();
+            drawRoute();
             setPinListeners();
         }
 
@@ -124,30 +125,26 @@ namespace Wander
             });
         }
 
-        private async void calculateRoute()
+        private void drawRoute()
         {
-            datacontroller.calculateRoute(bingMap);
+            MapPolyline polyline = new MapPolyline(); 
+            polyline.Color = Windows.UI.Colors.Red;
+            polyline.Width = 3;
+
+            polyline.Locations = new LocationCollection();
+            List<Location> locations = datacontroller.getWaypointLocations();
+
+            foreach (Location location in locations)
+            {
+                polyline.Locations.Add(location);
+            }
+
+
+            polyline.Visible = true;
+
+
+            polygonLayer.Shapes.Add(polyline);
         }
-
-
-        //private void drawRoute()
-        //{
-        //    MapPolyline polyline = new MapPolyline();
-        //    polyline.Width = 3;
-        //    polyline.Locations = new LocationCollection();
-        //    List<Location> locations = datacontroller.getWaypointLocations();
-
-        //    foreach (Location location in locations)
-        //    {
-        //        polyline.Locations.Add(location);
-        //    }
-
-
-        //    polyline.Visible = true;
-
-
-        //    polygonLayer.Shapes.Add(polyline);
-        //}
 
     }
 }
