@@ -19,9 +19,21 @@ namespace Wander
 {
     public sealed partial class ResumeSession : UserControl
     {
-        public ResumeSession()
+        MainPage main;
+        public ResumeSession(MainPage main)
         {
             this.InitializeComponent();
+            this.main = main;
+        }
+
+        private void YesButton_Click(object sender, RoutedEventArgs e)
+        {
+            main.removeChild(this);
+        }
+
+        private void NoButton_Click(object sender, RoutedEventArgs e)
+        {
+            main.removeChild(this);
         }
     }
 }

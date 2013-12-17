@@ -40,6 +40,9 @@ namespace Wander
         public MainPage()
         {
             this.InitializeComponent();
+
+            findSession();
+
             GeofenceMonitor.Current.Geofences.Clear();
             GeofenceMonitor.Current.GeofenceStateChanged += Current_GeofenceStateChanged;
             polygonLayer = new MapShapeLayer();
@@ -51,13 +54,16 @@ namespace Wander
             geo.DesiredAccuracy = PositionAccuracy.High;
             geo.PositionChanged += geolocator_PositionChanged;
             bingMap.Children.Add(location);
-            resume = new ResumeSession();
-            GridRoot.Children.Add(resume);
             datacontroller.setSightsWithGeofences(bingMap);
             drawRoute();
             setPinListeners();
         }
 
+        public async void findSession()
+        {
+            resume = new ResumeSession(this);
+            GridRoot.Children.Add(resume);
+        }
 
         private void Settings_Tapped(object sender, TappedRoutedEventArgs e)
         {
