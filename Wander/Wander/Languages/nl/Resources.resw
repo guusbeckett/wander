@@ -141,4 +141,14 @@
     <value>Talen</value>
     <comment>Titel van settings menu</comment>
   </data>
+  <data name="noButton.Content" xml:space="preserve">
+    <value>Nee</value>
+  </data>
+  <data name="resumeSession.Text" xml:space="preserve">
+    <value>Laatste sessie hervatten?</value>
+  </data>
+  <data name="yesButton.Content" xml:space="preserve">
+    <value>Ja</value>
+    <comment>Yes button resume session</comment>
+  </data>
 </root>

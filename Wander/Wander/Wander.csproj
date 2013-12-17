@@ -133,6 +133,9 @@
       <DependentUpon>Message.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ResumeSession.xaml.cs">
+      <DependentUpon>ResumeSession.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ViewSettings.xaml.cs">
       <DependentUpon>ViewSettings.xaml</DependentUpon>
     </Compile>
@@ -175,6 +178,10 @@
   </ItemGroup>
   <ItemGroup>
     <Page Include="MainPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ResumeSession.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -1,0 +1,19 @@
+﻿<UserControl
+    x:Class="Wander.ResumeSession"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Wander"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignHeight="300"
+    d:DesignWidth="400">
+
+    <Grid>
+        <Rectangle Fill="#FFC31616" HorizontalAlignment="Left" Height="150" Margin="726,278,-928,-128" VerticalAlignment="Top" Width="602"/>
+        <TextBox x:Uid="resumeSession" HorizontalAlignment="Left" Margin="741,294,-629,-43" TextWrapping="Wrap" Text="{Binding}" VerticalAlignment="Top" Foreground="White" Background="Transparent" BorderBrush="Transparent" FontSize="20.667" IsReadOnly="True" Width="288" Height="49"/>
+        <Button x:Name="Button_Yes" x:Uid="yesButton" HorizontalAlignment="Left" Margin="831,355,-554,-101" VerticalAlignment="Top" Width="123" Background="#FF3ED317" Height="46" Click="Button_Click_1"/>
+        <Button x:Name="Button_No" x:Uid="noButton" HorizontalAlignment="Left" Margin="1068,355,-791,-101" VerticalAlignment="Top" Width="123" Background="#FF920A0A" Height="46" Click="Button_Click"/>
+
+    </Grid>
+</UserControl>

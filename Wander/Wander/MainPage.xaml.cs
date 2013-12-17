@@ -30,6 +30,7 @@ namespace Wander
         string number;
         DataController datacontroller;
         ViewSettings settings;
+        ResumeSession resume;
         Help help;
         Geolocator geo = null;
         Location currentLocation;
@@ -44,6 +45,8 @@ namespace Wander
             geo.DesiredAccuracy = PositionAccuracy.High;
             geo.PositionChanged += geolocator_PositionChanged;
             Map.Children.Add(location);
+            resume = new ResumeSession();
+            GridRoot.Children.Add(resume);
         }
 
 
