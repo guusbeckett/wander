@@ -35,6 +35,13 @@ namespace Wander
             return strings;
         }
 
+        public List<WanderLib.Route> giveAllRoutes()
+        {
+            List<WanderLib.Route> routes = new List<WanderLib.Route>();
+            routes.Add(new WanderLib.Route("historische kilometer" ,giveAllWaypointsOnRoute(), 20));
+            return routes;
+        }
+
         public List<WanderLib.Language> giveAllLanguages()
         {
             List<WanderLib.Language> languages = new List<WanderLib.Language>();

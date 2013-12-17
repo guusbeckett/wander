@@ -134,7 +134,7 @@ namespace Wander
                             mediaElement.Source = new Uri(l[1]);
                         }
                         imageElement.Source = new BitmapImage(new Uri("ms-appx:///Assets/Logo.scale-100.png"));
-                        mediaElement.Source = new Uri("ms-appx:///Assets/Farmer Dan - The Combine Harvester.mp3");
+                        mediaElement.Source = new Uri("ms-appx:///Assets/Pop It, Dont Drop It Extended Loop (Team Service Announcement).mp4");
                         mediaElement.AutoPlay = false;
                         break;
                     }

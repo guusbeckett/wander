@@ -27,11 +27,18 @@ namespace Wander
         string number;
         DataController datacontroller;
         ViewSettings settings;
+        RouteSelection routes;
         Help help;
 
         public MainPage()
         {
             this.InitializeComponent();
+            if (settings == null)
+                routes = new RouteSelection(this);
+            if (!GridRoot.Children.Contains(routes))
+            {
+                GridRoot.Children.Add(routes);
+            }
             datacontroller = DataController.getInstance();
             sightList.ItemsSource = datacontroller.giveStringsOfLoadedSights();
         }
@@ -73,6 +80,15 @@ namespace Wander
             {
                 this.Frame.Navigate(typeof(Message), selectedItem);
             }
+        }
+
+        private void Image_RightTapped(object sender, RightTappedRoutedEventArgs e)
+        {
+            if (this.Frame != null)
+            {
+                this.Frame.Navigate(typeof(Message));
+            }
+
         }
 
     }
