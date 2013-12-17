@@ -8,15 +8,17 @@ namespace WanderLib
 {
     public class Route
     {
-        public List<Sight> sights { get; set; }
+        public string name { get; set; }
+        public List<Waypoint> waypoints { get; set; }
         public double totalDistance { get; set; }
         public double distanceLeft { get; set; }
         public Location lastLocation { get; set; }
         
-        public Route(List<Sight> sights, double totalDistance)
+        public Route(string name, List<Waypoint> waypoints, double totalDistance)
         {
+            this.name = name;
             this.totalDistance = totalDistance;
-            this.sights = sights;
+            this.waypoints = waypoints;
         }
 
         public double routeLeft()
