@@ -53,8 +53,10 @@ namespace Wander
             geo.DesiredAccuracy = PositionAccuracy.High;
             geo.PositionChanged += geolocator_PositionChanged;
             bingMap.Children.Add(location);
-            resume = new ResumeSession();
-            GridRoot.Children.Add(resume);
+
+            //resume = new ResumeSession();
+            //GridRoot.Children.Add(resume);
+
             datacontroller.setSightsWithGeofences(bingMap);
             drawRoute();
             setPinListeners();
@@ -132,6 +134,8 @@ namespace Wander
                     currentLocation = new Location(args.Position.Coordinate.Latitude, args.Position.Coordinate.Longitude);
                     bingMap.SetView(currentLocation, 16);
                 }
+                else
+                    currentLocation = new Location(args.Position.Coordinate.Latitude, args.Position.Coordinate.Longitude);
                 MapLayer.SetPosition(location, currentLocation);
                 drawWalkedRoute(wander.mapcontroller.locations());
             }));
