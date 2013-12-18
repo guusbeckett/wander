@@ -23,9 +23,9 @@ namespace Wander
             double latdif = prevlocation.Latitude - location.Latitude;
             double longdif = prevlocation.Longitude - location.Longitude;
             if (latdif < 0)
-                latdif = latdif + (latdif + latdif);
+                latdif = -1 * latdif;
             if (longdif < 0)
-                longdif = longdif + (longdif + longdif);
+                longdif = -1 * longdif;
             if (latdif >= 0.001 || longdif >= 0.001)
             {
                 previouspoints.Add(location);

@@ -1,6 +1,8 @@
 ﻿using Bing.Maps;
+using ProtoBuf;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -147,6 +149,29 @@ namespace Wander
                         bingMap.Children.Add(pin);
                 } 
             }
+        }
+
+        public async void saveSession()
+        {
+            var folder = Windows.Storage.ApplicationData.Current.LocalFolder;
+            try
+            {
+                using (Stream xmlstreamAwait = await folder.OpenStreamForWriteAsync("session.xml", CreationCollisionOption.ReplaceExisting))
+                    Serializer.Serialize<WanderLib.Session>(xmlstreamAwait, session);
+            }
+            catch (Exception e) { System.Diagnostics.Debug.WriteLine(e.Message); }
+            
+        }
+
+        public async void openSession()
+        {
+            var folder = Windows.Storage.ApplicationData.Current.LocalFolder;
+            try
+            {
+                using (Stream xmlstreamAwait = await folder.OpenStreamForWriteAsync("session.xml", CreationCollisionOption.ReplaceExisting))
+                    DataController.instance.session = Serializer.Deserialize<WanderLib.Session>(xmlstreamAwait);
+            }
+            catch (Exception e) { System.Diagnostics.Debug.WriteLine(e.Message); }
         }
 
 
