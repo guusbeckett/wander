@@ -76,12 +76,16 @@ namespace Wander
 		}
         public void setSightSeenTrue(String geofence)
         {
-            foreach(WanderLib.Sight sight in loadedSights)
+            foreach(WanderLib.Waypoint sight in loadedSights)
             {
-                if (sight.name == geofence)
+                if (sight.GetType() == (typeof(WanderLib.Sight)))
                 {
-                    sight.isVisited = true;
-                    break;
+                    WanderLib.Sight convertedSight = ((WanderLib.Sight)sight);
+                    if (convertedSight.name == geofence)
+                    {
+                        convertedSight.isVisited = true;
+                        break;
+                    }
                 }
             }
         }

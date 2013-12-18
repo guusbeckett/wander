@@ -72,6 +72,7 @@ namespace Wander
 
         public void findSession()
         {
+            // session.xml
             if (datacontroller.getFirstTime() == true)
             {
                 resume = new ResumeSession(this);
