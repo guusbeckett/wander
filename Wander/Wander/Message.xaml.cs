@@ -128,25 +128,25 @@ namespace Wander
                             List<string> locationsPhoto = new List<string>();
                             List<string> locationsAudio = new List<string>();
                             List<string> locationsVideo = new List<string>();
-                            List<WanderLib.Media.Media.Type> list = new List<WanderLib.Media.Media.Type>(sight.media.Keys);
+                            List<WanderLib.Media.Media.Type> list = new List<WanderLib.Media.Media.Type>(sight.media.Values);
                             foreach (var pair in sight.media)
                             {
-                                if (pair.Key == WanderLib.Media.Media.Type.PHOTO)
+                                if (pair.Value == WanderLib.Media.Media.Type.PHOTO)
                                 {
-                                    locationsPhoto.Add(pair.Value.fileLocation);
+                                    locationsPhoto.Add(pair.Key.fileLocation);
                                 }
-                                else if (pair.Key == WanderLib.Media.Media.Type.VIDEO)
+                                else if (pair.Value == WanderLib.Media.Media.Type.VIDEO)
                                 {
-                                    locationsVideo.Add(pair.Value.fileLocation);
+                                    locationsVideo.Add(pair.Key.fileLocation);
                                 }
-                                else if (pair.Key == WanderLib.Media.Media.Type.AUDIO)
+                                else if (pair.Value == WanderLib.Media.Media.Type.AUDIO)
                                 {
-                                    locationsAudio.Add(pair.Value.fileLocation);
+                                    locationsAudio.Add(pair.Key.fileLocation);
                                 }
                                 else System.Diagnostics.Debug.WriteLine("Er is een unsupported file found.");
                             }
+                            imageElement.ItemsSource = locationsPhoto;
                         }
-                        System.Diagnostics.Debug.WriteLine(imageElement.ItemsSource);
                         mediaElement.AutoPlay = false;
                         break;
                     }
