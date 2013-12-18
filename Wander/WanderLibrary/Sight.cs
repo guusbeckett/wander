@@ -10,14 +10,15 @@ namespace WanderLib
     public class Sight : Waypoint, global::ProtoBuf.IExtensible
     {
         [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name = @"Media", DataFormat = global::ProtoBuf.DataFormat.Group)]
-        public Dictionary<Media.Media.Type, Media.Media> media { get; set; }
+        public Dictionary<Media.Media, Media.Media.Type> media { get; set; }
         [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name = @"Name", DataFormat = global::ProtoBuf.DataFormat.Default)]
         public string name { get; set; }
         [global::ProtoBuf.ProtoMember(3, IsRequired = true, Name = @"isVisited", DataFormat = global::ProtoBuf.DataFormat.Default)]
         public Boolean isVisited;
-        
 
-        public Sight(Dictionary<Media.Media.Type, Media.Media> media, string name, string information, Location location):base(information, location)
+
+        public Sight(Dictionary<Media.Media, Media.Media.Type> media, string name, string information, Location location)
+            : base(information, location)
         {
             this.media = media;
             this.name = name;
@@ -25,7 +26,8 @@ namespace WanderLib
             this.location = location;
             isVisited = false;
         }
-        public Sight(Dictionary<Media.Media.Type, Media.Media> media, string name, string information, Location location, Boolean isVisited):base(information,location)
+        public Sight(Dictionary<Media.Media, Media.Media.Type> media, string name, string information, Location location, Boolean isVisited)
+            : base(information, location)
         {
             this.media = media;
             this.name = name;
