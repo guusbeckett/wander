@@ -6,10 +6,12 @@ using System.Threading.Tasks;
 
 namespace WanderLib
 {
-    public class Language
+    [global::ProtoBuf.ProtoContract(Name = @"Language")]
+    public class Language : global::ProtoBuf.IExtensible
     {
+        [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name = @"Name", DataFormat = global::ProtoBuf.DataFormat.Default)]
         public string name { get; set; }
-
+        
         public Language(string name)
         {
             this.name = name;
@@ -19,5 +21,7 @@ namespace WanderLib
         {
             return name;
         }
+        private global::ProtoBuf.IExtension extensionObject;
+        global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing) { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
     }
 }

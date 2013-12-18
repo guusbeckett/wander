@@ -6,11 +6,16 @@ using System.Threading.Tasks;
 
 namespace WanderLib
 {
-    public class Sight : Waypoint
+    [global::ProtoBuf.ProtoContract(Name = @"Sight")]
+    public class Sight : Waypoint, global::ProtoBuf.IExtensible
     {
+        [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name = @"Media", DataFormat = global::ProtoBuf.DataFormat.Group)]
         public Dictionary<Media.Media.Type, Media.Media> media { get; set; }
+        [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name = @"Name", DataFormat = global::ProtoBuf.DataFormat.Default)]
         public string name { get; set; }
+        [global::ProtoBuf.ProtoMember(3, IsRequired = true, Name = @"isVisited", DataFormat = global::ProtoBuf.DataFormat.Default)]
         public Boolean isVisited;
+        
 
         public Sight(Dictionary<Media.Media.Type, Media.Media> media, string name, string information, Location location):base(information, location)
         {
@@ -33,6 +38,8 @@ namespace WanderLib
         {
             isVisited = true;
         }
+        private global::ProtoBuf.IExtension extensionObject;
+        global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing) { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
 
     }
 }
