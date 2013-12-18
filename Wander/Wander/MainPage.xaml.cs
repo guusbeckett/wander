@@ -1,9 +1,11 @@
 ﻿using Bing.Maps;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using Windows;
 using Windows.Devices.Geolocation;
 using Windows.Devices.Geolocation.Geofencing;
 using Windows.Foundation;
@@ -39,6 +41,7 @@ namespace Wander
         Pushpin location = new Pushpin();
         wander wander = new wander();
         MapPolyline walked = new MapPolyline();
+        String calculatedDistanceToNextPoint;
 
         public MainPage()
         {
@@ -64,8 +67,13 @@ namespace Wander
             polygonLayer.Shapes.Add(walked);
             //bingMap.Children.Add(walked);
             NetworkInformation.NetworkStatusChanged += internetConnectionEventHandler;
-        }
 
+        private async void updateDistanceTextbox(String geofence)
+        {
+            await datacontroller.calculateToNextPoint(bingMap, geofence);
+            calculatedDistanceToNextPoint = (int)datacontroller.distance + " Meter";
+            distanceTextbox.DataContext = calculatedDistanceToNextPoint;
+        }
 
         private void Settings_Tapped(object sender, TappedRoutedEventArgs e)
         {
@@ -187,8 +195,13 @@ namespace Wander
                     {
                         if (geofence.Id.EndsWith("_20m"))
                         {
+                            updateDistanceTextbox(((String)geofence.Id).Split('_').First());
+
                             var message = new MessageDialog(((String)geofence.Id).Split('_').First(), "U bent in de buurt van de volgende locatie;");
                             await message.ShowAsync();
+
+                            playSound.Play();
+                            
                         }
                         else if (geofence.Id.EndsWith("_5m"))
                         {
@@ -197,6 +210,7 @@ namespace Wander
                                 if(pin.Text == ((String)geofence.Id).Split('_').First())
                                 {
                                     pin.Background = new SolidColorBrush(Colors.Black);
+                                    datacontroller.setSightSeenTrue(((String)geofence.Id).Split('_').First());
                                 }
                             }
                         }
