@@ -184,6 +184,7 @@ namespace Wander
                                 if(pin.Text == ((String)geofence.Id).Split('_').First())
                                 {
                                     pin.Background = new SolidColorBrush(Colors.Black);
+                                    datacontroller.setSightSeenTrue(((String)geofence.Id).Split('_').First());
                                 }
                             }
                         }

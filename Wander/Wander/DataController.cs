@@ -55,6 +55,18 @@ namespace Wander
             return strings;
         }
 
+        public void setSightSeenTrue(String geofence)
+        {
+            foreach(WanderLib.Sight sight in loadedSights)
+            {
+                if (sight.name == geofence)
+                {
+                    sight.isVisited = true;
+                    break;
+                }
+            }
+        }
+
         public List<WanderLib.Language> giveAllLanguages()
         {
             List<WanderLib.Language> languages = new List<WanderLib.Language>();
