@@ -145,12 +145,12 @@ namespace Wander
                     {
                         foreach(string medium in dat.fotos.Split(':'))
                         {
-                            media.Add(new WanderLib.Media.Media(WanderLib.Media.Media.Type.PHOTO, "ms-appx:///Assets/photos/" + medium + ".jpg"), WanderLib.Media.Media.Type.PHOTO);
+                            media.Add(new WanderLib.Media.Media(WanderLib.Media.Media.Type.PHOTO, "Assets/photos/" + medium + ".jpg"), WanderLib.Media.Media.Type.PHOTO);
                         }
                     }
                     else
                     {
-                        media.Add(new WanderLib.Media.Media(WanderLib.Media.Media.Type.PHOTO, "ms-appx:///Assets/photos/" + dat.fotos + ".jpg"), WanderLib.Media.Media.Type.PHOTO);
+                        media.Add(new WanderLib.Media.Media(WanderLib.Media.Media.Type.PHOTO, "Assets/photos/" + dat.fotos + ".jpg"), WanderLib.Media.Media.Type.PHOTO);
                     }
                 }
                 if (dat.name!="")

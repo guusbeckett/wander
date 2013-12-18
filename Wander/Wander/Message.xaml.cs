@@ -161,13 +161,6 @@ namespace Wander
 
         }
 
-        protected override void OnNavigatedFrom(NavigationEventArgs e)
-        {
-            navigationHelper.OnNavigatedFrom(e);
-            ContextControl.ItemsSource = imageElement.Items;
-            ContextControl.SelectionChanged += ContextControl_SelectionChanged;
-        }
-
         #endregion
 
         private void MediaElement_DoubleTapped(object sender, DoubleTappedRoutedEventArgs e)
