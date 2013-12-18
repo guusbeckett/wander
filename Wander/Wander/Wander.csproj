@@ -138,6 +138,7 @@
     <Compile Include="ResumeSession.xaml.cs">
       <DependentUpon>ResumeSession.xaml</DependentUpon>
     </Compile>
+    <Compile Include="SoundEffect.cs" />
     <Compile Include="ViewSettings.xaml.cs">
       <DependentUpon>ViewSettings.xaml</DependentUpon>
     </Compile>
@@ -153,6 +154,7 @@
     <None Include="Wander_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\mysound.wav" />
     <Content Include="Assets\GPS2.xml" />
     <Content Include="Assets\Farmer Dan - The Combine Harvester.mp3" />
     <Content Include="Assets\Logo.scale-100.png" />
@@ -203,7 +205,7 @@
   </ItemGroup>
   <ItemGroup>
     <Reference Include="protobuf-net">
-      <HintPath>..\..\..\Dropbox\23TI2.2A1\Fase 3\Library\protobuf-net.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\..\..\Dropbox\23TI2.2A1\Fase 3\Library\protobuf-net.dll</HintPath>
     </Reference>
     <Reference Include="WanderLibrary, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>

@@ -1,13 +1,16 @@
 ﻿using Bing.Maps;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using Windows;
 using Windows.Devices.Geolocation;
 using Windows.Devices.Geolocation.Geofencing;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.Networking.Connectivity;
 using Windows.UI;
 using Windows.UI.Core;
 using Windows.UI.Popups;
@@ -38,6 +41,7 @@ namespace Wander
         Pushpin location = new Pushpin();
         wander wander = new wander();
         MapPolyline walked = new MapPolyline();
+        String calculatedDistanceToNextPoint;
 
         public MainPage()
         {
@@ -62,7 +66,7 @@ namespace Wander
             setPinListeners();
             polygonLayer.Shapes.Add(walked);
             //bingMap.Children.Add(walked);
-        }
+            NetworkInformation.NetworkStatusChanged += internetConnectionEventHandler;
 
         public async void findSession()
         {
@@ -72,6 +76,12 @@ namespace Wander
                 GridRoot.Children.Add(resume);
             }
             else return;
+		}
+        private async void updateDistanceTextbox(String geofence)
+        {
+            await datacontroller.calculateToNextPoint(bingMap, geofence);
+            calculatedDistanceToNextPoint = (int)datacontroller.distance + " Meter";
+            distanceTextbox.DataContext = calculatedDistanceToNextPoint;
         }
 
         private void Settings_Tapped(object sender, TappedRoutedEventArgs e)
@@ -82,7 +92,6 @@ namespace Wander
             {
                 GridRoot.Children.Add(settings);
             }
-            
         }
 
         public void setHelp(Boolean refresh)
@@ -150,6 +159,34 @@ namespace Wander
             }));
         }
 
+        private async void internetConnectionEventHandler(object sender)
+        {
+
+            if (!IsInternet())
+            {
+                await this.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, new DispatchedHandler(
+            () =>
+            {
+                try
+                {
+                    var loader = new Windows.ApplicationModel.Resources.ResourceLoader();
+                    string content = loader.GetString("internetErrorContent");
+                    string title = loader.GetString("internetErrorHeader");
+                    new MessageDialog(content, title).ShowAsync();
+                }
+                catch { }
+            }));
+
+            }
+        }
+        
+        public static bool IsInternet()
+        {
+            ConnectionProfile connections = NetworkInformation.GetInternetConnectionProfile();
+            bool internet = connections != null && connections.GetNetworkConnectivityLevel() == NetworkConnectivityLevel.InternetAccess;
+            return internet;
+        }
+
         async void Current_GeofenceStateChanged(GeofenceMonitor sender, object args)
         {
             var reports = sender.ReadReports();
@@ -167,8 +204,13 @@ namespace Wander
                     {
                         if (geofence.Id.EndsWith("_20m"))
                         {
+                            updateDistanceTextbox(((String)geofence.Id).Split('_').First());
+
                             var message = new MessageDialog(((String)geofence.Id).Split('_').First(), "U bent in de buurt van de volgende locatie;");
                             await message.ShowAsync();
+
+                            playSound.Play();
+                            
                         }
                         else if (geofence.Id.EndsWith("_5m"))
                         {
@@ -177,6 +219,7 @@ namespace Wander
                                 if(pin.Text == ((String)geofence.Id).Split('_').First())
                                 {
                                     pin.Background = new SolidColorBrush(Colors.Black);
+                                    datacontroller.setSightSeenTrue(((String)geofence.Id).Split('_').First());
                                 }
                             }
                         }

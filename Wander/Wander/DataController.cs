@@ -1,12 +1,17 @@
 ﻿using Bing.Maps;
+using ProtoBuf;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Windows.Devices.Geolocation;
 using Windows.Devices.Geolocation.Geofencing;
+using Windows.Networking.Connectivity;
 using Windows.Storage;
+using Windows.UI.Core;
+using Windows.UI.Popups;
 using Windows.UI.Xaml.Input;
 
 namespace Wander
@@ -15,9 +20,11 @@ namespace Wander
     {
         private static DataController instance;
         private List<WanderLib.Waypoint> loadedSights { get; set; }
+        private List<WanderLib.Sight> sightsonly { get; set; }
         public WanderLib.Session session { get; set; }
         public int selectedLanguage { get; set; }
         public Boolean firstTimeStart = true;
+        public Double distance { get; set; }
 
 
 
@@ -37,17 +44,26 @@ namespace Wander
         {
             session = new WanderLib.Session();
             session.settings = new WanderLib.Settings();
+           
         }
+
+
+
+
 
         public List<string> giveStringsOfLoadedSights()
         {
             if (loadedSights == null)
                 loadedSights = giveAllWaypointsOnRoute();
             List<string> strings = new List<string>();
+            sightsonly = new List<WanderLib.Sight>();
             foreach(WanderLib.Waypoint sight in loadedSights)
             {
-                    if (sight.GetType() == (typeof(WanderLib.Sight)))
-                        strings.Add(((WanderLib.Sight)sight).name);
+                if (sight.GetType() == (typeof(WanderLib.Sight)))
+                {
+                    strings.Add(((WanderLib.Sight)sight).name);
+                    sightsonly.Add((WanderLib.Sight)sight);
+                }
             }
             return strings;
         }
@@ -57,6 +73,17 @@ namespace Wander
             List<WanderLib.Route> routes = new List<WanderLib.Route>();
             routes.Add(new WanderLib.Route("historische kilometer" ,giveAllWaypointsOnRoute(), 20));
             return routes;
+		}
+        public void setSightSeenTrue(String geofence)
+        {
+            foreach(WanderLib.Sight sight in loadedSights)
+            {
+                if (sight.name == geofence)
+                {
+                    sight.isVisited = true;
+                    break;
+                }
+            }
         }
 
         public List<WanderLib.Language> giveAllLanguages()
@@ -161,39 +188,106 @@ namespace Wander
             }
         }
 
+        public async void saveSession()
+        {
+            var folder = Windows.Storage.ApplicationData.Current.LocalFolder;
+            try
+            {
+                using (Stream xmlstreamAwait = await folder.OpenStreamForWriteAsync("session.xml", CreationCollisionOption.ReplaceExisting))
+                    Serializer.Serialize<WanderLib.Session>(xmlstreamAwait, session);
+            }
+            catch (Exception e) { System.Diagnostics.Debug.WriteLine(e.Message); }
+            
+        }
 
-        //public async void calculateRoute(Map bingMap)
-        //{
-        //    Bing.Maps.Directions.WaypointCollection waypoints = new Bing.Maps.Directions.WaypointCollection();
-        //    Bing.Maps.Directions.DirectionsManager directionsManager = bingMap.DirectionsManager;
-
-        //    LocationConverter converter = new LocationConverter();
-        //    List<WanderLib.Waypoint> waypointsOnRoute = giveAllWaypointsOnRoute();
-
-        //    foreach (WanderLib.Waypoint s in loadedSights)
-        //    {
-        //        if (s.GetType() == (typeof(WanderLib.Sight)))
-        //        {
-
-        //            Location location = converter.convertToBingLocation(s.location);
-
-        //            Bing.Maps.Directions.Waypoint waypoint = new Bing.Maps.Directions.Waypoint(location);
+        public async void openSession()
+        {
+            var folder = Windows.Storage.ApplicationData.Current.LocalFolder;
+            try
+            {
+                using (Stream xmlstreamAwait = await folder.OpenStreamForWriteAsync("session.xml", CreationCollisionOption.ReplaceExisting))
+                    DataController.instance.session = Serializer.Deserialize<WanderLib.Session>(xmlstreamAwait);
+            }
+            catch (Exception e) { System.Diagnostics.Debug.WriteLine(e.Message); }
+        }
 
 
-        //            waypoints.Add(waypoint);
-        //        }
+        public async void removeSession()
+        {
+            var folder = Windows.Storage.ApplicationData.Current.LocalFolder;
+            try
+            {
+                await folder.DeleteAsync(StorageDeleteOption.PermanentDelete);
+            }
+            catch (Exception e) { System.Diagnostics.Debug.WriteLine(e.Message); }
+        }
 
 
-        //    }
+        public async Task calculateToNextPoint(Map bingMap, String geolocation)
+        {
+            LocationConverter converter = new LocationConverter();
+            Bing.Maps.Directions.WaypointCollection waypoints = new Bing.Maps.Directions.WaypointCollection();
+            Bing.Maps.Directions.DirectionsManager directionsManager = bingMap.DirectionsManager;
 
-        //    directionsManager.RequestOptions.RouteMode = Bing.Maps.Directions.RouteModeOption.Walking;
-        //    //directionsManager.RenderOptions.WaypointPushpinOptions.
-        //    //directionsManager.RenderOptions.WaypointPushpinOptions.Visible = false;
-        //    directionsManager.Waypoints = waypoints;
 
-        //    // Calculate route directions
-        //    Bing.Maps.Directions.RouteResponse response = await directionsManager.CalculateDirectionsAsync();
-        //}
+            foreach (WanderLib.Sight s in sightsonly)
+            {
+                if (geolocation == s.name)
+                {
+                    int i = sightsonly.IndexOf(s);
+
+                    if (i+1 < sightsonly.Count())
+                    {
+                        waypoints.Add(new Bing.Maps.Directions.Waypoint(converter.convertToBingLocation(s.location)));
+                        waypoints.Add(new Bing.Maps.Directions.Waypoint(converter.convertToBingLocation(sightsonly[i + 1].location)));
+
+                        directionsManager.RequestOptions.RouteMode = Bing.Maps.Directions.RouteModeOption.Walking;
+                        directionsManager.Waypoints = waypoints;
+
+                        Bing.Maps.Directions.RouteResponse response = await directionsManager.CalculateDirectionsAsync();
+
+                        distance = response.Routes[0].TravelDistance * 1000;
+
+                        break;
+                    }
+                }    
+            }
+        }
+
+        public async void calculateRoute(Map bingMap)
+        {
+            Bing.Maps.Directions.WaypointCollection waypoints = new Bing.Maps.Directions.WaypointCollection();
+            Bing.Maps.Directions.DirectionsManager directionsManager = bingMap.DirectionsManager;
+
+            LocationConverter converter = new LocationConverter();
+            List<WanderLib.Waypoint> waypointsOnRoute = giveAllWaypointsOnRoute();
+
+            foreach (WanderLib.Waypoint s in loadedSights)
+            {
+                if (s.GetType() == (typeof(WanderLib.Sight)))
+                {
+
+                    Location location = converter.convertToBingLocation(s.location);
+
+                    Bing.Maps.Directions.Waypoint waypoint = new Bing.Maps.Directions.Waypoint(location);
+
+
+                    waypoints.Add(waypoint);
+                }
+
+
+            }
+
+            directionsManager.RequestOptions.RouteMode = Bing.Maps.Directions.RouteModeOption.Walking;
+            //directionsManager.RenderOptions.WaypointPushpinOptions.
+            //directionsManager.RenderOptions.WaypointPushpinOptions.Visible = false;
+            directionsManager.Waypoints = waypoints;
+
+            // Calculate route directions
+            Bing.Maps.Directions.RouteResponse response = await directionsManager.CalculateDirectionsAsync();
+        }
+
+
 
         public List<Location> getWaypointLocations()
         {

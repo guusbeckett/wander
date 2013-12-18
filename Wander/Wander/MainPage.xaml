@@ -13,7 +13,8 @@
             <ColumnDefinition Width="400"/>
             <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
-
+        
+        <MediaElement x:Name="playSound" Source="Assets/mysound.wav" AutoPlay="False" Height="0" Width="0"  />
         <Maps:Map Name="bingMap" Credentials="As8VjwVOZeLoUDUfQqwGJxW1BSI03yu8wCWbeXbcN7FpsOkw1SnbD0VP0nXqH-rW" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Column="1" Height="702" Width="966" Grid.ColumnSpan="2"/>
 
         <Grid HorizontalAlignment="Left" Height="67" Margin="0,-67,0,0" VerticalAlignment="Top" Width="1366" Grid.ColumnSpan="3" Background="#FFC31616">
@@ -21,7 +22,7 @@
             <Image HorizontalAlignment="Left" Height="67" VerticalAlignment="Top" Width="67" Source="Assets/SettingButton.png" Margin="1299,0,0,0" Tapped="Settings_Tapped"/>
 
         </Grid>
-        <TextBox HorizontalAlignment="Left" Margin="212,-47,0,0" TextWrapping="Wrap" Text="nogwat Kilometer" VerticalAlignment="Top" BorderBrush="{x:Null}" Width="187" Grid.Column="1" Background="{x:Null}" Foreground="White" IsReadOnly="True" FontSize="18" FontWeight="Bold" Grid.ColumnSpan="2" Height="36"/>
+        <TextBox Name="distanceTextbox" HorizontalAlignment="Left" Margin="212,-47,0,0" TextWrapping="Wrap" Text="{Binding}" VerticalAlignment="Top" BorderBrush="{x:Null}" Width="187" Grid.Column="1" Background="{x:Null}" Foreground="White" IsReadOnly="True" FontSize="18" FontWeight="Bold" Grid.ColumnSpan="2" Height="36"/>
         <TextBox x:Uid="Direction" HorizontalAlignment="Left" Margin="79,27,0,0" TextWrapping="Wrap" Text="Directions" VerticalAlignment="Top" BorderBrush="{x:Null}" Width="286" FontSize="18" FontWeight="Bold" IsReadOnly="True" Height="36"/>
         <Image HorizontalAlignment="Left" Height="32" Margin="54,32,0,0" VerticalAlignment="Top" Width="22" Source="Assets/walking-man.png" Opacity="0.5"/>
         <Grid Name="GridSights" HorizontalAlignment="Left" Margin="0,174,0,0" VerticalAlignment="Top" Width="400" Height="528">

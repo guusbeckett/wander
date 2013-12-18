@@ -94,6 +94,7 @@ namespace Wander
                 Windows.Globalization.ApplicationLanguages.PrimaryLanguageOverride = "ja";
             }
             datacontroller.session.settings.language  = new WanderLib.Language(chosenLanguage.name);
+            datacontroller.saveSession();
 
             if (tempIndex != selectedIndex)
                 refresh = true;
