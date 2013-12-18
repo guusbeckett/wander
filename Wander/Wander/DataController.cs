@@ -19,7 +19,7 @@ namespace Wander
     class DataController
     {
         private static DataController instance;
-        private List<WanderLib.Waypoint> loadedSights { get; set; }
+        public List<WanderLib.Waypoint> loadedSights { get; set; }
         private List<WanderLib.Sight> sightsonly { get; set; }
         public WanderLib.Session session { get; set; }
         public int selectedLanguage { get; set; }
@@ -309,7 +309,22 @@ namespace Wander
         {
             return firstTimeStart;
         }
+
+        public List<WanderLib.Location> getWalkedRouteConvertedToWanderLocation()
+        {
+            MapController mapController = MapController.getInstance();
+            LocationConverter converter = new LocationConverter();
+
+            List<Bing.Maps.Location> previouspoints = mapController.locations();
+
+            List<WanderLib.Location> locations = new List<WanderLib.Location>();
+
+            foreach(Bing.Maps.Location location in previouspoints)
+            {
+                locations.Add(converter.convertToWanderLocation(location));
+            }
+
+            return locations;
+        }
     }
-
-
 }

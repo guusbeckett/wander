@@ -155,7 +155,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\mysound.wav" />
-    <Content Include="Assets\GPS2.xml" />
+    <Content Include="Assets\GPS2.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Assets\Farmer Dan - The Combine Harvester.mp3" />
     <Content Include="Assets\Logo.scale-100.png" />
     <Content Include="Assets\Pop It, Dont Drop It Extended Loop %28Team Service Announcement%29.mp4" />
@@ -209,7 +211,7 @@
     </Reference>
     <Reference Include="WanderLibrary, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\..\..\..\Dropbox\23TI2.2A1\Fase 3\Library\WanderLibrary.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\New folder\Dropbox\23TI2.2A1\Fase 3\WanderLibrary.dll</HintPath>
     </Reference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '12.0' ">

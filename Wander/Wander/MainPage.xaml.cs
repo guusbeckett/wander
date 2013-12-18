@@ -45,7 +45,7 @@ namespace Wander
 
         public MainPage()
         {
-            this.InitializeComponent(); 
+            this.InitializeComponent();
             GeofenceMonitor.Current.Geofences.Clear();
             GeofenceMonitor.Current.GeofenceStateChanged += Current_GeofenceStateChanged;
             polygonLayer = new MapShapeLayer();
@@ -66,9 +66,11 @@ namespace Wander
             setPinListeners();
             polygonLayer.Shapes.Add(walked);
             //bingMap.Children.Add(walked);
-            NetworkInformation.NetworkStatusChanged += internetConnectionEventHandler;
 
-        public async void findSession()
+            NetworkInformation.NetworkStatusChanged += internetConnectionEventHandler;
+        }
+
+        public void findSession()
         {
             if (datacontroller.getFirstTime() == true)
             {
@@ -131,7 +133,7 @@ namespace Wander
             }
         }
 
-        private async void sightList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void sightList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var selectedItem = e.AddedItems[0];
             if (this.Frame != null)
@@ -157,6 +159,10 @@ namespace Wander
                 MapLayer.SetPosition(location, currentLocation);
                 drawWalkedRoute(wander.mapcontroller.locations());
             }));
+
+            datacontroller.session.route.waypoints = datacontroller.loadedSights;
+            datacontroller.session.routeWalked = datacontroller.getWalkedRouteConvertedToWanderLocation();
+            datacontroller.saveSession();
         }
 
         private async void internetConnectionEventHandler(object sender)
@@ -220,6 +226,11 @@ namespace Wander
                                 {
                                     pin.Background = new SolidColorBrush(Colors.Black);
                                     datacontroller.setSightSeenTrue(((String)geofence.Id).Split('_').First());
+                                    
+                                    if(pin.Text == "Eindpunt stadswandeling")
+                                    {
+                                        datacontroller.removeSession();
+                                    }
                                 }
                             }
                         }
