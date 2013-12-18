@@ -158,6 +158,32 @@
     <Content Include="Assets\GPS2.xml" />
     <Content Include="Assets\Farmer Dan - The Combine Harvester.mp3" />
     <Content Include="Assets\Logo.scale-100.png" />
+    <Content Include="Assets\photos\1.jpg" />
+    <Content Include="Assets\photos\10.jpg" />
+    <Content Include="Assets\photos\11.jpg" />
+    <Content Include="Assets\photos\12.jpg" />
+    <Content Include="Assets\photos\13.jpg" />
+    <Content Include="Assets\photos\14.jpg" />
+    <Content Include="Assets\photos\15.jpg" />
+    <Content Include="Assets\photos\16.jpg" />
+    <Content Include="Assets\photos\17.jpg" />
+    <Content Include="Assets\photos\18.jpg" />
+    <Content Include="Assets\photos\19.jpg" />
+    <Content Include="Assets\photos\2.jpg" />
+    <Content Include="Assets\photos\20.jpg" />
+    <Content Include="Assets\photos\21.jpg" />
+    <Content Include="Assets\photos\22.jpg" />
+    <Content Include="Assets\photos\23.jpg" />
+    <Content Include="Assets\photos\24.jpg" />
+    <Content Include="Assets\photos\25.jpg" />
+    <Content Include="Assets\photos\26.jpg" />
+    <Content Include="Assets\photos\3.jpg" />
+    <Content Include="Assets\photos\4.jpg" />
+    <Content Include="Assets\photos\5.jpg" />
+    <Content Include="Assets\photos\6.jpg" />
+    <Content Include="Assets\photos\7.jpg" />
+    <Content Include="Assets\photos\8.jpg" />
+    <Content Include="Assets\photos\9.jpg" />
     <Content Include="Assets\Pop It, Dont Drop It Extended Loop %28Team Service Announcement%29.mp4" />
     <Content Include="Assets\SmallLogo.scale-100.png" />
     <Content Include="Assets\SplashScreen.scale-100.png" />
@@ -209,7 +235,7 @@
     </Reference>
     <Reference Include="WanderLibrary, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\..\..\..\Dropbox\23TI2.2A1\Fase 3\Library\WanderLibrary.dll</HintPath>
+      <HintPath>..\..\..\Dropbox\23TI2.2A1\Fase 3\Library\WanderLibrary.dll</HintPath>
     </Reference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '12.0' ">

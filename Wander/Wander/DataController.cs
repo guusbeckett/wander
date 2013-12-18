@@ -103,7 +103,8 @@ namespace Wander
                        {
                            Lat = item.Element("Latitude").Value,
                            Long = item.Element("Longitude").Value,
-                           name = item.Element("Site").Value
+                           name = item.Element("Site").Value,
+                           fotos = item.Element("Fotos").Value
                        };
             string informationfile = "";
             switch(session.settings.language.name)
@@ -137,8 +138,23 @@ namespace Wander
                     if (dat.name.ToLower() == dat2.Name.ToLower())
                         text = dat2.Text;
                 }
+                Dictionary<WanderLib.Media.Media, WanderLib.Media.Media.Type> media = new Dictionary<WanderLib.Media.Media, WanderLib.Media.Media.Type>();
+                if (dat.fotos!="")
+                {
+                    if (dat.fotos.Contains(":"))
+                    {
+                        foreach(string medium in dat.fotos.Split(':'))
+                        {
+                            media.Add(new WanderLib.Media.Media(WanderLib.Media.Media.Type.PHOTO, "ms-appx:///Assets/photos/" + medium + ".jpg"), WanderLib.Media.Media.Type.PHOTO);
+                        }
+                    }
+                    else
+                    {
+                        media.Add(new WanderLib.Media.Media(WanderLib.Media.Media.Type.PHOTO, "ms-appx:///Assets/photos/" + dat.fotos + ".jpg"), WanderLib.Media.Media.Type.PHOTO);
+                    }
+                }
                 if (dat.name!="")
-                    list.Add(new WanderLib.Sight(null, dat.name, text, new WanderLib.Location(dat.Lat, dat.Long)) as WanderLib.Waypoint);
+                    list.Add(new WanderLib.Sight(media, dat.name, text, new WanderLib.Location(dat.Lat, dat.Long)) as WanderLib.Waypoint);
                 else
                     list.Add(new WanderLib.Waypoint(text, new WanderLib.Location(dat.Lat, dat.Long)));
             }
