@@ -12,6 +12,93 @@
 
     <Page.Resources>
         <!-- TODO: Delete this line if the key AppName is declared in App.xaml -->
+        <Style x:Key="ContextControlItemStyle" TargetType="ListBoxItem">
+            <Setter Property="Width" Value="32"/>
+            <Setter Property="Height" Value="20"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ListBoxItem">
+                        <Grid Background="{TemplateBinding Background}">
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup x:Name="CommonStates" >
+                                    <VisualState x:Name="Normal" />
+                                    <VisualState x:Name="PointerOver"/>
+                                </VisualStateGroup>
+                                <VisualStateGroup x:Name="SelectionStates" >
+                                    <VisualState x:Name="Unselected" />
+                                    <VisualState x:Name="Selected">
+                                        <Storyboard>
+                                            <ColorAnimation Storyboard.TargetName="fillColor" Storyboard.TargetProperty="(Rectangle.Fill).(SolidColorBrush.Color)" BeginTime="00:00:00" Duration="0" To="#FF58CC0C" />
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="SelectedUnfocused">
+                                        <Storyboard>
+                                            <ColorAnimation Storyboard.TargetName="fillColor" Storyboard.TargetProperty="(Rectangle.Fill).(SolidColorBrush.Color)" BeginTime="00:00:00" Duration="0"  To="#FF58CC0C" />
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="SelectedPressed">
+                                        <Storyboard>
+                                            <ColorAnimation Storyboard.TargetName="fillColor" Storyboard.TargetProperty="(Rectangle.Fill).(SolidColorBrush.Color)" BeginTime="00:00:00" Duration="0"  To="#FF58CC0C" />
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="SelectedPointerOver">
+                                        <Storyboard>
+                                            <ColorAnimation Storyboard.TargetName="fillColor" Storyboard.TargetProperty="(Rectangle.Fill).(SolidColorBrush.Color)" BeginTime="00:00:00" Duration="0"  To="#FF58CC0C" />
+                                        </Storyboard>
+                                    </VisualState>
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+                            <Rectangle x:Name="fillColor" IsHitTestVisible="False" Width="32" Height="20" Fill="#FFBFBFBF" Margin="5,0"/>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="ListBoxStyle1" TargetType="ListBox">
+            <Setter Property="Foreground" Value="{StaticResource ListBoxForegroundThemeBrush}"/>
+            <Setter Property="Background" Value="{StaticResource ListBoxBackgroundThemeBrush}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource ListBoxBorderThemeBrush}"/>
+            <Setter Property="BorderThickness" Value="{StaticResource ListBoxBorderThemeThickness}"/>
+            <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled"/>
+            <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto"/>
+            <Setter Property="ScrollViewer.HorizontalScrollMode" Value="Disabled"/>
+            <Setter Property="ScrollViewer.IsHorizontalRailEnabled" Value="True"/>
+            <Setter Property="ScrollViewer.VerticalScrollMode" Value="Enabled"/>
+            <Setter Property="ScrollViewer.IsVerticalRailEnabled" Value="True"/>
+            <Setter Property="ScrollViewer.ZoomMode" Value="Disabled"/>
+            <Setter Property="IsTabStop" Value="False"/>
+            <Setter Property="TabNavigation" Value="Once"/>
+            <Setter Property="FontFamily" Value="{StaticResource ContentControlThemeFontFamily}"/>
+            <Setter Property="FontSize" Value="{StaticResource ControlContentThemeFontSize}"/>
+            <Setter Property="ItemsPanel">
+                <Setter.Value>
+                    <ItemsPanelTemplate>
+                        <VirtualizingStackPanel/>
+                    </ItemsPanelTemplate>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ListBox">
+                        <Border x:Name="LayoutRoot" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}">
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup x:Name="CommonStates">
+                                    <VisualState x:Name="Normal"/>
+                                    <VisualState x:Name="Disabled"/>
+                                </VisualStateGroup>
+                                <VisualStateGroup x:Name="FocusStates">
+                                    <VisualState x:Name="Focused"/>
+                                    <VisualState x:Name="Unfocused"/>
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+                            <ScrollViewer x:Name="ScrollViewer" HorizontalScrollMode="{TemplateBinding ScrollViewer.HorizontalScrollMode}" HorizontalScrollBarVisibility="{TemplateBinding ScrollViewer.HorizontalScrollBarVisibility}" IsHorizontalRailEnabled="{TemplateBinding ScrollViewer.IsHorizontalRailEnabled}" IsVerticalRailEnabled="{TemplateBinding ScrollViewer.IsVerticalRailEnabled}" Padding="{TemplateBinding Padding}" TabNavigation="{TemplateBinding TabNavigation}" VerticalScrollBarVisibility="{TemplateBinding ScrollViewer.VerticalScrollBarVisibility}" VerticalScrollMode="{TemplateBinding ScrollViewer.VerticalScrollMode}" ZoomMode="{TemplateBinding ScrollViewer.ZoomMode}">
+                                <ItemsPresenter/>
+                            </ScrollViewer>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
         <x:String x:Key="AppName">My Application</x:String>
     </Page.Resources>
 
@@ -60,7 +147,24 @@
                 <MediaElement x:Name="mediaElement" HorizontalAlignment="Left" Height="221" Margin="10,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="450" AreTransportControlsEnabled="true" DoubleTapped="MediaElement_DoubleTapped" />
                 <Button x:Uid="Video" x:Name="video" Content="Video" HorizontalAlignment="Left" Margin="40,233,0,0" Grid.Row="1" VerticalAlignment="Top" RenderTransformOrigin="0.506,0.678" Background="Red" Click="video_Click"/>
                 <Button x:Uid="geluid" x:Name="geluid" Content="Geluids Fragment" HorizontalAlignment="Left" Margin="112,233,0,0" Grid.Row="1" VerticalAlignment="Top" Background="Red" Click="geluid_Click"/>
-                <Image x:Name="imageElement" HorizontalAlignment="Left" Height="180" Margin="48,63,0,0" VerticalAlignment="Top" Width="380"/>
+                <FlipView x:Name="imageElement" HorizontalAlignment="Left" Height="301" Margin="7,7,0,0" VerticalAlignment="Top" Width="456" BorderBrush="#FFF9F9F9" BorderThickness="1">
+                    <Image Source="Assets/Logo.scale-100.png" Margin="0,10,2,40" />
+                    <Image Source="Assets/VVV_logo.png" />
+                </FlipView>
+                <ListBox x:Name="ContextControl"
+                    SelectedItem="{Binding SelectedItem, ElementName=FlipView4, Mode=TwoWay}"
+                    Width="450"
+                    BorderThickness="0"
+                    Height="40"
+                    Background="#A5000000"
+                    ItemContainerStyle="{StaticResource ContextControlItemStyle}"
+                    IsTabStop="False" HorizontalAlignment="Center" Margin="10,265,10,10" Style="{StaticResource ListBoxStyle1}">
+                    <ListBox.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center"/>
+                        </ItemsPanelTemplate>
+                    </ListBox.ItemsPanel>
+                </ListBox>
             </Grid>
             <TextBox Name="tekstboxtest" Grid.Column="1" HorizontalAlignment="Left" TextWrapping="Wrap"  VerticalAlignment="Top" Height="623" Width="896" IsReadOnly="True"/>
         </Grid>

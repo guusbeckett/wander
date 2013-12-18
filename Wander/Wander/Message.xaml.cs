@@ -125,28 +125,47 @@ namespace Wander
                         }
                         else
                         {
-
-                            for (int i = 0; i < sight.media.Values.Count; i++)
+                            List<string> locationsPhoto = new List<string>();
+                            List<string> locationsAudio = new List<string>();
+                            List<string> locationsVideo = new List<string>();
+                            List<WanderLib.Media.Media.Type> list = new List<WanderLib.Media.Media.Type>(sight.media.Keys);
+                            foreach (var pair in sight.media)
                             {
-                                l.Add(sight.media.Values.ToArray()[i].fileLocation); //jim oplossing, GENIUS!
-                                System.Diagnostics.Debug.WriteLine(i);
+                                if (pair.Key == WanderLib.Media.Media.Type.PHOTO)
+                                {
+                                    locationsPhoto.Add(pair.Value.fileLocation);
+                                }
+                                else if (pair.Key == WanderLib.Media.Media.Type.VIDEO)
+                                {
+                                    locationsVideo.Add(pair.Value.fileLocation);
+                                }
+                                else if (pair.Key == WanderLib.Media.Media.Type.AUDIO)
+                                {
+                                    locationsAudio.Add(pair.Value.fileLocation);
+                                }
+                                else System.Diagnostics.Debug.WriteLine("Er is een unsupported file found.");
                             }
-                            mediaElement.Source = new Uri(l[1]);
                         }
-                        imageElement.Source = new BitmapImage(new Uri("ms-appx:///Assets/Logo.scale-100.png"));
-                        mediaElement.Source = new Uri("ms-appx:///Assets/Pop It, Dont Drop It Extended Loop (Team Service Announcement).mp4");
+                        System.Diagnostics.Debug.WriteLine(imageElement.ItemsSource);
                         mediaElement.AutoPlay = false;
                         break;
                     }
                 }
-            }
-             
-            
+            }   
+        }
+
+        void ContextControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            // Make sure that the navigation buttons are updated by forcing focus to the FlipView
+            imageElement.Focus(Windows.UI.Xaml.FocusState.Pointer);
+
         }
 
         protected override void OnNavigatedFrom(NavigationEventArgs e)
         {
             navigationHelper.OnNavigatedFrom(e);
+            ContextControl.ItemsSource = imageElement.Items;
+            ContextControl.SelectionChanged += ContextControl_SelectionChanged;
         }
 
         #endregion
