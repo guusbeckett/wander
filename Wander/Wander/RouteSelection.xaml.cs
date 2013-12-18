@@ -25,7 +25,7 @@ namespace Wander
     {
         private DataController datacontroller;
         private List<WanderLib.Route> Routes;
-        private MainPage page;
+        private MainPage main;
         private NavigationHelper navigationHelper;
         private ObservableDictionary defaultViewModel = new ObservableDictionary();
 
@@ -50,7 +50,7 @@ namespace Wander
         public RouteSelection(MainPage page)
         {
             this.InitializeComponent();
-            this.page = page;
+            this.main = page;
             fillRoutes();
             
         }
@@ -65,10 +65,7 @@ namespace Wander
             {
                 routelist.Add(r.name);
             }
-            if (datacontroller.selectedLanguage == null)
-               selectedIndex = 0;
-            else
-                selectedIndex = datacontroller.selectedLanguage;
+            selectedIndex = datacontroller.selectedLanguage;
             RoutesComboBox.ItemsSource = routelist;
             RoutesComboBox.SelectedIndex = selectedIndex;
         }
@@ -107,7 +104,7 @@ namespace Wander
 
         private void SelectButton_Click(object sender, RoutedEventArgs e)
         {
-            var _Frame = Window.Current.Content as Frame;
+            main.removeChild(this);
         }
     }
 }

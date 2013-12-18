@@ -160,7 +160,6 @@ namespace Wander
         {
             var dialog = new MessageDialog("Geluid tapped", "Geluid");
             await dialog.ShowAsync();
-            mediaElement.Source = new Uri("ms-appx:///Assets/Farmer Dan - The Combine Harvester.mp3");
         }
 
         private async void video_Click(object sender, RoutedEventArgs e)
