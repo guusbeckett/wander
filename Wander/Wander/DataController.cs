@@ -28,6 +28,12 @@ namespace Wander
             return instance;
         }
 
+        public DataController()
+        {
+            session = new WanderLib.Session();
+            session.settings = new WanderLib.Settings();
+        }
+
         public List<string> giveStringsOfLoadedSights()
         {
             if (loadedSights == null)
@@ -61,7 +67,7 @@ namespace Wander
                            name = item.Element("Site").Value
                        };
             string informationfile = "";
-            switch(session.language.name)
+            switch(session.settings.language.name)
             {
                 case "English":
                     informationfile = "Languages/en/information.xml";
