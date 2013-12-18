@@ -145,6 +145,7 @@ namespace Wander
                                 }
                                 else System.Diagnostics.Debug.WriteLine("Er is een unsupported file found.");
                             }
+                            mediaElement.Source = new Uri("ms-appx:///Assets/VideoVoorSample.mp4");
                             imageElement.ItemsSource = locationsPhoto;
                         }
                         mediaElement.AutoPlay = false;

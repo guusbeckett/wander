@@ -10,11 +10,11 @@
     d:DesignWidth="400">
 
     <Grid x:Name="GridSetting">
-        <Rectangle Fill="#FFC31616" HorizontalAlignment="Left" Height="100" Margin="334,220,-358,-20" VerticalAlignment="Top" Width="424"/>
-        <Button x:Name="SelectButton" Content="Select" HorizontalAlignment="Left" Margin="611,264,-328,-12" VerticalAlignment="Top" Click="SelectButton_Click" Width="117" Height="48" FontSize="16.667" BorderBrush="White"/>
+        <Rectangle Fill="#FFC31616" HorizontalAlignment="Left" Height="100" Margin="401,301,-425,-101" VerticalAlignment="Top" Width="424"/>
+        <Button x:Name="SelectButton" Content="Select" HorizontalAlignment="Left" Margin="678,345,-395,-93" VerticalAlignment="Top" Click="SelectButton_Click" Width="117" Height="48" FontSize="16.667" BorderBrush="White"/>
         <Button HorizontalAlignment="Left" Margin="431,-42,-93,0" VerticalAlignment="Top" Width="62" Height="45" BorderBrush="Transparent" Foreground="Transparent"/>
-        <ComboBox x:Name="RoutesComboBox" HorizontalAlignment="Left" Margin="363,270,-199,-9" VerticalAlignment="Top" Width="236" Foreground="White" Background="#00C31616" Height="39" SelectionChanged="RoutesComboBox_SelectionChanged" BorderBrush="White" IsDropDownOpen="True" PlaceholderText="Language"/>
-        <TextBox x:Uid="routeSetting" HorizontalAlignment="Left" Margin="351,232,-161,0" TextWrapping="Wrap" Text="Route selecteren" VerticalAlignment="Top" Foreground="White" Background="Transparent" BorderBrush="Transparent" FontSize="20.667" IsReadOnly="True" Width="210" Height="40"/>
+        <ComboBox x:Name="RoutesComboBox" HorizontalAlignment="Left" Margin="430,351,-266,-90" VerticalAlignment="Top" Width="236" Foreground="White" Background="#00C31616" Height="39" SelectionChanged="RoutesComboBox_SelectionChanged" BorderBrush="White" IsDropDownOpen="True" PlaceholderText="Language"/>
+        <TextBox x:Uid="routeSetting" HorizontalAlignment="Left" Margin="418,313,-228,-53" TextWrapping="Wrap" Text="Route selecteren" VerticalAlignment="Top" Foreground="White" Background="Transparent" BorderBrush="Transparent" FontSize="20.667" IsReadOnly="True" Width="210" Height="40"/>
 
     </Grid>
 </UserControl>

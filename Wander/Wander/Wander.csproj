@@ -188,6 +188,7 @@
     <Content Include="Assets\SmallLogo.scale-100.png" />
     <Content Include="Assets\SplashScreen.scale-100.png" />
     <Content Include="Assets\StoreLogo.scale-100.png" />
+    <Content Include="Assets\VideoVoorSample.mp4" />
     <Content Include="Images\AGS.png" />
     <Content Include="Images\setting.png" />
     <Content Include="Assets\SettingButton.png" />
