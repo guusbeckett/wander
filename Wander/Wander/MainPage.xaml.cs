@@ -36,6 +36,8 @@ namespace Wander
         Geolocator geo = null;
         Location currentLocation;
         Pushpin location = new Pushpin();
+        wander wander = new wander();
+        MapPolyline walked = new MapPolyline();
 
         public MainPage()
         {
@@ -53,9 +55,14 @@ namespace Wander
             geo.DesiredAccuracy = PositionAccuracy.High;
             geo.PositionChanged += geolocator_PositionChanged;
             bingMap.Children.Add(location);
+
+            //resume = new ResumeSession();
+            //GridRoot.Children.Add(resume);
             datacontroller.setSightsWithGeofences(bingMap);
             drawRoute();
             setPinListeners();
+            polygonLayer.Shapes.Add(walked);
+            //bingMap.Children.Add(walked);
         }
 
         public async void findSession()
@@ -127,15 +134,20 @@ namespace Wander
 
         private async void geolocator_PositionChanged(Geolocator sender, PositionChangedEventArgs args)
         {
+            
             await this.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, new DispatchedHandler(
             () =>
             {
+                wander.mapcontroller.addPointToListIfDistanceToPreviousIsGreatEnough(new Location(args.Position.Coordinate.Latitude, args.Position.Coordinate.Longitude));
                 if (currentLocation == null)
                 {
                     currentLocation = new Location(args.Position.Coordinate.Latitude, args.Position.Coordinate.Longitude);
                     bingMap.SetView(currentLocation, 16);
                 }
+                else
+                    currentLocation = new Location(args.Position.Coordinate.Latitude, args.Position.Coordinate.Longitude);
                 MapLayer.SetPosition(location, currentLocation);
+                drawWalkedRoute(wander.mapcontroller.locations());
             }));
         }
 
@@ -173,6 +185,26 @@ namespace Wander
                     }
                 }
             });
+        }
+
+        private void drawWalkedRoute(List<Location> locs)
+        {
+            //walked = new MapPolyline();
+            walked.Color = Windows.UI.Colors.Blue;
+            walked.Width = 3;
+
+            walked.Locations = new LocationCollection();
+
+            foreach (Bing.Maps.Location location in locs)
+            {
+                walked.Locations.Add(location);
+            }
+
+
+            walked.Visible = true;
+
+
+            
         }
 
         private void drawRoute()

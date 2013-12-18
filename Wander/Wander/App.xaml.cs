@@ -34,8 +34,8 @@ namespace Wander
             Windows.Globalization.ApplicationLanguages.PrimaryLanguageOverride = "nl";
             this.Suspending += OnSuspending;
             DataController control = DataController.getInstance();
-            control.session = new WanderLib.Session();
-            control.session.language = new WanderLib.Language("Nederlands");
+            //control.session = new WanderLib.Session();
+            control.session.settings.language = new WanderLib.Language("Nederlands");
         }
 
         /// <summary>

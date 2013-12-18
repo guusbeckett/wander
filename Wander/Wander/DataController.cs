@@ -31,6 +31,12 @@ namespace Wander
         public void setFirstTime(Boolean boolean)
         {
             this.firstTimeStart = boolean;
+		}
+		
+        public DataController()
+        {
+            session = new WanderLib.Session();
+            session.settings = new WanderLib.Settings();
         }
 
         public List<string> giveStringsOfLoadedSights()
@@ -73,7 +79,7 @@ namespace Wander
                            name = item.Element("Site").Value
                        };
             string informationfile = "";
-            switch(session.language.name)
+            switch(session.settings.language.name)
             {
                 case "English":
                     informationfile = "Languages/en/information.xml";
