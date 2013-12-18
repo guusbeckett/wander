@@ -14,7 +14,7 @@ namespace WanderLib.Media
         
         public Media(Type type, string fileLocation)
         {
-            fileLocation = "";
+            this.fileLocation = fileLocation;
         }
 
 
