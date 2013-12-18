@@ -45,7 +45,7 @@ namespace Wander
 
         public MainPage()
         {
-            this.InitializeComponent(); 
+            this.InitializeComponent();
             GeofenceMonitor.Current.Geofences.Clear();
             GeofenceMonitor.Current.GeofenceStateChanged += Current_GeofenceStateChanged;
             polygonLayer = new MapShapeLayer();
@@ -67,6 +67,7 @@ namespace Wander
             polygonLayer.Shapes.Add(walked);
             //bingMap.Children.Add(walked);
             NetworkInformation.NetworkStatusChanged += internetConnectionEventHandler;
+        }
 
         public async void findSession()
         {
