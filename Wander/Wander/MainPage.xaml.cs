@@ -8,6 +8,7 @@ using Windows.Devices.Geolocation;
 using Windows.Devices.Geolocation.Geofencing;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.Networking.Connectivity;
 using Windows.UI;
 using Windows.UI.Core;
 using Windows.UI.Popups;
@@ -62,6 +63,7 @@ namespace Wander
             setPinListeners();
             polygonLayer.Shapes.Add(walked);
             //bingMap.Children.Add(walked);
+            NetworkInformation.NetworkStatusChanged += internetConnectionEventHandler;
         }
 
 
@@ -73,7 +75,6 @@ namespace Wander
             {
                 GridRoot.Children.Add(settings);
             }
-            
         }
 
         public void setHelp(Boolean refresh)
@@ -139,6 +140,34 @@ namespace Wander
                 MapLayer.SetPosition(location, currentLocation);
                 drawWalkedRoute(wander.mapcontroller.locations());
             }));
+        }
+
+        private async void internetConnectionEventHandler(object sender)
+        {
+
+            if (!IsInternet())
+            {
+                await this.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, new DispatchedHandler(
+            () =>
+            {
+                try
+                {
+                    var loader = new Windows.ApplicationModel.Resources.ResourceLoader();
+                    string content = loader.GetString("internetErrorContent");
+                    string title = loader.GetString("internetErrorHeader");
+                    new MessageDialog(content, title).ShowAsync();
+                }
+                catch { }
+            }));
+
+            }
+        }
+        
+        public static bool IsInternet()
+        {
+            ConnectionProfile connections = NetworkInformation.GetInternetConnectionProfile();
+            bool internet = connections != null && connections.GetNetworkConnectivityLevel() == NetworkConnectivityLevel.InternetAccess;
+            return internet;
         }
 
         async void Current_GeofenceStateChanged(GeofenceMonitor sender, object args)

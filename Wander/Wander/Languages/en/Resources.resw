@@ -149,4 +149,10 @@
   <data name="yesButton.Content" xml:space="preserve">
     <value>Yes</value>
   </data>
+  <data name="internetErrorContent" xml:space="preserve">
+    <value>Internet connection lost.</value>
+  </data>
+  <data name="internetErrorHeader" xml:space="preserve">
+    <value>No internet connection</value>
+  </data>
 </root>

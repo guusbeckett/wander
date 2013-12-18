@@ -151,4 +151,10 @@
     <value>Ja</value>
     <comment>Yes button resume session</comment>
   </data>
+  <data name="internetErrorContent" xml:space="preserve">
+    <value>Verbindig met het internet is verbroken.</value>
+  </data>
+  <data name="internetErrorHeader" xml:space="preserve">
+    <value>Geen internetverbinding</value>
+  </data>
 </root>

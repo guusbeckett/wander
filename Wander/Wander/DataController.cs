@@ -8,7 +8,10 @@ using System.Text;
 using System.Threading.Tasks;
 using Windows.Devices.Geolocation;
 using Windows.Devices.Geolocation.Geofencing;
+using Windows.Networking.Connectivity;
 using Windows.Storage;
+using Windows.UI.Core;
+using Windows.UI.Popups;
 using Windows.UI.Xaml.Input;
 
 namespace Wander
@@ -34,7 +37,12 @@ namespace Wander
         {
             session = new WanderLib.Session();
             session.settings = new WanderLib.Settings();
+           
         }
+
+
+
+
 
         public List<string> giveStringsOfLoadedSights()
         {
@@ -174,6 +182,16 @@ namespace Wander
             catch (Exception e) { System.Diagnostics.Debug.WriteLine(e.Message); }
         }
 
+        public async void removeSession()
+        {
+            var folder = Windows.Storage.ApplicationData.Current.LocalFolder;
+            try
+            {
+                await folder.DeleteAsync(StorageDeleteOption.PermanentDelete);
+            }
+            catch (Exception e) { System.Diagnostics.Debug.WriteLine(e.Message); }
+        }
+
 
         //public async void calculateRoute(Map bingMap)
         //{
@@ -207,6 +225,8 @@ namespace Wander
         //    // Calculate route directions
         //    Bing.Maps.Directions.RouteResponse response = await directionsManager.CalculateDirectionsAsync();
         //}
+
+
 
         public List<Location> getWaypointLocations()
         {
