@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using Windows;
 using Windows.Devices.Geolocation;
 using Windows.Devices.Geolocation.Geofencing;
 using Windows.Foundation;
@@ -160,6 +161,9 @@ namespace Wander
                         {
                             var message = new MessageDialog(((String)geofence.Id).Split('_').First(), "U bent in de buurt van de volgende locatie;");
                             await message.ShowAsync();
+
+                            playSound.Play();
+                            
                         }
                         else if (geofence.Id.EndsWith("_5m"))
                         {

@@ -136,6 +136,7 @@
     <Compile Include="ResumeSession.xaml.cs">
       <DependentUpon>ResumeSession.xaml</DependentUpon>
     </Compile>
+    <Compile Include="SoundEffect.cs" />
     <Compile Include="ViewSettings.xaml.cs">
       <DependentUpon>ViewSettings.xaml</DependentUpon>
     </Compile>
@@ -151,6 +152,7 @@
     <None Include="Wander_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\mysound.wav" />
     <Content Include="Assets\GPS2.xml" />
     <Content Include="Assets\Farmer Dan - The Combine Harvester.mp3" />
     <Content Include="Assets\Logo.scale-100.png" />
