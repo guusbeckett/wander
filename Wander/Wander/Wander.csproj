@@ -237,11 +237,7 @@
     </Reference>
     <Reference Include="WanderLibrary, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-<<<<<<< HEAD
       <HintPath>Z:\Dropbox\23TI2.2A1\Fase 3\Library\WanderLibrary.dll</HintPath>
-=======
-      <HintPath>..\..\..\..\..\..\..\..\..\Dropbox\23TI2.2A1\Fase 3\Library\WanderLibrary.dll</HintPath>
->>>>>>> 77ad9c58d72cf6321836ecd4abbc324d56605cfa
     </Reference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '12.0' ">
