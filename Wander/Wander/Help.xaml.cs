@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using Windows.ApplicationModel.Resources;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
@@ -28,18 +29,19 @@ namespace Wander
             this.page = page;
             datacontroller = DataController.getInstance();
             this.refresh = refresh;
+            updateStringWithCurrentLanguage();
         }
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
-            if (refresh)
-            {
-                var _Frame = Window.Current.Content as Frame;
-                _Frame.Navigate(_Frame.Content.GetType());
-                _Frame.GoBack();
-                refresh = false;
-            }
             page.removeChild(this);
+        }
+
+        private void updateStringWithCurrentLanguage()
+        {
+            ResourceLoader rl = new ResourceLoader();
+            helpBox.DataContext = rl.GetString("helpBox");
+            needHelp.DataContext = rl.GetString("NeedHelp");
         }
 
     }

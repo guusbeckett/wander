@@ -6,6 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows;
+using Windows.ApplicationModel.Resources;
 using Windows.Devices.Geolocation;
 using Windows.Devices.Geolocation.Geofencing;
 using Windows.Foundation;
@@ -69,6 +70,7 @@ namespace Wander
             //bingMap.Children.Add(walked);
 
             NetworkInformation.NetworkStatusChanged += internetConnectionEventHandler;
+            updateStringsWithCurrentLanguage();
         }
 
         public void findSession()
@@ -96,6 +98,7 @@ namespace Wander
             {
                 GridRoot.Children.Add(settings);
             }
+            settings.updateWithCurrentLanguage();
         }
 
         public void setHelp(Boolean refresh)
@@ -195,6 +198,13 @@ namespace Wander
             ConnectionProfile connections = NetworkInformation.GetInternetConnectionProfile();
             bool internet = connections != null && connections.GetNetworkConnectivityLevel() == NetworkConnectivityLevel.InternetAccess;
             return internet;
+        }
+
+        public void updateStringsWithCurrentLanguage()
+        {
+            ResourceLoader rl = new ResourceLoader();
+            directionTextBox.DataContext = rl.GetString("Direction");
+
         }
 
         async void Current_GeofenceStateChanged(GeofenceMonitor sender, object args)

@@ -15,6 +15,7 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using Windows.UI.Xaml.Media.Imaging;
+using Windows.ApplicationModel.Resources;
 
 // The Basic Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234237
 
@@ -57,7 +58,7 @@ namespace Wander
             this.navigationHelper.LoadState += navigationHelper_LoadState;
             this.navigationHelper.SaveState += navigationHelper_SaveState;
             dataController = DataController.getInstance();
-            
+            updateStringsWithCurrentLanguage();
             
         }
 
@@ -185,6 +186,13 @@ namespace Wander
         {
             var dialog = new MessageDialog("Video tapped", "Video");
             await dialog.ShowAsync();
+        }
+
+        public void updateStringsWithCurrentLanguage()
+        {
+            ResourceLoader rl = new ResourceLoader();
+            video.Content = rl.GetString("geluid");
+            geluid.Content = rl.GetString("Video");
         }
 
    
