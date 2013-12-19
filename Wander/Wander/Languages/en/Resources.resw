@@ -117,39 +117,37 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Direction.Text" xml:space="preserve">
+  <data name="direction" xml:space="preserve">
     <value>Directions</value>
     <comment>Titel van routebeschrijving</comment>
   </data>
-  <data name="geluid.Content" xml:space="preserve">
-    <value>Sound Clip</value>
+  <data name="geluid" xml:space="preserve">
+    <value>Sound clip</value>
     <comment>Geluids Fragment knop</comment>
   </data>
-  <data name="helpBox.Text" xml:space="preserve">
-    <value>Engels Help menu</value>
+  <data name="helpBox" xml:space="preserve">
+    <value>Engels Menu</value>
     <comment>Help box</comment>
   </data>
-  <data name="NeedHelp.Text" xml:space="preserve">
-    <value>Need some help?</value>
+  <data name="NeedHelp" xml:space="preserve">
+    <value>Need help?</value>
     <comment>Titel van helpBox</comment>
   </data>
-  <data name="Video.Content" xml:space="preserve">
+  <data name="Video" xml:space="preserve">
     <value>Video</value>
     <comment>Video Fragment Knop</comment>
   </data>
-  <data name="taalSetting.Text" xml:space="preserve">
-    <value>Languages</value>
-    <comment>Titel van settings menu</comment>
+  <data name="taalSetting" xml:space="preserve">
+    <value>Language</value>
   </data>
-  <data name="noButton.Content" xml:space="preserve">
+  <data name="noButton" xml:space="preserve">
     <value>No</value>
     <comment>no button</comment>
   </data>
-  <data name="resumeSession.Text" xml:space="preserve">
-    <value>Would you like to resume the last session?</value>
-    <comment>Titel last session</comment>
+  <data name="resumeSession" xml:space="preserve">
+    <value>Resume last session?</value>
   </data>
-  <data name="yesButton.Content" xml:space="preserve">
+  <data name="yesButton" xml:space="preserve">
     <value>Yes</value>
     <comment>Yes button resume session</comment>
   </data>

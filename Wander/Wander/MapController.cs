@@ -8,8 +8,8 @@ namespace Wander
 {
     class MapController
     {
-        private MapController instance;
-        private List<Bing.Maps.Location> previouspoints;
+        private static MapController instance;
+        public List<Bing.Maps.Location> previouspoints;
 
         public void addPointToListIfDistanceToPreviousIsGreatEnough(Bing.Maps.Location location)
         {
@@ -40,7 +40,7 @@ namespace Wander
             return previouspoints;
         }
 
-        public MapController getInstance()
+        public static MapController getInstance()
         {
             if (instance == null)
                 instance = new MapController();

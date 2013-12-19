@@ -10,10 +10,11 @@
     d:DesignWidth="400">
 
     <Grid>
-        <Rectangle Fill="#FFC31616" HorizontalAlignment="Left" Height="150" Margin="403,300,-605,-150" VerticalAlignment="Top" Width="602"/>
-        <TextBox x:Uid="resumeSession" HorizontalAlignment="Left" Margin="418,316,-306,-65" TextWrapping="Wrap" Text="{Binding}" VerticalAlignment="Top" Foreground="White" Background="Transparent" BorderBrush="Transparent" FontSize="20.667" IsReadOnly="True" Width="288" Height="49"/>
-        <Button x:Name="Button_Yes" x:Uid="yesButton" HorizontalAlignment="Left" Margin="508,377,-231,-123" VerticalAlignment="Top" Width="123" Background="#FF3ED317" Height="46" Click="YesButton_Click"/>
-        <Button x:Name="Button_No" x:Uid="noButton" HorizontalAlignment="Left" Margin="745,377,-468,-123" VerticalAlignment="Top" Width="123" Background="#FF920A0A" Height="46" Click="NoButton_Click"/>
+
+        <Rectangle Fill="#FFC31616" HorizontalAlignment="Left" Height="150" Margin="403,283,-605,-133" VerticalAlignment="Top" Width="602"/>
+        <TextBox Name ="resumeSession" HorizontalAlignment="Left" Margin="418,299,-306,-48" TextWrapping="Wrap" Text="{Binding}" VerticalAlignment="Top" Foreground="White" Background="Transparent" BorderBrush="Transparent" FontSize="20.667" IsReadOnly="True" Width="288" Height="49"/>
+        <Button x:Name="Button_Yes" Content ="{Binding}" HorizontalAlignment="Left" Margin="508,360,-231,-106" VerticalAlignment="Top" Width="123" Background="#FF3ED317" Height="46" Click="YesButton_Click"/>
+        <Button x:Name="Button_No" Content ="{Binding}" HorizontalAlignment="Left" Margin="745,360,-468,-106" VerticalAlignment="Top" Width="123" Background="#FF920A0A" Height="46" Click="NoButton_Click"/>
 
     </Grid>
 </UserControl>

@@ -10,21 +10,24 @@ using Windows.Devices.Geolocation;
 using Windows.Devices.Geolocation.Geofencing;
 using Windows.Networking.Connectivity;
 using Windows.Storage;
+using Windows.UI;
 using Windows.UI.Core;
 using Windows.UI.Popups;
 using Windows.UI.Xaml.Input;
+using Windows.UI.Xaml.Media;
 
 namespace Wander
 {
     class DataController
     {
         private static DataController instance;
-        private List<WanderLib.Waypoint> loadedSights { get; set; }
+        public List<WanderLib.Waypoint> loadedSights { get; set; }
         private List<WanderLib.Sight> sightsonly { get; set; }
         public WanderLib.Session session { get; set; }
         public int selectedLanguage { get; set; }
         public Boolean firstTimeStart = true;
         public Double distance { get; set; }
+        public bool locking = true;
 
 
 
@@ -44,7 +47,9 @@ namespace Wander
         {
             session = new WanderLib.Session();
             session.settings = new WanderLib.Settings();
-           
+            session.settings.language = new WanderLib.Language("Nederlands");
+            session.route = new WanderLib.Route("historische kilometer", giveAllWaypointsOnRoute(), 20);
+            //session.routeWalked = null;
         }
 
 
@@ -76,12 +81,16 @@ namespace Wander
 		}
         public void setSightSeenTrue(String geofence)
         {
-            foreach(WanderLib.Sight sight in loadedSights)
+            foreach(WanderLib.Waypoint sight in loadedSights)
             {
-                if (sight.name == geofence)
+                if (sight.GetType() == (typeof(WanderLib.Sight)))
                 {
-                    sight.isVisited = true;
-                    break;
+                    WanderLib.Sight convertedSight = ((WanderLib.Sight)sight);
+                    if (convertedSight.name == geofence)
+                    {
+                        convertedSight.isVisited = true;
+                        break;
+                    }
                 }
             }
         }
@@ -128,7 +137,6 @@ namespace Wander
                            Text = item.Element("Text").Value,
 
                        };
-            //string lorips = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur at rhoncus sem. Etiam placerat aliquet dapibus. Nulla nisi massa, iaculis sed nibh non, consequat semper orci. Donec id magna turpis. Aliquam consequat lorem a sapien consequat vulputate. Duis id nulla ultricies, mollis justo id, posuere sem. Donec gravida felis at felis malesuada pretium. Sed lorem purus, eleifend commodo tellus non, vulputate imperdiet mauris. Pellentesque vel sapien a nunc lacinia molestie non ac risus. Duis sit amet mi et massa dignissim tristique. Ut id posuere quam, a ornare felis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nunc feugiat augue diam, at pulvinar dui mattis et. Donec scelerisque blandit tellus, luctus hendrerit arcu volutpat quis. Suspendisse nec interdum est. Curabitur risus metus, tincidunt eu dolor ut, consequat imperdiet nulla.\n\nVestibulum vehicula at odio a dapibus. Donec sodales purus ligula, a varius nunc bibendum quis. Vestibulum at velit consequat, volutpat metus nec, suscipit lacus. Suspendisse venenatis magna ac cursus auctor. Praesent a nisl nisi. Nunc non purus pulvinar, mollis eros vel, posuere nisi. In eu sapien vitae metus lobortis hendrerit id id augue. Nullam mauris ligula, volutpat vel interdum ac, viverra at nunc. Donec imperdiet vestibulum urna, sed dignissim enim tincidunt a. Nam tempus pellentesque est ut tempus.\n\nSuspendisse potenti. Pellentesque felis dolor, faucibus at volutpat id, ullamcorper in purus. Quisque urna nulla, dignissim quis molestie quis, egestas sed purus. Integer in urna ut nisi eleifend interdum non sed metus. Aliquam nulla nunc, mollis at consequat at, ultricies quis nulla. Donec auctor lacus nisi, nec congue libero cursus at. Suspendisse potenti. In eleifend neque ut sollicitudin porta. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.\n\nSed a magna in lacus bibendum laoreet. Interdum et malesuada fames ac ante ipsum primis in faucibus. Maecenas non mollis libero. Vestibulum porta ultricies libero, quis malesuada nisi scelerisque vitae. Morbi ut laoreet tortor, sed vehicula nisl. Phasellus aliquet arcu id orci ultricies, tristique lacinia arcu ultrices. Vestibulum iaculis tortor interdum, hendrerit est sit amet, varius felis. Suspendisse a orci vel ante placerat volutpat quis vitae nisl. Vestibulum et placerat magna.\n\nSed pulvinar at arcu in consequat. Ut eleifend fermentum arcu a imperdiet. Curabitur tempus pulvinar elit. Phasellus euismod, justo in tincidunt scelerisque, lorem turpis ornare elit, sit amet congue odio mi sit amet nisi. Fusce at justo enim. Donec aliquam vel velit at faucibus. Sed imperdiet iaculis orci sit amet sollicitudin. Ut rutrum magna orci.";
             List<WanderLib.Waypoint> list = new List<WanderLib.Waypoint>();
             foreach(var dat in data)
             {
@@ -176,26 +184,33 @@ namespace Wander
 
                         Pushpin pin = new Pushpin();
 
-                        Geofence geofence = new Geofence(sight.name+"_20m", new Geocircle(
-                        new BasicGeoposition
+                        if (!sight.isVisited)
                         {
-                            Altitude = 0.0,
-                            Latitude = location.Latitude,
-                            Longitude = location.Longitude
-                        },
-                        20), MonitoredGeofenceStates.Entered, true, new TimeSpan(5));
+                            Geofence geofence = new Geofence(sight.name + "_20m", new Geocircle(
+                            new BasicGeoposition
+                            {
+                                Altitude = 0.0,
+                                Latitude = location.Latitude,
+                                Longitude = location.Longitude
+                            },
+                            20), MonitoredGeofenceStates.Entered, true, new TimeSpan(5));
 
-                        GeofenceMonitor.Current.Geofences.Add(geofence);
+                            GeofenceMonitor.Current.Geofences.Add(geofence);
 
-                        geofence = new Geofence(sight.name + "_5m", new Geocircle(
-                        new BasicGeoposition
+                            geofence = new Geofence(sight.name + "_5m", new Geocircle(
+                            new BasicGeoposition
+                            {
+                                Altitude = 0.0,
+                                Latitude = location.Latitude,
+                                Longitude = location.Longitude
+                            },
+                            20), MonitoredGeofenceStates.Entered, true, new TimeSpan(5));
+                            GeofenceMonitor.Current.Geofences.Add(geofence);
+                        }
+                        else
                         {
-                            Altitude = 0.0,
-                            Latitude = location.Latitude,
-                            Longitude = location.Longitude
-                        },
-                        20), MonitoredGeofenceStates.Entered, true, new TimeSpan(5));
-                        GeofenceMonitor.Current.Geofences.Add(geofence);
+                            pin.Background = new SolidColorBrush(Colors.Black); 
+                        }
 
                         pin.Text = sight.name;
                         MapLayer.SetPosition(pin, location);
@@ -206,36 +221,62 @@ namespace Wander
 
         public async void saveSession()
         {
-            var folder = Windows.Storage.ApplicationData.Current.LocalFolder;
-            try
+            if (!locking)
             {
-                using (Stream xmlstreamAwait = await folder.OpenStreamForWriteAsync("session.xml", CreationCollisionOption.ReplaceExisting))
-                    Serializer.Serialize<WanderLib.Session>(xmlstreamAwait, session);
+                var folder = Windows.Storage.ApplicationData.Current.LocalFolder;
+                try
+                {
+                    using (Stream xmlstreamAwait = await folder.OpenStreamForWriteAsync("session.bin", CreationCollisionOption.ReplaceExisting))
+                        Serializer.Serialize<WanderLib.Session>(xmlstreamAwait, session);
+                }
+                catch (Exception e) { System.Diagnostics.Debug.WriteLine(e.Message); }
             }
-            catch (Exception e) { System.Diagnostics.Debug.WriteLine(e.Message); }
             
         }
 
-        public async void openSession()
+        public async void openSession(MainPage page=null)
         {
-            var folder = Windows.Storage.ApplicationData.Current.LocalFolder;
-            try
+            if (!locking)
             {
-                using (Stream xmlstreamAwait = await folder.OpenStreamForWriteAsync("session.xml", CreationCollisionOption.ReplaceExisting))
-                    DataController.instance.session = Serializer.Deserialize<WanderLib.Session>(xmlstreamAwait);
+                var folder = Windows.Storage.ApplicationData.Current.LocalFolder;
+                //try
+                //{
+                    using (Stream xmlstreamAwait = await folder.OpenStreamForReadAsync("session.bin"))
+                    {
+                        DataController.instance.session = Serializer.Deserialize<WanderLib.Session>(xmlstreamAwait);
+                        loadedSights = session.route.waypoints;
+                        List<Location> list = new List<Location>();
+                        LocationConverter converter = new LocationConverter();
+                        if (session.routeWalked != null)
+                        {
+                            foreach (WanderLib.Location loc in session.routeWalked)
+                            {
+                                list.Add(converter.convertToBingLocation(loc));
+                            }
+                        }
+                        MapController.getInstance().previouspoints = list;
+                        if (page!=null)
+                        {
+                            page.sessionstarted();
+                        }
+                    }
+                //}
+                //catch (Exception e) { System.Diagnostics.Debug.WriteLine(e.Message); }
             }
-            catch (Exception e) { System.Diagnostics.Debug.WriteLine(e.Message); }
         }
 
 
         public async void removeSession()
         {
-            var folder = Windows.Storage.ApplicationData.Current.LocalFolder;
-            try
+            if (!locking)
             {
-                await folder.DeleteAsync(StorageDeleteOption.PermanentDelete);
+                var folder = Windows.Storage.ApplicationData.Current.LocalFolder;
+                try
+                {
+                    await folder.DeleteAsync(StorageDeleteOption.PermanentDelete);
+                }
+                catch (Exception e) { System.Diagnostics.Debug.WriteLine(e.Message); }
             }
-            catch (Exception e) { System.Diagnostics.Debug.WriteLine(e.Message); }
         }
 
 
@@ -325,7 +366,24 @@ namespace Wander
         {
             return firstTimeStart;
         }
+
+        public List<WanderLib.Location> getWalkedRouteConvertedToWanderLocation()
+        {
+            MapController mapController = MapController.getInstance();
+            LocationConverter converter = new LocationConverter();
+
+            List<Bing.Maps.Location> previouspoints = mapController.locations();
+
+            List<WanderLib.Location> locations = new List<WanderLib.Location>();
+            if (previouspoints != null && previouspoints.Count > 0)
+            {
+                foreach (Bing.Maps.Location location in previouspoints)
+                {
+                    locations.Add(converter.convertToWanderLocation(location));
+                }
+            }
+
+            return locations;
+        }
     }
-
-
 }

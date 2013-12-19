@@ -6,6 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows;
+using Windows.ApplicationModel.Resources;
 using Windows.Devices.Geolocation;
 using Windows.Devices.Geolocation.Geofencing;
 using Windows.Foundation;
@@ -52,25 +53,40 @@ namespace Wander
             bingMap.ShapeLayers.Add(polygonLayer);
             datacontroller = DataController.getInstance();
             findSession();
-            sightList.ItemsSource = datacontroller.giveStringsOfLoadedSights();
+            
+            this.NavigationCacheMode = Windows.UI.Xaml.Navigation.NavigationCacheMode.Enabled;
 
-            geo = new Geolocator();
-            geo.DesiredAccuracy = PositionAccuracy.High;
-            geo.PositionChanged += geolocator_PositionChanged;
+            
             bingMap.Children.Add(location);
 
             //resume = new ResumeSession();
             //GridRoot.Children.Add(resume);
+            
+            polygonLayer.Shapes.Add(walked);
+            //bingMap.Children.Add(walked);
+
+            NetworkInformation.NetworkStatusChanged += internetConnectionEventHandler;
+            updateStringsWithCurrentLanguage();
+        }
+
+        public void sessionstarted()
+        {
+            sightList.ItemsSource = datacontroller.giveStringsOfLoadedSights();
             datacontroller.setSightsWithGeofences(bingMap);
             drawRoute();
             setPinListeners();
-            polygonLayer.Shapes.Add(walked);
-            //bingMap.Children.Add(walked);
-            NetworkInformation.NetworkStatusChanged += internetConnectionEventHandler;
         }
 
-        public async void findSession()
+        public void startGeo()
         {
+            geo = new Geolocator();
+            geo.DesiredAccuracy = PositionAccuracy.High;
+            geo.PositionChanged += geolocator_PositionChanged;
+        }
+
+        public void findSession()
+        {
+            // session.xml
             if (datacontroller.getFirstTime() == true)
             {
                 resume = new ResumeSession(this);
@@ -93,6 +109,7 @@ namespace Wander
             {
                 GridRoot.Children.Add(settings);
             }
+            settings.updateWithCurrentLanguage();
         }
 
         public void setHelp(Boolean refresh)
@@ -132,7 +149,7 @@ namespace Wander
             }
         }
 
-        private async void sightList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void sightList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var selectedItem = e.AddedItems[0];
             if (this.Frame != null)
@@ -158,6 +175,15 @@ namespace Wander
                 MapLayer.SetPosition(location, currentLocation);
                 drawWalkedRoute(wander.mapcontroller.locations());
             }));
+
+
+            if (!datacontroller.locking && datacontroller.loadedSights != null)
+            {
+                datacontroller.session.route.waypoints = datacontroller.loadedSights;
+                datacontroller.session.routeWalked = datacontroller.getWalkedRouteConvertedToWanderLocation();
+                datacontroller.saveSession();
+            }
+           
         }
 
         private async void internetConnectionEventHandler(object sender)
@@ -188,6 +214,13 @@ namespace Wander
             return internet;
         }
 
+        public void updateStringsWithCurrentLanguage()
+        {
+            ResourceLoader rl = new ResourceLoader();
+            directionTextBox.DataContext = rl.GetString("Direction");
+
+        }
+
         async void Current_GeofenceStateChanged(GeofenceMonitor sender, object args)
         {
             var reports = sender.ReadReports();
@@ -209,16 +242,12 @@ namespace Wander
                             {
                                 var loader = new Windows.ApplicationModel.Resources.ResourceLoader();
                                 string near = loader.GetString("near");
-                                updateDistanceTextbox(((String)geofence.Id).Split('_').First());
                                 playSound.Play();
                                 var message = new MessageDialog(((String)geofence.Id).Split('_').First(), near);
                                 await message.ShowAsync();
                             }
-                            catch
-                            {
-
-                            }
-                            
+                           
+                            catch { }
                         }
                         else if (geofence.Id.EndsWith("_5m"))
                         {
@@ -226,8 +255,15 @@ namespace Wander
                             {
                                 if(pin.Text == ((String)geofence.Id).Split('_').First())
                                 {
+                           
+                                    updateDistanceTextbox(((String)geofence.Id).Split('_').First());
                                     pin.Background = new SolidColorBrush(Colors.Black);
                                     datacontroller.setSightSeenTrue(((String)geofence.Id).Split('_').First());
+                                    
+                                    if(pin.Text == "Eindpunt stadswandeling")
+                                    {
+                                        datacontroller.removeSession();
+                                    }
                                 }
                             }
                         }

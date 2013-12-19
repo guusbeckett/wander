@@ -13,6 +13,7 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using Windows.ApplicationModel.Resources.Core;
+using Windows.ApplicationModel.Resources;
 
 // The User Control item template is documented at http://go.microsoft.com/fwlink/?LinkId=234236
 
@@ -32,6 +33,7 @@ namespace Wander
             GridSetting.DataContext = language;
             this.page = page;
             fillLanguageList();
+            
         }
 
         private void fillLanguageList()
@@ -56,6 +58,7 @@ namespace Wander
         private void HelpButton_Click(object sender, RoutedEventArgs e)
         {
             datacontroller.selectedLanguage = selectedIndex;
+            page.updateStringsWithCurrentLanguage();
             page.setHelp(refresh);
             System.Diagnostics.Debug.WriteLine(Windows.Globalization.ApplicationLanguages.PrimaryLanguageOverride);
         }
@@ -64,11 +67,12 @@ namespace Wander
         {
             if (refresh)
             {
-                var _Frame = Window.Current.Content as Frame;
-                _Frame.Navigate(_Frame.Content.GetType());
-                _Frame.GoBack();
+                //var _Frame = Window.Current.Content as Frame;
+                //_Frame.Navigate(_Frame.Content.GetType());
+                //_Frame.GoBack();
                 datacontroller.selectedLanguage = selectedIndex;
                 refresh = false;
+                page.updateStringsWithCurrentLanguage();
             }
             page.removeChild(this);
             
@@ -98,6 +102,13 @@ namespace Wander
 
             if (tempIndex != selectedIndex)
                 refresh = true;
+            
+        }
+
+        public void updateWithCurrentLanguage()
+        {
+            ResourceLoader rl = new ResourceLoader();
+            languageBox.DataContext = rl.GetString("taalSetting");
         }
     }
 }

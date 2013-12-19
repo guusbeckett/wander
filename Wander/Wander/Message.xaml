@@ -59,8 +59,6 @@
 
                 </Grid.RowDefinitions>
                 <MediaElement Stretch="Fill" x:Name="mediaElement" HorizontalAlignment="Left" Height="251" Margin="10,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="450" AreTransportControlsEnabled="true" DoubleTapped="MediaElement_DoubleTapped" />
-                <Button x:Uid="Video" x:Name="video" Content="Video" HorizontalAlignment="Left" Margin="7,263,0,0" Grid.Row="1" VerticalAlignment="Top" RenderTransformOrigin="0.506,0.678" Background="Red" Click="video_Click"/>
-                <Button x:Uid="geluid" x:Name="geluid" Content="Geluids Fragment" HorizontalAlignment="Left" Margin="79,263,0,0" Grid.Row="1" VerticalAlignment="Top" Background="Red" Click="geluid_Click"/>
                 <FlipView x:Name="imageElement" HorizontalAlignment="Left" Height="301" Margin="7,7,0,0" VerticalAlignment="Top" Width="456" BorderBrush="#FFF9F9F9" BorderThickness="1">
                     <FlipView.ItemTemplate>
                         <DataTemplate>
@@ -68,6 +66,9 @@
                         </DataTemplate>
                     </FlipView.ItemTemplate>
                 </FlipView>
+                <Button x:Name="video" Content="{Binding}" HorizontalAlignment="Left" Margin="7,263,0,0" Grid.Row="1" VerticalAlignment="Top" RenderTransformOrigin="0.506,0.678" Background="Red" Click="video_Click" Height="38" Width="68"/>
+                <Button x:Name="geluid" Content="{Binding}" HorizontalAlignment="Left" Margin="74,263,0,0" Grid.Row="1" VerticalAlignment="Top" Background="Red" Click="geluid_Click" Height="38" Width="68"/>
+
             </Grid>
             <TextBox Name="tekstboxtest" Grid.Column="1" HorizontalAlignment="Left" TextWrapping="Wrap"  VerticalAlignment="Top" Height="623" Width="896" IsReadOnly="True"/>
         </Grid>
