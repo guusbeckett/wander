@@ -220,7 +220,7 @@ namespace Wander
                     newlist.Add(point);
             }
             //sessions2.routeWalked = null;
-            sessions2.route.waypoints = null;
+            sessions2.route.waypoints = newlist;
             try
             {
                 using (Stream xmlstreamAwait = await folder.OpenStreamForWriteAsync("session.xml", CreationCollisionOption.ReplaceExisting))
