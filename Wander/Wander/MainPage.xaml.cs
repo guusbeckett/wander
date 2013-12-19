@@ -53,6 +53,7 @@ namespace Wander
             datacontroller = DataController.getInstance();
             findSession();
             sightList.ItemsSource = datacontroller.giveStringsOfLoadedSights();
+            this.NavigationCacheMode = Windows.UI.Xaml.Navigation.NavigationCacheMode.Enabled;
 
             geo = new Geolocator();
             geo.DesiredAccuracy = PositionAccuracy.High;
