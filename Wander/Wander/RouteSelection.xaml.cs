@@ -105,6 +105,7 @@ namespace Wander
         private void SelectButton_Click(object sender, RoutedEventArgs e)
         {
             main.removeChild(this);
+            main.sessionstarted();
         }
     }
 }

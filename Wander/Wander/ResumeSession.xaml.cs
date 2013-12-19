@@ -33,6 +33,9 @@ namespace Wander
         {
             datacontroller.setFirstTime(false);
             main.removeChild(this);
+            datacontroller.locking = false;
+            datacontroller.openSession();
+            main.startGeo();
         }
 
         private void NoButton_Click(object sender, RoutedEventArgs e)
@@ -42,6 +45,9 @@ namespace Wander
                 routes = new RouteSelection(main);
             main.setGrid(routes);
             main.removeChild(this);
+            datacontroller.locking = false;
+            datacontroller.saveSession();
+            main.startGeo();
         }
     }
 }

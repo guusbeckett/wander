@@ -52,23 +52,34 @@ namespace Wander
             bingMap.ShapeLayers.Add(polygonLayer);
             datacontroller = DataController.getInstance();
             findSession();
-            sightList.ItemsSource = datacontroller.giveStringsOfLoadedSights();
+            
             this.NavigationCacheMode = Windows.UI.Xaml.Navigation.NavigationCacheMode.Enabled;
 
-            geo = new Geolocator();
-            geo.DesiredAccuracy = PositionAccuracy.High;
-            geo.PositionChanged += geolocator_PositionChanged;
+            
             bingMap.Children.Add(location);
 
             //resume = new ResumeSession();
             //GridRoot.Children.Add(resume);
-            datacontroller.setSightsWithGeofences(bingMap);
-            drawRoute();
-            setPinListeners();
+            
             polygonLayer.Shapes.Add(walked);
             //bingMap.Children.Add(walked);
 
             NetworkInformation.NetworkStatusChanged += internetConnectionEventHandler;
+        }
+
+        public void sessionstarted()
+        {
+            sightList.ItemsSource = datacontroller.giveStringsOfLoadedSights();
+            datacontroller.setSightsWithGeofences(bingMap);
+            drawRoute();
+            setPinListeners();
+        }
+
+        public void startGeo()
+        {
+            geo = new Geolocator();
+            geo.DesiredAccuracy = PositionAccuracy.High;
+            geo.PositionChanged += geolocator_PositionChanged;
         }
 
         public void findSession()
@@ -161,11 +172,14 @@ namespace Wander
                 MapLayer.SetPosition(location, currentLocation);
                 drawWalkedRoute(wander.mapcontroller.locations());
             }));
-           
-           
+
+
+            if (!datacontroller.locking && datacontroller.loadedSights != null)
+            {
                 datacontroller.session.route.waypoints = datacontroller.loadedSights;
                 datacontroller.session.routeWalked = datacontroller.getWalkedRouteConvertedToWanderLocation();
                 datacontroller.saveSession();
+            }
            
         }
 
