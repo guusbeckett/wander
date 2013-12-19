@@ -157,4 +157,12 @@
   <data name="internetErrorHeader" xml:space="preserve">
     <value>Geen internetverbinding</value>
   </data>
+  <data name="routeSetting.Text" xml:space="preserve">
+    <value>Route Selecteren</value>
+    <comment>Select route titel</comment>
+  </data>
+  <data name="near" xml:space="preserve">
+    <value>U bent in de buurt van</value>
+    <comment>in de buurt van</comment>
+  </data>
 </root>

@@ -122,15 +122,15 @@
     <comment>Titel van routebeschrijving</comment>
   </data>
   <data name="geluid.Content" xml:space="preserve">
-    <value>Sound clip</value>
+    <value>Sound Clip</value>
     <comment>Geluids Fragment knop</comment>
   </data>
   <data name="helpBox.Text" xml:space="preserve">
-    <value>Engels Menu</value>
+    <value>Engels Help menu</value>
     <comment>Help box</comment>
   </data>
   <data name="NeedHelp.Text" xml:space="preserve">
-    <value>Need help?</value>
+    <value>Need some help?</value>
     <comment>Titel van helpBox</comment>
   </data>
   <data name="Video.Content" xml:space="preserve">
@@ -138,21 +138,35 @@
     <comment>Video Fragment Knop</comment>
   </data>
   <data name="taalSetting.Text" xml:space="preserve">
-    <value>Language</value>
+    <value>Languages</value>
+    <comment>Titel van settings menu</comment>
   </data>
   <data name="noButton.Content" xml:space="preserve">
     <value>No</value>
+    <comment>no button</comment>
   </data>
   <data name="resumeSession.Text" xml:space="preserve">
-    <value>Resume last session?</value>
+    <value>Would you like to resume the last session?</value>
+    <comment>Titel last session</comment>
   </data>
   <data name="yesButton.Content" xml:space="preserve">
     <value>Yes</value>
+    <comment>Yes button resume session</comment>
   </data>
   <data name="internetErrorContent" xml:space="preserve">
-    <value>Internet connection lost.</value>
+    <value>Internetconnection lost</value>
+    <comment>Internet connection lost message</comment>
   </data>
   <data name="internetErrorHeader" xml:space="preserve">
-    <value>No internet connection</value>
+    <value>No internetconnection</value>
+    <comment>No internet connection warning titel</comment>
+  </data>
+  <data name="routeSetting.Text" xml:space="preserve">
+    <value>Select route</value>
+    <comment>Select route titel</comment>
+  </data>
+  <data name="near" xml:space="preserve">
+    <value>You're closing in on</value>
+    <comment>message when near sight</comment>
   </data>
 </root>

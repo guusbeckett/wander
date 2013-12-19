@@ -205,12 +205,19 @@ namespace Wander
                     {
                         if (geofence.Id.EndsWith("_20m"))
                         {
-                            updateDistanceTextbox(((String)geofence.Id).Split('_').First());
+                            try
+                            {
+                                var loader = new Windows.ApplicationModel.Resources.ResourceLoader();
+                                string near = loader.GetString("near");
+                                updateDistanceTextbox(((String)geofence.Id).Split('_').First());
+                                playSound.Play();
+                                var message = new MessageDialog(((String)geofence.Id).Split('_').First(),near);
+                                await message.ShowAsync();
+                            }
+                            catch
+                            {
 
-                            var message = new MessageDialog(((String)geofence.Id).Split('_').First(), "U bent in de buurt van de volgende locatie;");
-                            await message.ShowAsync();
-
-                            playSound.Play();
+                            }
                             
                         }
                         else if (geofence.Id.EndsWith("_5m"))
