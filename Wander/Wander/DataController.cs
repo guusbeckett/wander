@@ -212,10 +212,19 @@ namespace Wander
         public async void saveSession()
         {
             var folder = Windows.Storage.ApplicationData.Current.LocalFolder;
+            WanderLib.Session sessions2 = session;
+            List<WanderLib.Waypoint> newlist = new List<WanderLib.Waypoint>();
+            foreach(WanderLib.Waypoint point in sessions2.route.waypoints)
+            {
+                if (point.GetType() == (typeof(WanderLib.Sight)))
+                    newlist.Add(point);
+            }
+            //sessions2.routeWalked = null;
+            sessions2.route.waypoints = null;
             try
             {
                 using (Stream xmlstreamAwait = await folder.OpenStreamForWriteAsync("session.xml", CreationCollisionOption.ReplaceExisting))
-                    Serializer.SerializeWithLengthPrefix<WanderLib.Session>(xmlstreamAwait, session, PrefixStyle.Base128);
+                    Serializer.SerializeWithLengthPrefix<WanderLib.Session>(xmlstreamAwait, session, PrefixStyle.Fixed32);
             }
             catch (Exception e) { System.Diagnostics.Debug.WriteLine(e.Message); }
             
