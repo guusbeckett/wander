@@ -10,9 +10,11 @@ using Windows.Devices.Geolocation;
 using Windows.Devices.Geolocation.Geofencing;
 using Windows.Networking.Connectivity;
 using Windows.Storage;
+using Windows.UI;
 using Windows.UI.Core;
 using Windows.UI.Popups;
 using Windows.UI.Xaml.Input;
+using Windows.UI.Xaml.Media;
 
 namespace Wander
 {
@@ -25,6 +27,7 @@ namespace Wander
         public int selectedLanguage { get; set; }
         public Boolean firstTimeStart = true;
         public Double distance { get; set; }
+        public bool locking = true;
 
 
 
@@ -181,26 +184,33 @@ namespace Wander
 
                         Pushpin pin = new Pushpin();
 
-                        Geofence geofence = new Geofence(sight.name+"_20m", new Geocircle(
-                        new BasicGeoposition
+                        if (!sight.isVisited)
                         {
-                            Altitude = 0.0,
-                            Latitude = location.Latitude,
-                            Longitude = location.Longitude
-                        },
-                        20), MonitoredGeofenceStates.Entered, true, new TimeSpan(5));
+                            Geofence geofence = new Geofence(sight.name + "_20m", new Geocircle(
+                            new BasicGeoposition
+                            {
+                                Altitude = 0.0,
+                                Latitude = location.Latitude,
+                                Longitude = location.Longitude
+                            },
+                            20), MonitoredGeofenceStates.Entered, true, new TimeSpan(5));
 
-                        GeofenceMonitor.Current.Geofences.Add(geofence);
+                            GeofenceMonitor.Current.Geofences.Add(geofence);
 
-                        geofence = new Geofence(sight.name + "_5m", new Geocircle(
-                        new BasicGeoposition
+                            geofence = new Geofence(sight.name + "_5m", new Geocircle(
+                            new BasicGeoposition
+                            {
+                                Altitude = 0.0,
+                                Latitude = location.Latitude,
+                                Longitude = location.Longitude
+                            },
+                            20), MonitoredGeofenceStates.Entered, true, new TimeSpan(5));
+                            GeofenceMonitor.Current.Geofences.Add(geofence);
+                        }
+                        else
                         {
-                            Altitude = 0.0,
-                            Latitude = location.Latitude,
-                            Longitude = location.Longitude
-                        },
-                        20), MonitoredGeofenceStates.Entered, true, new TimeSpan(5));
-                        GeofenceMonitor.Current.Geofences.Add(geofence);
+                            pin.Background = new SolidColorBrush(Colors.Black); 
+                        }
 
                         pin.Text = sight.name;
                         MapLayer.SetPosition(pin, location);
@@ -211,36 +221,62 @@ namespace Wander
 
         public async void saveSession()
         {
-            var folder = Windows.Storage.ApplicationData.Current.LocalFolder;
-            try
+            if (!locking)
             {
-                using (Stream xmlstreamAwait = await folder.OpenStreamForWriteAsync("session.xml", CreationCollisionOption.ReplaceExisting))
-                    Serializer.Serialize<WanderLib.Session>(xmlstreamAwait, session);
+                var folder = Windows.Storage.ApplicationData.Current.LocalFolder;
+                try
+                {
+                    using (Stream xmlstreamAwait = await folder.OpenStreamForWriteAsync("session.bin", CreationCollisionOption.ReplaceExisting))
+                        Serializer.Serialize<WanderLib.Session>(xmlstreamAwait, session);
+                }
+                catch (Exception e) { System.Diagnostics.Debug.WriteLine(e.Message); }
             }
-            catch (Exception e) { System.Diagnostics.Debug.WriteLine(e.Message); }
             
         }
 
-        public async void openSession()
+        public async void openSession(MainPage page=null)
         {
-            var folder = Windows.Storage.ApplicationData.Current.LocalFolder;
-            try
+            if (!locking)
             {
-                using (Stream xmlstreamAwait = await folder.OpenStreamForWriteAsync("session.xml", CreationCollisionOption.ReplaceExisting))
-                    DataController.instance.session = Serializer.Deserialize<WanderLib.Session>(xmlstreamAwait);
+                var folder = Windows.Storage.ApplicationData.Current.LocalFolder;
+                //try
+                //{
+                    using (Stream xmlstreamAwait = await folder.OpenStreamForReadAsync("session.bin"))
+                    {
+                        DataController.instance.session = Serializer.Deserialize<WanderLib.Session>(xmlstreamAwait);
+                        loadedSights = session.route.waypoints;
+                        List<Location> list = new List<Location>();
+                        LocationConverter converter = new LocationConverter();
+                        if (session.routeWalked != null)
+                        {
+                            foreach (WanderLib.Location loc in session.routeWalked)
+                            {
+                                list.Add(converter.convertToBingLocation(loc));
+                            }
+                        }
+                        MapController.getInstance().previouspoints = list;
+                        if (page!=null)
+                        {
+                            page.sessionstarted();
+                        }
+                    }
+                //}
+                //catch (Exception e) { System.Diagnostics.Debug.WriteLine(e.Message); }
             }
-            catch (Exception e) { System.Diagnostics.Debug.WriteLine(e.Message); }
         }
 
 
         public async void removeSession()
         {
-            var folder = Windows.Storage.ApplicationData.Current.LocalFolder;
-            try
+            if (!locking)
             {
-                await folder.DeleteAsync(StorageDeleteOption.PermanentDelete);
+                var folder = Windows.Storage.ApplicationData.Current.LocalFolder;
+                try
+                {
+                    await folder.DeleteAsync(StorageDeleteOption.PermanentDelete);
+                }
+                catch (Exception e) { System.Diagnostics.Debug.WriteLine(e.Message); }
             }
-            catch (Exception e) { System.Diagnostics.Debug.WriteLine(e.Message); }
         }
 
 

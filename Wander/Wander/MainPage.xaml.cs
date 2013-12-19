@@ -53,24 +53,35 @@ namespace Wander
             bingMap.ShapeLayers.Add(polygonLayer);
             datacontroller = DataController.getInstance();
             findSession();
-            sightList.ItemsSource = datacontroller.giveStringsOfLoadedSights();
+            
             this.NavigationCacheMode = Windows.UI.Xaml.Navigation.NavigationCacheMode.Enabled;
 
-            geo = new Geolocator();
-            geo.DesiredAccuracy = PositionAccuracy.High;
-            geo.PositionChanged += geolocator_PositionChanged;
+            
             bingMap.Children.Add(location);
 
             //resume = new ResumeSession();
             //GridRoot.Children.Add(resume);
-            datacontroller.setSightsWithGeofences(bingMap);
-            drawRoute();
-            setPinListeners();
+            
             polygonLayer.Shapes.Add(walked);
             //bingMap.Children.Add(walked);
 
             NetworkInformation.NetworkStatusChanged += internetConnectionEventHandler;
             updateStringsWithCurrentLanguage();
+        }
+
+        public void sessionstarted()
+        {
+            sightList.ItemsSource = datacontroller.giveStringsOfLoadedSights();
+            datacontroller.setSightsWithGeofences(bingMap);
+            drawRoute();
+            setPinListeners();
+        }
+
+        public void startGeo()
+        {
+            geo = new Geolocator();
+            geo.DesiredAccuracy = PositionAccuracy.High;
+            geo.PositionChanged += geolocator_PositionChanged;
         }
 
         public void findSession()
@@ -164,11 +175,14 @@ namespace Wander
                 MapLayer.SetPosition(location, currentLocation);
                 drawWalkedRoute(wander.mapcontroller.locations());
             }));
-           
-           
+
+
+            if (!datacontroller.locking && datacontroller.loadedSights != null)
+            {
                 datacontroller.session.route.waypoints = datacontroller.loadedSights;
                 datacontroller.session.routeWalked = datacontroller.getWalkedRouteConvertedToWanderLocation();
                 datacontroller.saveSession();
+            }
            
         }
 
@@ -224,13 +238,16 @@ namespace Wander
                     {
                         if (geofence.Id.EndsWith("_20m"))
                         {
-                            updateDistanceTextbox(((String)geofence.Id).Split('_').First());
+                            try
+                            {
+                                updateDistanceTextbox(((String)geofence.Id).Split('_').First());
 
-                            var message = new MessageDialog(((String)geofence.Id).Split('_').First(), "U bent in de buurt van de volgende locatie;");
-                            await message.ShowAsync();
+                                var message = new MessageDialog(((String)geofence.Id).Split('_').First(), "U bent in de buurt van de volgende locatie;");
+                                await message.ShowAsync();
 
-                            playSound.Play();
-                            
+                                playSound.Play();
+                            }
+                            catch { }
                         }
                         else if (geofence.Id.EndsWith("_5m"))
                         {
