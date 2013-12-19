@@ -215,7 +215,7 @@ namespace Wander
             try
             {
                 using (Stream xmlstreamAwait = await folder.OpenStreamForWriteAsync("session.xml", CreationCollisionOption.ReplaceExisting))
-                    Serializer.Serialize<WanderLib.Session>(xmlstreamAwait, session);
+                    Serializer.SerializeWithLengthPrefix<WanderLib.Session>(xmlstreamAwait, session, PrefixStyle.Base128);
             }
             catch (Exception e) { System.Diagnostics.Debug.WriteLine(e.Message); }
             

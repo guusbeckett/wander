@@ -216,7 +216,7 @@ namespace Wander
                             updateDistanceTextbox(((String)geofence.Id).Split('_').First());
 
                             var message = new MessageDialog(((String)geofence.Id).Split('_').First(), "U bent in de buurt van de volgende locatie;");
-                            ¤await message.ShowAsync();
+                            await message.ShowAsync();
 
                             playSound.Play();
                             
