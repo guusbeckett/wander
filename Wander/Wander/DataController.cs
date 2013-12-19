@@ -100,7 +100,6 @@ namespace Wander
             List<WanderLib.Language> languages = new List<WanderLib.Language>();
             languages.Add(new WanderLib.Language("Nederlands"));
             languages.Add(new WanderLib.Language("English"));
-            languages.Add(new WanderLib.Language("日本人"));
             return languages;
         }
 
@@ -258,7 +257,7 @@ namespace Wander
                         if (page!=null)
                         {
                             page.sessionstarted();
-                        }
+                        }  
                     }
                 //}
                 //catch (Exception e) { System.Diagnostics.Debug.WriteLine(e.Message); }

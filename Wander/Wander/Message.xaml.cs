@@ -172,21 +172,26 @@ namespace Wander
 
         private async void geluid_Click(object sender, RoutedEventArgs e)
         {
-            var dialog = new MessageDialog("Geluid tapped", "Geluid");
-            await dialog.ShowAsync();
+            mediaElement.Source = new Uri("ms-appx:///Assets/Farmer Dan - The Combine Harvester.mp3");
         }
 
         private async void video_Click(object sender, RoutedEventArgs e)
         {
-            var dialog = new MessageDialog("Video tapped", "Video");
-            await dialog.ShowAsync();
+            if (mediaElement.Source == new Uri("ms-appx:///Assets/VideoVoorSample.mp4"))
+            {
+                mediaElement.Source = new Uri("ms-appx:///Assets/Pop It, Dont Drop It Extended Loop (Team Service Announcement).mp4");
+            }
+            else if (mediaElement.Source != new Uri("ms-appx:///Assets/VideoVoorSample.mp4"))
+            {
+                mediaElement.Source = new Uri("ms-appx:///Assets/VideoVoorSample.mp4");
+            }
         }
 
         public void updateStringsWithCurrentLanguage()
         {
             ResourceLoader rl = new ResourceLoader();
-            video.Content = rl.GetString("geluid");
-            geluid.Content = rl.GetString("Video");
+            video.Content = rl.GetString("Video");
+            geluid.Content = rl.GetString("geluid");
         }
 
    

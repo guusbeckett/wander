@@ -93,10 +93,6 @@ namespace Wander
             {
                 Windows.Globalization.ApplicationLanguages.PrimaryLanguageOverride = "nl";
             }
-            else if (chosenLanguage.name == "日本人")
-            {
-                Windows.Globalization.ApplicationLanguages.PrimaryLanguageOverride = "ja";
-            }
             datacontroller.session.settings.language  = new WanderLib.Language(chosenLanguage.name);
             datacontroller.saveSession();
 
