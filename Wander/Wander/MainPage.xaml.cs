@@ -228,13 +228,16 @@ namespace Wander
                     {
                         if (geofence.Id.EndsWith("_20m"))
                         {
-                            updateDistanceTextbox(((String)geofence.Id).Split('_').First());
+                            try
+                            {
+                                updateDistanceTextbox(((String)geofence.Id).Split('_').First());
 
-                            var message = new MessageDialog(((String)geofence.Id).Split('_').First(), "U bent in de buurt van de volgende locatie;");
-                            await message.ShowAsync();
+                                var message = new MessageDialog(((String)geofence.Id).Split('_').First(), "U bent in de buurt van de volgende locatie;");
+                                await message.ShowAsync();
 
-                            playSound.Play();
-                            
+                                playSound.Play();
+                            }
+                            catch { }
                         }
                         else if (geofence.Id.EndsWith("_5m"))
                         {
