@@ -234,27 +234,34 @@ namespace Wander
             
         }
 
-        public async void openSession()
+        public async void openSession(MainPage page=null)
         {
             if (!locking)
             {
                 var folder = Windows.Storage.ApplicationData.Current.LocalFolder;
-                try
-                {
+                //try
+                //{
                     using (Stream xmlstreamAwait = await folder.OpenStreamForReadAsync("session.bin"))
                     {
                         DataController.instance.session = Serializer.Deserialize<WanderLib.Session>(xmlstreamAwait);
                         loadedSights = session.route.waypoints;
                         List<Location> list = new List<Location>();
                         LocationConverter converter = new LocationConverter();
-                        foreach(WanderLib.Location loc in session.routeWalked)
+                        if (session.routeWalked != null)
                         {
-                            list.Add(converter.convertToBingLocation(loc));
+                            foreach (WanderLib.Location loc in session.routeWalked)
+                            {
+                                list.Add(converter.convertToBingLocation(loc));
+                            }
                         }
                         MapController.getInstance().previouspoints = list;
+                        if (page!=null)
+                        {
+                            page.sessionstarted();
+                        }
                     }
-                }
-                catch (Exception e) { System.Diagnostics.Debug.WriteLine(e.Message); }
+                //}
+                //catch (Exception e) { System.Diagnostics.Debug.WriteLine(e.Message); }
             }
         }
 

@@ -34,7 +34,7 @@ namespace Wander
             datacontroller.setFirstTime(false);
             main.removeChild(this);
             datacontroller.locking = false;
-            datacontroller.openSession();
+            datacontroller.openSession(main);
             main.startGeo();
         }
 
