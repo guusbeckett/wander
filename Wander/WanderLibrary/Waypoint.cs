@@ -5,7 +5,7 @@ using System.Text;
 
 namespace WanderLib
 {
-    [global::ProtoBuf.ProtoContract(Name = @"Waypoint")]
+    [global::ProtoBuf.ProtoContract(Name = @"Waypoint"), global::ProtoBuf.ProtoInclude(20, typeof(Sight))]
     public class Waypoint : global::ProtoBuf.IExtensible
     {
         [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name = @"Filelocation", DataFormat = global::ProtoBuf.DataFormat.Default)]
