@@ -211,7 +211,7 @@ namespace Wander
                                 string near = loader.GetString("near");
                                 updateDistanceTextbox(((String)geofence.Id).Split('_').First());
                                 playSound.Play();
-                                var message = new MessageDialog(((String)geofence.Id).Split('_').First(),near);
+                                var message = new MessageDialog(((String)geofence.Id).Split('_').First(), near);
                                 await message.ShowAsync();
                             }
                             catch
