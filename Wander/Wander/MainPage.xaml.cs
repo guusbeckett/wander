@@ -53,6 +53,7 @@ namespace Wander
             datacontroller = DataController.getInstance();
             findSession();
             sightList.ItemsSource = datacontroller.giveStringsOfLoadedSights();
+            this.NavigationCacheMode = Windows.UI.Xaml.Navigation.NavigationCacheMode.Enabled;
 
             geo = new Geolocator();
             geo.DesiredAccuracy = PositionAccuracy.High;
@@ -216,7 +217,7 @@ namespace Wander
                             updateDistanceTextbox(((String)geofence.Id).Split('_').First());
 
                             var message = new MessageDialog(((String)geofence.Id).Split('_').First(), "U bent in de buurt van de volgende locatie;");
-                            ¤await message.ShowAsync();
+                            await message.ShowAsync();
 
                             playSound.Play();
                             
