@@ -160,10 +160,12 @@ namespace Wander
                 MapLayer.SetPosition(location, currentLocation);
                 drawWalkedRoute(wander.mapcontroller.locations());
             }));
-
-            datacontroller.session.route.waypoints = datacontroller.loadedSights;
-            datacontroller.session.routeWalked = datacontroller.getWalkedRouteConvertedToWanderLocation();
-            datacontroller.saveSession();
+           
+           
+                datacontroller.session.route.waypoints = datacontroller.loadedSights;
+                datacontroller.session.routeWalked = datacontroller.getWalkedRouteConvertedToWanderLocation();
+                datacontroller.saveSession();
+           
         }
 
         private async void internetConnectionEventHandler(object sender)
@@ -214,7 +216,7 @@ namespace Wander
                             updateDistanceTextbox(((String)geofence.Id).Split('_').First());
 
                             var message = new MessageDialog(((String)geofence.Id).Split('_').First(), "U bent in de buurt van de volgende locatie;");
-                            await message.ShowAsync();
+                            ¤await message.ShowAsync();
 
                             playSound.Play();
                             
