@@ -126,7 +126,15 @@
     <comment>Geluids Fragment knop</comment>
   </data>
   <data name="helpBox" xml:space="preserve">
-    <value>Engels Menu</value>
+    <value>Welcome to the help menu W @ nder .
+This help menu functionalities of this application are described . First you will see on the left side a route description . In this menu you can find all the sights you pass by . When you click on a new screen comes up , with the information of interest . You do not have to be in order to open it. Interest in the The window of interest is described later in the text .
+Right you will see a gear position when you press this menu is the setting up. In this menu you can request the help window and change the language . With the cross top right of the window that comes up , you can exit the menu .
+Wholesale you will see a map , you can zoom in and out this by using . Two fingers together on the screen Due to drag two fingers together , the smaller card . When the fingers move away from each other , the card is greater. On the map multiple items are displayed . As spheres are shown with a few letters . These beads with letters sights . When one of these spheres is pressed, as is open to the left of the attraction. When a finger touches the map and drag your finger , the card will be towed , leaving other parts of the map can be seen.
+If you are near a point of interest , it will display a message and name to which this interest is . Where the interest you are close enough the ball will change color , so you can see which ones are visited . When an attraction is visited , a route will automatically be calculated in the following section . Alternatively , the distance between the top of the screen show the two sites . You do not necessarily have the route calculated to follow should not be discussed. When you come to a point of interest , while previous has beaten the is again calculated a new route.
+When you press one of the two ways a landmark is pressed, a new screen. You can see above in the name of the attraction. On the left are shown two things . The first , or upper , the pictures of the attraction. When multiple images are present , you can use the swipe motion through the photos back . With swipe means , you can put your finger on the picture and move it left or right . In the second half of the left side is a media player . Allows you to play video or audio if present . To the right of this screen is described information about the attraction itself . The arrow in the top left corner you can return to the main screen .
+While walking the route is created automatically by the application all data . This makes it possible to use the data , such as to display the route that has already been run , again, if the application for a reason close . If there is data will also get a screen that asks whether the session should be resumed. If "Yes" is pressed here , it will load the old data . If "No" is pressed , it will restart the route.
+When you get to the last point of interest , the session will be automatically deleted .
+You can empathize with the tablet back at the tourist office when you finish the route .</value>
     <comment>Help box</comment>
   </data>
   <data name="NeedHelp" xml:space="preserve">
