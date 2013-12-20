@@ -50,6 +50,7 @@ namespace Wander
             this.InitializeComponent();
             GeofenceMonitor.Current.Geofences.Clear();
             GeofenceMonitor.Current.GeofenceStateChanged += Current_GeofenceStateChanged;
+            location.Name = "currentlocation";
             polygonLayer = new MapShapeLayer();
             bingMap.ShapeLayers.Add(polygonLayer);
             datacontroller = DataController.getInstance();
@@ -157,8 +158,8 @@ namespace Wander
         {
             foreach(Pushpin pin in bingMap.Children)
             {
-
-                pin.Tapped += Current_location_pushpin_tapped;
+                if (pin.Name != "currentlocation")
+                    pin.Tapped += Current_location_pushpin_tapped;
 
             }
         }
