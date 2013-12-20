@@ -70,7 +70,7 @@
                 <Button x:Name="geluid" Content="{Binding}" HorizontalAlignment="Left" Margin="304,263,0,0" Grid.Row="1" VerticalAlignment="Top" Background="Red" Click="geluid_Click" Height="38" Width="159"/>
 
             </Grid>
-            <TextBox Name="tekstboxtest" Grid.Column="1" HorizontalAlignment="Left" TextWrapping="Wrap"  VerticalAlignment="Top" Height="623" Width="896" IsReadOnly="True"/>
+            <TextBox Name="tekstboxtest" Text="{Binding}" Grid.Column="1" HorizontalAlignment="Left" TextWrapping="Wrap"  VerticalAlignment="Top" Height="623" Width="896" IsReadOnly="True"/>
         </Grid>
     </Grid>
 </Page>

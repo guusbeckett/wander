@@ -167,4 +167,7 @@
     <value>You're closing in on</value>
     <comment>message when near sight</comment>
   </data>
+  <data name="noDescription" xml:space="preserve">
+    <value>There is no description available for this sight.</value>
+  </data>
 </root>
