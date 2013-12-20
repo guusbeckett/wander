@@ -272,7 +272,8 @@ namespace Wander
                 var folder = Windows.Storage.ApplicationData.Current.LocalFolder;
                 try
                 {
-                    await folder.DeleteAsync(StorageDeleteOption.PermanentDelete);
+                    var file = await folder.GetFileAsync("session.bin");
+                    await file.DeleteAsync();
                 }
                 catch (Exception e) { System.Diagnostics.Debug.WriteLine(e.Message); }
             }
@@ -384,5 +385,18 @@ namespace Wander
 
             return locations;
         }
+
+        public async Task checkSessionExists()
+        {
+            try
+            {
+                var folder = Windows.Storage.ApplicationData.Current.LocalFolder;
+                var file = await folder.GetFileAsync("session.bin");
+                fileExists = true;
+            }
+            catch (FileNotFoundException e) { fileExists = false; }
+        }
+
+        public bool fileExists { get; set; }
     }
 }
