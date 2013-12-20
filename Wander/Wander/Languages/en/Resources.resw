@@ -175,4 +175,7 @@ You can empathize with the tablet back at the tourist office when you finish the
     <value>You're closing in on</value>
     <comment>message when near sight</comment>
   </data>
+  <data name="noDescription" xml:space="preserve">
+    <value>There is no description available for this sight.</value>
+  </data>
 </root>

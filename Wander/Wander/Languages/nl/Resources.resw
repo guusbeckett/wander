@@ -173,4 +173,7 @@ U kunt de tablet weer terug bij het VVV kantoor inleven als u klaar bent met de 
     <value>U bent in de buurt van</value>
     <comment>in de buurt van</comment>
   </data>
+  <data name="noDescription" xml:space="preserve">
+    <value>Er is geen omschrijving beschikbaar voor deze bezienswaardigheid.</value>
+  </data>
 </root>

@@ -50,6 +50,7 @@ namespace Wander
             this.InitializeComponent();
             GeofenceMonitor.Current.Geofences.Clear();
             GeofenceMonitor.Current.GeofenceStateChanged += Current_GeofenceStateChanged;
+            location.Name = "currentlocation";
             polygonLayer = new MapShapeLayer();
             bingMap.ShapeLayers.Add(polygonLayer);
             datacontroller = DataController.getInstance();
@@ -76,6 +77,17 @@ namespace Wander
             datacontroller.setSightsWithGeofences(bingMap);
             drawRoute();
             setPinListeners();
+            switch (DataController.getInstance().session.settings.language.name)
+            {
+                case ("Nederlands"):
+                    Windows.Globalization.ApplicationLanguages.PrimaryLanguageOverride = "nl";
+                    directionTextBox.DataContext = "Routebeschrijving";
+                    break;
+                case ("English"):
+                    Windows.Globalization.ApplicationLanguages.PrimaryLanguageOverride = "en";
+                    directionTextBox.DataContext = "Directions";
+                    break;
+            }
         }
 
         public void startGeo()
@@ -146,8 +158,8 @@ namespace Wander
         {
             foreach(Pushpin pin in bingMap.Children)
             {
-
-                pin.Tapped += Current_location_pushpin_tapped;
+                if (pin.Name != "currentlocation")
+                    pin.Tapped += Current_location_pushpin_tapped;
 
             }
         }

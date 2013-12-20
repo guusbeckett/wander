@@ -117,7 +117,13 @@ namespace Wander
                     if (((WanderLib.Sight)s).name == textPassed)
                     {
                         sight = ((WanderLib.Sight)s);
-                        tekstboxtest.Text = sight.information;
+                        if (sight.information == "")
+                        {
+                            ResourceLoader rl = new ResourceLoader();
+                            tekstboxtest.DataContext = rl.GetString("noDescription");
+                        }
+                        else
+                            tekstboxtest.Text = sight.information;
                         pageTitle.Text = sight.name;
                         List<string> l = new List<string>();
                         if (sight.media == null)
