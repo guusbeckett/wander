@@ -26,7 +26,7 @@ namespace Wander
                 latdif = -1 * latdif;
             if (longdif < 0)
                 longdif = -1 * longdif;
-            if (latdif >= 0.001 || longdif >= 0.001)
+            if (latdif >= 0.0001 || longdif >= 0.0001)
             {
                 previouspoints.Add(location);
             }
