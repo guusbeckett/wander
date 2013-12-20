@@ -80,9 +80,11 @@ namespace Wander
             {
                 case ("Nederlands"):
                     Windows.Globalization.ApplicationLanguages.PrimaryLanguageOverride = "nl";
+                    directionTextBox.DataContext = "Routebeschrijving";
                     break;
                 case ("English"):
                     Windows.Globalization.ApplicationLanguages.PrimaryLanguageOverride = "en";
+                    directionTextBox.DataContext = "Directions";
                     break;
             }
         }
