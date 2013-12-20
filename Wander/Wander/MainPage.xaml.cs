@@ -43,6 +43,7 @@ namespace Wander
         wander wander = new wander();
         MapPolyline walked = new MapPolyline();
         String calculatedDistanceToNextPoint;
+        private RouteSelection routes;
 
         public MainPage()
         {
@@ -93,15 +94,26 @@ namespace Wander
             geo.PositionChanged += geolocator_PositionChanged;
         }
 
-        public void findSession()
+        public async void findSession()
         {
             // session.xml
-            if (datacontroller.getFirstTime() == true)
+            await datacontroller.checkSessionExists();
+            if (datacontroller.getFirstTime() == true && datacontroller.fileExists)
             {
                 resume = new ResumeSession(this);
                 GridRoot.Children.Add(resume);
             }
-            else return;
+            else
+            {
+                datacontroller.setFirstTime(false);
+                if (routes == null)
+                    routes = new RouteSelection(this);
+                this.setGrid(routes);
+                this.removeChild(this);
+                datacontroller.locking = false;
+                datacontroller.saveSession();
+                startGeo();
+            }
 		}
         private async void updateDistanceTextbox(String geofence)
         {
