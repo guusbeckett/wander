@@ -75,6 +75,15 @@ namespace Wander
             datacontroller.setSightsWithGeofences(bingMap);
             drawRoute();
             setPinListeners();
+            switch (DataController.getInstance().session.settings.language.name)
+            {
+                case ("Nederlands"):
+                    Windows.Globalization.ApplicationLanguages.PrimaryLanguageOverride = "nl";
+                    break;
+                case ("English"):
+                    Windows.Globalization.ApplicationLanguages.PrimaryLanguageOverride = "en";
+                    break;
+            }
         }
 
         public void startGeo()

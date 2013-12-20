@@ -11,26 +11,18 @@ namespace Wander
         public Bing.Maps.Location convertToBingLocation(WanderLib.Location wanderLocation)
         {
             Bing.Maps.Location bingLocation = new Bing.Maps.Location();
-            switch (DataController.getInstance().session.settings.language.name)
-            {
-                case ("Nederlands"):
-                    Windows.Globalization.ApplicationLanguages.PrimaryLanguageOverride = "nl";
-                    break;
-                case ("English"):
-                    Windows.Globalization.ApplicationLanguages.PrimaryLanguageOverride = "en";
-                    break;
-            }
+            
             string longitude = wanderLocation.longitude.Remove(wanderLocation.longitude.Length - 1);
             string latitude = wanderLocation.latitude.Remove(wanderLocation.latitude.Length - 1);
-            //if (DataController.getInstance().session.settings.language.name == "Nederlands")
+            if (DataController.getInstance().session.settings.language.name == "Nederlands" || Windows.Globalization.ApplicationLanguages.PrimaryLanguageOverride == "nl")
             {
                 bingLocation.Longitude = Convert.ToDouble(longitude.Replace(".", ","));
                 bingLocation.Latitude = Convert.ToDouble(latitude.Replace(".", ","));
             }
-           // else
+            else
             {
-               // bingLocation.Longitude = Convert.ToDouble(longitude);
-               // bingLocation.Latitude = Convert.ToDouble(latitude);
+               bingLocation.Longitude = Convert.ToDouble(longitude);
+               bingLocation.Latitude = Convert.ToDouble(latitude);
             }
             return bingLocation;
         }
