@@ -115,6 +115,9 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="DataController.cs" />
+    <Compile Include="DeleteSession.xaml.cs">
+      <DependentUpon>DeleteSession.xaml</DependentUpon>
+    </Compile>
     <Compile Include="GPS.cs" />
     <Compile Include="Help.xaml.cs">
       <DependentUpon>Help.xaml</DependentUpon>
@@ -205,6 +208,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="DeleteSession.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Help.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -233,10 +240,12 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="protobuf-net">
+    <Reference Include="protobuf-net, Version=2.0.0.668, Culture=neutral, PublicKeyToken=257b51d87d2e4d67, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\..\New folder\Dropbox\23TI2.2A1\Fase 3\protobuf-net.dll</HintPath>
     </Reference>
-    <Reference Include="WanderLibrary">
+    <Reference Include="WanderLibrary, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\..\New folder\Dropbox\23TI2.2A1\Fase 3\WanderLibrary.dll</HintPath>
     </Reference>
   </ItemGroup>
