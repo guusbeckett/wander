@@ -44,6 +44,7 @@ namespace Wander
         MapPolyline walked = new MapPolyline();
         String calculatedDistanceToNextPoint;
         private RouteSelection routes;
+        string selectedItem;
 
         public MainPage()
         {
@@ -268,6 +269,13 @@ namespace Wander
                                 string near = loader.GetString("near");
                                 playSound.Play();
                                 var message = new MessageDialog(((String)geofence.Id).Split('_').First(), near);
+                                UICommand command1 = new UICommand("bekijk", new UICommandInvokedHandler(commandHandler));
+                                UICommand command2 = new UICommand("Ok", new UICommandInvokedHandler(commandHandler));
+                                selectedItem = ((String)geofence.Id).Split('_').First();
+                                command1.Id = 1;
+                                command2.Id = 2;
+                                message.Commands.Add(command1);
+                                message.Commands.Add(command2);
                                 await message.ShowAsync();
                             }
                            
@@ -295,6 +303,25 @@ namespace Wander
                     }
                 }
             });
+        }
+
+        private void commandHandler(IUICommand command)
+        {
+            var commandlabel = command.Id.ToString();
+            switch (commandlabel)
+            {
+                case    "1":
+                    if (this.Frame != null)
+                    {
+                        this.Frame.Navigate(typeof(Message), selectedItem);
+                    }
+                    break;
+                case    "2":
+                    
+                    break;
+                default:
+                    break;
+            }
         }
 
         private void drawWalkedRoute(List<Location> locs)
