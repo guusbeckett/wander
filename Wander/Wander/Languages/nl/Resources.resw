@@ -176,4 +176,7 @@ U kunt de tablet weer terug bij het VVV kantoor inleven als u klaar bent met de 
   <data name="noDescription" xml:space="preserve">
     <value>Er is geen omschrijving beschikbaar voor deze bezienswaardigheid.</value>
   </data>
+  <data name="deleteSessionQuestion" xml:space="preserve">
+    <value>Wilt u de geschiedenis verwijderen?</value>
+  </data>
 </root>

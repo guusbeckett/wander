@@ -1,0 +1,19 @@
+﻿<UserControl
+    x:Class="Wander.DeleteSession"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Wander"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignHeight="300"
+    d:DesignWidth="400">
+
+    <Grid>
+        <Rectangle Fill="#FFC31616" HorizontalAlignment="Left" Height="150" Margin="403,283,-605,-133" VerticalAlignment="Top" Width="602"/>
+        <TextBox x:Name ="deleteSession" HorizontalAlignment="Left" Margin="418,299,-594,-48" TextWrapping="Wrap" Text="{Binding}" VerticalAlignment="Top" Foreground="White" Background="Transparent" BorderBrush="Transparent" FontSize="20.667" IsReadOnly="True" Width="576" Height="49"/>
+        <Button x:Name="Button_Yes" Content ="{Binding}" HorizontalAlignment="Left" Margin="508,360,-231,-106" VerticalAlignment="Top" Width="123" Background="#FF3ED317" Height="46" Click="YesButton_Click"/>
+        <Button x:Name="Button_No" Content ="{Binding}" HorizontalAlignment="Left" Margin="745,360,-468,-106" VerticalAlignment="Top" Width="123" Background="#FF920A0A" Height="46" Click="NoButton_Click"/>
+
+    </Grid>
+</UserControl>

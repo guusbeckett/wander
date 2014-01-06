@@ -294,7 +294,7 @@ namespace Wander
                                     
                                     if(pin.Text == "Eindpunt stadswandeling")
                                     {
-                                        datacontroller.removeSession();
+                                        GridRoot.Children.Add(new DeleteSession(this));
                                     }
                                 }
                             }
