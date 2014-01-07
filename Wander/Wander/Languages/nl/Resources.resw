@@ -179,4 +179,7 @@ U kunt de tablet weer terug bij het VVV kantoor inleven als u klaar bent met de 
   <data name="deleteSessionQuestion" xml:space="preserve">
     <value>Wilt u de geschiedenis verwijderen?</value>
   </data>
+  <data name="seeSight" xml:space="preserve">
+    <value>Bekijk</value>
+  </data>
 </root>

@@ -269,7 +269,8 @@ namespace Wander
                                 string near = loader.GetString("near");
                                 playSound.Play();
                                 var message = new MessageDialog(((String)geofence.Id).Split('_').First(), near);
-                                UICommand command1 = new UICommand("bekijk", new UICommandInvokedHandler(commandHandler));
+                                ResourceLoader rl = new ResourceLoader();
+                                UICommand command1 = new UICommand(rl.GetString("seeSight"), new UICommandInvokedHandler(commandHandler));
                                 UICommand command2 = new UICommand("Ok", new UICommandInvokedHandler(commandHandler));
                                 selectedItem = ((String)geofence.Id).Split('_').First();
                                 command1.Id = 1;
