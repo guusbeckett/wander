@@ -79,6 +79,7 @@ namespace Wander
             routes.Add(new WanderLib.Route("historische kilometer" ,giveAllWaypointsOnRoute(), 20));
             return routes;
 		}
+
         public void setSightSeenTrue(String geofence)
         {
             foreach(WanderLib.Waypoint sight in loadedSights)
@@ -282,33 +283,37 @@ namespace Wander
 
         public async Task calculateToNextPoint(Map bingMap, String geolocation)
         {
-            LocationConverter converter = new LocationConverter();
-            Bing.Maps.Directions.WaypointCollection waypoints = new Bing.Maps.Directions.WaypointCollection();
-            Bing.Maps.Directions.DirectionsManager directionsManager = bingMap.DirectionsManager;
-
-
-            foreach (WanderLib.Sight s in sightsonly)
+            try
             {
-                if (geolocation == s.name)
+                LocationConverter converter = new LocationConverter();
+                Bing.Maps.Directions.WaypointCollection waypoints = new Bing.Maps.Directions.WaypointCollection();
+                Bing.Maps.Directions.DirectionsManager directionsManager = bingMap.DirectionsManager;
+
+
+                foreach (WanderLib.Sight s in sightsonly)
                 {
-                    int i = sightsonly.IndexOf(s);
-
-                    if (i+1 < sightsonly.Count())
+                    if (geolocation == s.name)
                     {
-                        waypoints.Add(new Bing.Maps.Directions.Waypoint(converter.convertToBingLocation(s.location)));
-                        waypoints.Add(new Bing.Maps.Directions.Waypoint(converter.convertToBingLocation(sightsonly[i + 1].location)));
+                        int i = sightsonly.IndexOf(s);
 
-                        directionsManager.RequestOptions.RouteMode = Bing.Maps.Directions.RouteModeOption.Walking;
-                        directionsManager.Waypoints = waypoints;
+                        if (i + 1 < sightsonly.Count())
+                        {
+                            waypoints.Add(new Bing.Maps.Directions.Waypoint(converter.convertToBingLocation(s.location)));
+                            waypoints.Add(new Bing.Maps.Directions.Waypoint(converter.convertToBingLocation(sightsonly[i + 1].location)));
 
-                        Bing.Maps.Directions.RouteResponse response = await directionsManager.CalculateDirectionsAsync();
+                            directionsManager.RequestOptions.RouteMode = Bing.Maps.Directions.RouteModeOption.Walking;
+                            directionsManager.Waypoints = waypoints;
 
-                        distance = response.Routes[0].TravelDistance * 1000;
+                            Bing.Maps.Directions.RouteResponse response = await directionsManager.CalculateDirectionsAsync();
 
-                        break;
+                            distance = response.Routes[0].TravelDistance * 1000;
+
+                            break;
+                        }
                     }
-                }    
+                }
             }
+            catch { }
         }
 
         public async void calculateRoute(Map bingMap)
