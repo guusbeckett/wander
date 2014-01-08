@@ -32,6 +32,22 @@ namespace Wander
         private String textPassed;
         private WanderLib.Sight sight;
         private DataController dataController;
+        public static Message existence;
+
+        public static string destroyExistence()
+        {
+            if (existence != null)
+                return existence.Frame.GetNavigationState();
+            else
+                return null;
+        }
+
+        public static void makeMeExistence(Message newExistence, string navState)
+        {
+            existence = newExistence;
+            if (navState != null)
+                existence.Frame.SetNavigationState(navState);
+        }
 
         /// <summary>
         /// This can be changed to a strongly typed view model.
@@ -59,6 +75,7 @@ namespace Wander
             this.navigationHelper.SaveState += navigationHelper_SaveState;
             dataController = DataController.getInstance();
             updateStringsWithCurrentLanguage();
+            Message.makeMeExistence(this, Message.destroyExistence());
             
         }
 
