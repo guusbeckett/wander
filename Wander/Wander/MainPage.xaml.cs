@@ -277,7 +277,10 @@ namespace Wander
                                 command2.Id = 2;
                                 message.Commands.Add(command1);
                                 message.Commands.Add(command2);
-                                await message.ShowAsync();
+                                if (this.message != null)
+                                    this.message.Cancel();
+                                this.message = message.ShowAsync();
+                                await this.message;
                             }
                            
                             catch { }
@@ -371,5 +374,7 @@ namespace Wander
         {
             GridRoot.Children.Add(routes);
         }
+
+        public IAsyncOperation<IUICommand> message { get; set; }
     }
 }
